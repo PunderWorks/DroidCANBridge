@@ -34,7 +34,7 @@ jobs:
   # schematics. This checks it with the Cargo-locked Stackup CLI (ci/stackup,
   # pinned with the parts library in manifest.kdl), then fails if syncing the
   # committed PCB from the design would change it, so the KDL and
-  # PCB/DroidCANAdapter.kicad_pcb can't drift apart. The sync check applies
+  # PCB/DroidCANBridge.kicad_pcb can't drift apart. The sync check applies
   # the Stackup KiCad plugin to the board in memory with KiCad 10's Python and
   # never saves.
   stackup:
@@ -67,8 +67,8 @@ jobs:
 
       - name: Check PCB sync
         run: |
-          /usr/bin/python3 ci/check_pcb_sync.py PCB/DroidCANAdapter.kicad_pcb \
-            --stackup ci/stackup/target/debug/droidcanadapter-stackup-check \
+          /usr/bin/python3 ci/check_pcb_sync.py PCB/DroidCANBridge.kicad_pcb \
+            --stackup ci/stackup/target/debug/droidcanbridge-stackup-check \
             --plugin-dir stackup-tool/kicad-plugin
 
   # ── Single required check ─────────────────────────────────────────────────

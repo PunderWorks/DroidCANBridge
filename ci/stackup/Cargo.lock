@@ -3,7 +3,7 @@
 version = 4
 
 [[package]]
-name = "droidcanadapter-stackup-check"
+name = "droidcanbridge-stackup-check"
 version = "0.0.0"
 dependencies = [
  "stackup-eda",

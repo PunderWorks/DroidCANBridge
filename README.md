@@ -1,9 +1,9 @@
-# Droid CANBus Adapter
+# DroidCANBridge
 
-![DroidCANAdapter PCB render](PCB/assets/DroidCANAdapter.png)
+![DroidCANBridge PCB render](PCB/assets/DroidCANBridge.png)
 
-A very small, inexpensive adapter board that bridges CANBus to a standard UART and back, so droid
-components without CAN support can join a CAN network.
+A very small, inexpensive CAN-to-UART bridge for droid builders: it translates CAN bus frames to a
+standard UART and back, so droid components without CAN support can join a CAN network.
 
 - **MCU:** STM32C092 (TSSOP-20), with a built-in CAN FD controller
 - **CAN:** CAN FD-capable transceiver; two 2-pin JST-XH connectors (CANL, CANH) for daisy-chaining and a jumper for the

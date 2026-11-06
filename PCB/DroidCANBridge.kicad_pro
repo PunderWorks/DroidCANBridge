@@ -279,7 +279,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "DroidCANAdapter.kicad_pro",
+    "filename": "DroidCANBridge.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -411,8 +411,8 @@
     "legacy_lib_list": [],
     "top_level_sheets": [
       {
-        "filename": "DroidCANAdapter.kicad_sch",
-        "name": "DroidCANAdapter",
+        "filename": "DroidCANBridge.kicad_sch",
+        "name": "DroidCANBridge",
         "uuid": "00000000-0000-0000-0000-000000000000"
       }
     ]

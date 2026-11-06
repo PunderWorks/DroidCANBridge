@@ -676,7 +676,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:180"
+		(property "Stackup Source" "PCB/stackup/board.kdl:183"
 			(at 0 2 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -1443,7 +1443,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:154"
+		(property "Stackup Source" "PCB/stackup/board.kdl:157"
 			(at 0 2 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -1884,7 +1884,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:107"
+		(property "Stackup Source" "PCB/stackup/board.kdl:110"
 			(at 0 2 180)
 			(layer "F.SilkS")
 			(hide yes)
@@ -2558,7 +2558,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:83"
+		(property "Stackup Source" "PCB/stackup/board.kdl:86"
 			(at 0 2 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -3114,7 +3114,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:111"
+		(property "Stackup Source" "PCB/stackup/board.kdl:114"
 			(at 0 2 180)
 			(layer "F.SilkS")
 			(hide yes)
@@ -3531,7 +3531,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:129"
+		(property "Stackup Source" "PCB/stackup/board.kdl:132"
 			(at 0 2 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -3973,7 +3973,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:173"
+		(property "Stackup Source" "PCB/stackup/board.kdl:176"
 			(at 0 2 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -4414,7 +4414,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:171"
+		(property "Stackup Source" "PCB/stackup/board.kdl:174"
 			(at 0 2 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -4635,7 +4635,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:123"
+		(property "Stackup Source" "PCB/stackup/board.kdl:126"
 			(at 2 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -4983,7 +4983,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:131"
+		(property "Stackup Source" "PCB/stackup/board.kdl:134"
 			(at 0 2 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -5273,7 +5273,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:139"
+		(property "Stackup Source" "PCB/stackup/board.kdl:142"
 			(at 0 2 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -5572,7 +5572,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:163"
+		(property "Stackup Source" "PCB/stackup/board.kdl:166"
 			(at 0 2 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -5898,7 +5898,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:124"
+		(property "Stackup Source" "PCB/stackup/board.kdl:127"
 			(at 2 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -6238,7 +6238,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:90"
+		(property "Stackup Source" "PCB/stackup/board.kdl:93"
 			(at 0 2 180)
 			(layer "F.SilkS")
 			(hide yes)
@@ -6776,7 +6776,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:89"
+		(property "Stackup Source" "PCB/stackup/board.kdl:92"
 			(at 0 2 180)
 			(layer "F.SilkS")
 			(hide yes)
@@ -7077,7 +7077,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:187"
+		(property "Stackup Source" "PCB/stackup/board.kdl:190"
 			(at 0 2 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -7246,7 +7246,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:147"
+		(property "Stackup Source" "PCB/stackup/board.kdl:150"
 			(at 0 2 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -7455,7 +7455,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:136"
+		(property "Stackup Source" "PCB/stackup/board.kdl:139"
 			(at 2 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -7815,7 +7815,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:103"
+		(property "Stackup Source" "PCB/stackup/board.kdl:106"
 			(at 0 2 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -8456,7 +8456,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:188"
+		(property "Stackup Source" "PCB/stackup/board.kdl:191"
 			(at 0 2 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -8625,7 +8625,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:82"
+		(property "Stackup Source" "PCB/stackup/board.kdl:85"
 			(at 0 2 270)
 			(layer "F.SilkS")
 			(hide yes)
@@ -9123,7 +9123,7 @@
 			)
 		)
 	)
-	(gr_text "CAN bus to UART Adapter V1.0 by @thePunderWoman\ngithub.com/thePunderWoman/DroidCANAdapter"
+	(gr_text "CAN to UART Bridge V1.0 by @thePunderWoman\ngithub.com/thePunderWoman/DroidCANBridge"
 		(at 122.6 135.6 0)
 		(layer "F.SilkS")
 		(uuid "0c49e927-0a57-4a2e-89b7-26832f0ffc87")
@@ -9365,7 +9365,7 @@
 			)
 		)
 	)
-	(gr_text "DroidCANAdapter"
+	(gr_text "DroidCANBridge"
 		(at 122 110.5 0)
 		(layer "B.SilkS")
 		(uuid "c38b1919-d1d4-4341-933c-f8a30f2abf79")

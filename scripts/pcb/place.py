@@ -1,9 +1,9 @@
-"""Proposed starting placement for PCB/DroidCANAdapter.kicad_pcb.
+"""Proposed starting placement for PCB/DroidCANBridge.kicad_pcb.
 
 Run with KiCad's bundled Python, with the board closed in KiCad:
 
     /Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/Current/bin/python3 \
-        scripts/pcb/place.py PCB/DroidCANAdapter.kicad_pcb
+        scripts/pcb/place.py PCB/DroidCANBridge.kicad_pcb
 
 It moves footprints and redraws the Edge.Cuts outline; it never touches nets (those come from the
 Stackup sync). Positions are the centre of each footprint's courtyard, in mm from the board's

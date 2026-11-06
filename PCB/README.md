@@ -221,7 +221,15 @@ and diode datasheet pin table, silkscreen labels against the nets they name, the
 (`datasheets/JLC-PCB-capabilities.txt`), and the DTR reset simulation (`scripts/spice/`).
 
 Fixed in the review: hole keep-outs, 26 stitching vias, back silkscreen "rev A" → "V1.0" (the
-board's version, matching the front), UART label "SERIAL IN" → "SERIAL".
+board's version, matching the front), UART label "SERIAL IN" → "SERIAL". U3 moved up and C7 (its
+100 nF) moved beside it: 3.0 mm of track to VCC (was 6.2 mm) and 2.8 mm to GND, with the supply
+reaching C7 before U3, per TI's "as close to the VCC supply pins as possible" (TCAN334 §7.4).
+
+Decoupling arrangement, traced along the copper: C4 (MCU VDD) and C7 (TCAN VCC) are in line
+between the supply and the pin; C1 (VSYS bulk) sits where both OR diodes meet; C6 is 3.0 mm from
+NRST; the BAT54S clamp sits at C8 where the DTR surge enters. The regulator's own caps hang off
+short branches: C3 (output) 6.9 mm from VOUT and C2 (input) 8.7 mm from VIN. Accepted: the
+AP2112 is stable with 1 µF ceramics and C1's 4.7 µF is in line on the input.
 
 Accepted findings:
 - `bom_check.py` flags H1/H2 for no MPN or LCSC: they are drill-only, nothing to buy.

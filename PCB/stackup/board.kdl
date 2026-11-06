@@ -1,0 +1,202 @@
+// DroidCANAdapter electrical design: a CAN FD <-> UART bridge for droid builders.
+//
+// STM32C092 (TSSOP-20) with a TCAN334G 3.3 V CAN FD transceiver; two JST-XH CAN connectors
+// wired in parallel for daisy-chaining, with a jumper for the 120 Ω terminator; a JST-XH UART
+// with a jumper-selected 3.3 V / 5 V logic level; 5 V in on a WAGO terminal with a WAGO
+// passthrough out; a 6-pin FTDI header for the ROM serial bootloader, which can also power the
+// board on the bench. Requirements, decisions and the DC bias numbers are in ../README.md.
+use "@stackup/passives"
+use "@stackup/bus/can/tcan334g"
+use "@stackup/power/ldo/ap2112k"
+use "@stackup/discrete/fet/bss138"
+use "@stackup/connector/header"
+use "@stackup/connector/jumper"
+use "@stackup/mechanical"
+use "./parts.kdl"
+
+// Purchasing: one part number per value. All JLCPCB Basic (checked 2026-11-05).
+mpn "CC0603KRX7R9BB104" manufacturer="YAGEO" kind=capacitor value="100nF" rated_voltage="50V" {
+    catalog lcsc="C14663"
+}
+mpn "CL10A105KB8NNNC" manufacturer="Samsung Electro-Mechanics" kind=capacitor value="1µF" rated_voltage="50V" {
+    catalog lcsc="C15849"
+}
+mpn "CL10A475KO8NNNC" manufacturer="Samsung Electro-Mechanics" kind=capacitor value="4.7µF" rated_voltage="16V" {
+    catalog lcsc="C19666"
+}
+mpn "0603WAF1002T5E" manufacturer="UNI-ROYAL" kind=resistor value="10kΩ" {
+    catalog lcsc="C25804"
+}
+mpn "0603WAF1001T5E" manufacturer="UNI-ROYAL" kind=resistor value="1kΩ" {
+    catalog lcsc="C21190"
+}
+mpn "0603WAF3300T5E" manufacturer="UNI-ROYAL" kind=resistor value="330Ω" {
+    catalog lcsc="C23138"
+}
+mpn "0805W8F1200T5E" manufacturer="UNI-ROYAL" kind=resistor value="120Ω" {
+    catalog lcsc="C17437"
+}
+
+design droidcanadapter {
+    stock { packages imperial="0603" }
+
+    match placement {
+        when kind=capacitor
+        when value="100nF"
+        set mpn="CC0603KRX7R9BB104"
+    }
+    match placement {
+        when kind=capacitor
+        when value="1µF"
+        set mpn="CL10A105KB8NNNC"
+    }
+    match placement {
+        when kind=capacitor
+        when value="4.7µF"
+        set mpn="CL10A475KO8NNNC"
+    }
+    match placement {
+        when kind=resistor
+        when value="10kΩ"
+        set mpn="0603WAF1002T5E"
+    }
+    match placement {
+        when kind=resistor
+        when value="1kΩ"
+        set mpn="0603WAF1001T5E"
+    }
+    match placement {
+        when kind=resistor
+        when value="330Ω"
+        set mpn="0603WAF3300T5E"
+    }
+    match placement {
+        when kind=resistor
+        when value="120Ω"
+        set mpn="0805W8F1200T5E"
+    }
+
+    // ── Power ────────────────────────────────────────────────────────────────────────────
+    // 5 V in on a WAGO terminal. The passthrough terminal is wired straight to the input: it
+    // carries whatever the input carries, at the input's current, and is not protected by D_IN.
+    place wago-2601-1102 J_PWR_IN hand=#true note="5 V in: pin 1 +5V, pin 2 GND"
+    place wago-2601-1102 J_PWR_OUT hand=#true note="5 V passthrough out: pin 1 +5V, pin 2 GND"
+    set J_PWR_IN.1 net.voltage min="4.75V" max="5.25V"   // 5 V ±5%, the stated input
+
+    // Two Schottky diodes OR the WAGO input and the FTDI header's VCC onto VSYS. D_IN is also
+    // the reverse-polarity protection; each diode stops one source back-feeding the other (the
+    // FTDI never powers the passthrough terminal).
+    place ss14 D_IN
+    place ss14 D_FTDI
+    circuit J_PWR_IN.1 J_PWR_OUT.1 D_IN ldo.in.rail name="+5V_IN"
+    circuit J_FTDI.3 D_FTDI ldo.in.rail name="FTDI_VCC"
+    set J_FTDI.3 net.voltage min="4.4V" max="5.25V"   // USB VBUS at the device, via the adapter
+
+    // VSYS is the higher input less one SS14 drop: at most 0.55 V (MDD SS14, VF at 1 A), far
+    // less at this board's < 100 mA. Bounds: 4.4 V USB - 0.55 V to 5.25 V; see README.
+    place bulk C_VSYS node=ldo.in.rail rail=ldo.in value="4.7µF" note="input bulk, after the OR diodes"
+    set ldo.in.rail net.voltage min="3.85V" max="5.25V"
+    set ldo.in.rail net.name "VSYS"
+
+    place ap2112k3v3 ldo footprint="Package_TO_SOT_SMD:SOT-23-5" lcsc=C51118 note="genuine Diodes Inc. listing, not the TECH PUBLIC clone"
+    set ldo.out.rail net.name "+3V3"
+
+    // ── MCU ──────────────────────────────────────────────────────────────────────────────
+    place stm32c092f mcu vdd=ldo.out
+
+    // ── CAN ──────────────────────────────────────────────────────────────────────────────
+    // STB and SHDN are left to the TCAN334G's internal pull-downs: normal mode always.
+    place tcan334g can_xcvr footprint="Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" lcsc=C189939 vcc=ldo.out
+    nc can_xcvr.STB can_xcvr.SHDN note="internal pull-downs hold normal mode (TCAN334 Table 4-1)"
+
+    // On TSSOP-20 the ROM bootloader remaps USART1 onto these pads (RX on 17, TX on 16), but
+    // keeps TX in its reset state until it sees 0x7F on RX (AN2606 Rev 71, Table 19). Pad 17
+    // only feeds the transceiver's TXD input, so USART1 never wakes and never drives pad 16
+    // against RXD.
+    circuit mcu.PA12 can_xcvr.TXD name="CAN_TX"
+    circuit can_xcvr.RXD mcu.PA11 name="CAN_RX"
+
+    place jst-xh-3 J_CAN1 hand=#true note="CAN: 1 GND, 2 CANL, 3 CANH"
+    place jst-xh-3 J_CAN2 hand=#true note="CAN: 1 GND, 2 CANL, 3 CANH (daisy chain)"
+    circuit can_xcvr.CANH J_CAN1.3 J_CAN2.3 name="CANH"
+    circuit can_xcvr.CANL J_CAN1.2 J_CAN2.2 name="CANL"
+
+    // Termination: fit the shunt on J_TERM when this node is at an end of the bus.
+    place resistor R_TERM value="120Ω" footprint="Resistor_SMD:R_0805_2012Metric" \
+        note="bus terminator; 0805 for dissipation margin"
+    place jumper J_TERM footprint="Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" \
+        manufacturer=XFCN mpn="PZ254V-11-02P" lcsc=C492401 hand=#true value="TERM"
+    circuit can_xcvr.CANH R_TERM J_TERM can_xcvr.CANL
+
+    // ── Device UART (USART1) ─────────────────────────────────────────────────────────────
+    place jst-xh-3 J_UART hand=#true note="UART: 1 GND, 2 RX (into this board), 3 TX (out)"
+
+    // Logic level jumper: shunt on 1-2 = 3.3 V, 2-3 = 5 V (VSYS).
+    place conn-1x3 J_VIO footprint="Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" \
+        manufacturer=XFCN mpn="PZ254V-11-03P" lcsc=C2937625 hand=#true value="3V3 | VIO | 5V"
+    circuit ldo.out.rail J_VIO.1
+    circuit J_VIO.3 ldo.in.rail
+    set J_VIO.2 net.name "UART_VIO"
+
+    // TX: PB6 runs open-drain; R_TXPU pulls the line to the selected level. PB6 is FT, so up to
+    // VDD + 4.0 V is allowed while powered (DS14720 Table 21); its internal pull must be off.
+    place resistor R_TXPU value="1kΩ" intent=pull-up
+    circuit J_VIO.2 R_TXPU mcu.PB6
+    circuit mcu.PB6 J_UART.3 name="UART_TX"
+
+    // RX: BSS138 shifter. Gate at 3.3 V, source on the MCU side with its own pull-up, drain to
+    // the connector. Unpowered, the FET is off and its body diode blocks the device's TX from
+    // the pin, whose limit is 4.0 V with VDD = 0.
+    place bss138 Q_RX footprint="Package_TO_SOT_SMD:SOT-23" manufacturer=onsemi mpn=BSS138 lcsc=C52895
+    place pull-up R_RXPU node=mcu.PB7 rail=ldo.out value="1kΩ"
+    circuit ldo.out.rail Q_RX.GATE
+    circuit J_UART.2 Q_RX.DRAIN name="UART_RX"
+    circuit Q_RX.SOURCE mcu.PB7 name="UART_RX_3V3"
+
+    // ── FTDI header (USART2, the ROM bootloader's PA2/PA3) ────────────────────────────────
+    // Standard 6-pin FTDI order, pin 1 GND (black wire). TX/RX named from the cable: the
+    // cable's TXD (pin 4) drives this board's RX.
+    place conn-1x6 J_FTDI footprint="Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical" \
+        manufacturer=XFCN mpn="PZ254V-11-06P" lcsc=C492405 hand=#true value="FTDI"
+    circuit J_FTDI.4 mcu.PA3 name="FTDI_TXD"
+    circuit mcu.PA2 J_FTDI.5 name="FTDI_RXD"
+
+    // DTR auto-reset: a falling DTR edge couples through C_DTR and pulls NRST low for ~10-20 ms
+    // (internal 25-55 kΩ pull-up × 1.1 µF). D_NRST clamps both edges: COM to NRST, A1 to GND,
+    // K2 to +3V3.
+    place capacitor C_DTR value="1µF" intent=timing note="DTR auto-reset coupling"
+    circuit J_FTDI.6 C_DTR mcu.NRST name="FTDI_DTR"
+    place bat54s D_NRST
+    circuit mcu.NRST D_NRST.COM name="NRST"
+
+    // ── Boot button and SWD pads ─────────────────────────────────────────────────────────
+    // Hold SW_BOOT through a reset to enter the bootloader, once firmware has cleared
+    // nBOOT_SEL. R_BOOT holds BOOT0 low otherwise.
+    place ts-1187a SW_BOOT
+    place pull-down R_BOOT node=mcu.PA14 rail=ldo.out value="10kΩ"
+    circuit ldo.out.rail SW_BOOT mcu.PA14 name="+3V3"
+    set mcu.PA14 net.name "BOOT0_SWCLK"
+
+    place test-point TP_3V3 footprint="TestPoint:TestPoint_Pad_D1.5mm"
+    place test-point TP_SWDIO footprint="TestPoint:TestPoint_Pad_D1.5mm"
+    place test-point TP_SWCLK footprint="TestPoint:TestPoint_Pad_D1.5mm"
+    place test-point TP_NRST footprint="TestPoint:TestPoint_Pad_D1.5mm"
+    place test-point TP_GND footprint="TestPoint:TestPoint_Pad_D1.5mm"
+    circuit ldo.out.rail TP_3V3.1 D_NRST.K2
+    circuit mcu.PA13 TP_SWDIO.1 name="SWDIO"
+    circuit mcu.PA14 TP_SWCLK.1
+    circuit mcu.NRST TP_NRST.1
+
+    // M3 mounting holes, unplated.
+    place mounting-hole H1 package=m3 footprint="MountingHole:MountingHole_3.2mm_M3"
+    place mounting-hole H2 package=m3 footprint="MountingHole:MountingHole_3.2mm_M3"
+
+    // ── Ground ───────────────────────────────────────────────────────────────────────────
+    // CTS (J_FTDI.2) is tied low, as on Arduino Pro Mini-style headers.
+    circuit ldo.out.gnd J_PWR_IN.2 J_PWR_OUT.2 J_CAN1.1 J_CAN2.1 J_UART.1 J_FTDI.1 J_FTDI.2 \
+        D_NRST.A1 TP_GND.1 name="GND"
+
+    // ── Spares ───────────────────────────────────────────────────────────────────────────
+    nc mcu.PC14 mcu.PC15 mcu.PA0 mcu.PA1 mcu.PA4 mcu.PA5 mcu.PA6 mcu.PA7 mcu.PA8 \
+        note="spare; firmware leaves them in the reset (analog) state"
+}

@@ -1,0 +1,193 @@
+                                                                                                    BAT54/A/C/S
+                                      SOT-23 Plastic-Encapsulate Diodes
+
+ BAT54/A/C/S                SCHOTTKY BARRIER DIODE                                     SOT-23
+ FEATURES
+    Extremely Fast Switching Speed
+
+
+
+
+ MARKING:
+      BAT54                   BAT54A              BAT54C                  BAT54S
+
+
+
+
+Maximum Ratings (Ta=25℃ unless otherwise noted )
+                       Parameter                            Symbol                   Value                       Unit
+Peak Repetitive Reverse Voltage                              VRRM
+Working Peak Reverse Voltage                                 VRWM                     30                          V
+DC Blocking Voltage                                           VR
+Forward Continuous Current                                   IFM                     200                         mA
+Non-repetitive Peak Forward Surge Current @ t=8.3ms          IFSM                    600                         mA
+Repetitive Peak Forward Current @ t≤1s,δ≤0.5                 IFRM                    300                         mA
+Power Dissipation                                             PD                     200                         mW
+Thermal Resistance from Junction to Ambient                  RΘJA                    500                        ℃/W
+Junction Temperature                                          Tj                     125                          ℃
+Storage Temperature                                          Tstg                  -55~+150                       ℃
+
+ELECTRICAL CHARACTERISTICS(Ta=25℃ unless otherwise specified)
+        Parameter                  Symbol             Min           Typ       Max            Unit     Test conditions
+Reverse voltage                     V(BR)             30                                      V     IR=100μA
+                                                                              0.24            V     IF1=0.1mA
+
+                                                                              0.32            V     IF2=1mA
+
+Forward voltage                      VF                                       0.40            V     IF3=10mA
+
+                                                                              0.50            V     IF4=30mA
+
+                                                                               1              V     IF5=100mA
+
+Reverse current                      IR                                        2             μA      R=25V
+
+Diode capacitance                    CD                                       10              pF    VR=1V,f=1MHz
+                                                                                                    IF=IR=10mA
+Reverse recovery time                trr                                       5              ns
+                                                                                                    Irr=0.1×IR,RL=100Ω
+
+                                     The above data are for reference only.
+ https://www.microdiode.com                                                        Rev:2024A2                     Page :1
+                                                                                                                                                                             BAT54/A/C/S
+Typical Characteristics
+
+                                                     Forward          Characteristics                                                                Reverse          Characteristics
+                             200                                                                                                      300
+                             100
+                                                                                                                                      100
+                                                                                                                                                                         o
+                                                                                                                                                                 Ta=100 C
+       (mA)                                                                                                    (uA)
+                                             =1
+                                               00
+                                                  o
+                                   10             C
+                                             T   a
+                                                                                                                                       10
+       IF
+
+
+
+
+                                                                                                               REVERSE CURRENT IR
+                                                            T=
+                                                            a 2
+                                                                5 o
+
+
+
+
+       FORWARD CURRENT
+                                                                  C
+                                    1
+                                                                                                                                        1
+
+                                                                                                                                                                             o
+                                                                                                                                                                      Ta=25 C
+
+                                   0.1                                                                                                 0.1
+
+
+
+
+                           0.01                                                                                                       0.01
+                                         0           200        400         600          800            1000                                 0   5          10          15            20             25     30
+
+                                                     FORWARD VOLTAGE              VF   (mV)                                                           REVERSE VOLTAGE                 VR       (V)
+
+
+
+
+                                                 Capacitance Characteristics                                                                              Power Derating Curve
+                                   20                                                                                                 250
+                                                                                               Ta=25℃
+                                                                                               f=1MHz
+
+
+
+
+   CAPACITANCE BETWEEN TERMINALS
+                                   16                                                                             (mW)                200
+
+
+                                                                                                                  PD
+                                   12                                                                                                 150
+
+
+
+
+              CT (pF)                                                                                             POWER DISSIPATION
+                                    8                                                                                                 100
+
+
+
+
+                                    4                                                                                                  50
+
+
+
+
+                                    0                                                                                                   0
+                                         0       5         10          15         20          25         30                                  0       25          50              75              100        125
+
+                                                       REVERSE VOLTAGE            VR   (V)                                                       AMBIENT TEMPERATURE                       a
+                                                                                                                                                                                                 (℃)
+
+
+
+
+ https://www.microdiode.com                                                                                                                           Rev:2024A2                                       Page :2
+                                                                                                                BAT54/A/C/S
+Outlitne Drawing
+                                            SOT-23 Package Outline Dimensions
+                                                θ
+                                                                                           Dimensions In Millimeters
+                                                                           Symbol
+                                                                                            Min     Typ        Max
+                                                                              A            0.90                1.40
+    E1
+                                                                              A1           0.00                0.10
+                               E
+
+                                                                               b           0.30                0.50
+                                   L1
+                                                                               c           0.08                0.20
+                                            L
+
+                  e                                                           D            2.80     2.90       3.10
+                                                                              E            1.20                1.60
+                               1                                              E1           2.25                2.80
+                                                                               e           1.80     1.90       2.00
+                                                                               L           0.10                0.50
+                                                                              L1             0.4                    0.55
+  Suggested Pad Layout
+                                                                               θ              0°                    10°
+                                      0.037
+         0.037                        0.95                       Note:
+         0.95                                                    1.Controlling dimension:in/millimeters.
+                                                                 2.General tolerance: ±0.05mm.
+                                                                 3.The pad layout is for reference purposes only.
+
+                                       0.079
+                                        2.0
+
+     0.035
+      0.9
+
+                      0.031        inches
+                       0.8          mm
+
+
+
+  PACKAGE SPECIFICATIONS
+
+ Package Reel Size            Reel DIA.             Q'TY/Reel    Box Size          QTY/Box          Carton Size      Q'TY/Carton
+                               (mm)                   (pcs)       (mm)              (pcs)              (mm)             (pcs)
+  SOT-23         7'             330                   3000      203×203×195           45000         438×438×220        180000
+
+
+
+
+  https://www.microdiode.com                                                                  Rev:2024A2                   Page :3
+

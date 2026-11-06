@@ -74,3 +74,8 @@ PCB/production/misc/*
 .stackup/
 manifest.local.kdl
 ci/stackup/target/
+
+# Large ST reference documents (RM0490, AN2606): kept locally, not committed. Their source URLs,
+# revisions and SHA-256 are in PCB/datasheets/manifest.json.
+PCB/datasheets/RM0490.*
+PCB/datasheets/AN2606.*

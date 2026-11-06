@@ -8,8 +8,8 @@ components without CAN support can join a CAN network.
   120 Ω termination resistor
 - **UART:** JST-XH connector with a jumper that sets the logic level to 3.3 V or 5 V
 - **Power:** 5 V in on a WAGO terminal (reverse-polarity protected), with a WAGO passthrough output
-- **Programming:** standard 6-pin FTDI header using the STM32's built-in serial bootloader, with a
-  boot button
+- **Programming:** standard 6-pin FTDI header using the STM32's built-in serial bootloader, with
+  DTR auto-reset and a boot button
 
 Status: design in progress. Hardware is in [`PCB/`](PCB/) (see [PCB/README.md](PCB/README.md) for
 requirements and design decisions); firmware will live in `src/`.

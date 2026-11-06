@@ -1,8 +1,75 @@
 {
+  "AN2606": {
+    "fetched": "2026-11-05",
+    "file": "AN2606.pdf",
+    "note": "downloaded by hand in a browser (site blocks automated fetches)",
+    "sha256": "dd8e48f0ae32ae3fb168d9d8da72092714289b9e410d2fcb5964b10dfc86396a",
+    "url": "https://www.st.com/resource/en/application_note/an2606-stm32-microcontroller-system-memory-boot-mode-stmicroelectronics.pdf"
+  },
+  "AP2112": {
+    "fetched": "2026-11-05",
+    "file": "AP2112.pdf",
+    "sha256": "ef8d376f2ec356e29172eb9e053819a0ebdcc576dba7fc9ab0505c568427920f",
+    "url": "https://www.diodes.com/assets/Datasheets/AP2112.pdf"
+  },
+  "BAT54S": {
+    "fetched": "2026-11-05",
+    "file": "BAT54S.pdf",
+    "note": "downloaded by hand in a browser (site blocks automated fetches)",
+    "sha256": "ea87bef736d643a9e9b947b47a81a1bae4ae027382606f829db4ad64d520601b",
+    "url": "https://www.lcsc.com/datasheet/lcsc_datasheet_2407101108_MDD-Microdiode-Semiconductor-BAT54S_C408389.pdf"
+  },
+  "BSS138": {
+    "fetched": "2026-11-05",
+    "file": "BSS138.pdf",
+    "note": "downloaded by hand in a browser (site blocks automated fetches)",
+    "sha256": "49616ccb1c7db6415391f12a707d3b26f51e096be3b84a789f4289e9075eb82f",
+    "url": "https://www.onsemi.com/pub/Collateral/BSS138-D.PDF"
+  },
+  "JST-XH": {
+    "fetched": "2026-11-05",
+    "file": "JST-XH.pdf",
+    "sha256": "9426b136902f11900825077535e5c65032b7fbc31ffb59c5e9e1f463bb20fb90",
+    "url": "https://www.jst-mfg.com/product/pdf/eng/eXH.pdf"
+  },
+  "RM0490": {
+    "fetched": "2026-11-05",
+    "file": "RM0490.pdf",
+    "note": "downloaded by hand in a browser (site blocks automated fetches)",
+    "sha256": "b5af48dcab379c8e581a4c66ab08f5176312da4db8d7f898caa5adccf4cfd170",
+    "url": "https://www.st.com/resource/en/reference_manual/rm0490-stm32c0x1-advanced-armbased-32bit-mcus-stmicroelectronics.pdf"
+  },
+  "SS14": {
+    "fetched": "2026-11-05",
+    "file": "SS14.pdf",
+    "note": "downloaded by hand in a browser (site blocks automated fetches)",
+    "sha256": "1c2e8ca38c0a1afef95e4e329afc215094264244d161999f40765f5ef79d5720",
+    "url": "https://www.lcsc.com/datasheet/lcsc_datasheet_2407101109_MDD-Microdiode-Semiconductor-SS14_C2480.pdf"
+  },
   "STM32C092": {
     "fetched": "2026-11-05",
     "file": "STM32C092.pdf",
     "sha256": "cf68e6c7cd2615ea61504f0e401e727409cfe0f8df958187807f53bc945b57c8",
     "url": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/7132/stm32c092rc.pdf"
+  },
+  "TCAN334": {
+    "fetched": "2026-11-05",
+    "file": "TCAN334.pdf",
+    "sha256": "bb89f067e6a7902867bf6b82eaab762167f403ae8464a29ec4f318ab0c71628f",
+    "url": "https://www.ti.com/lit/ds/symlink/tcan334.pdf"
+  },
+  "TS-1187A": {
+    "fetched": "2026-11-05",
+    "file": "TS-1187A.pdf",
+    "note": "downloaded by hand in a browser (site blocks automated fetches)",
+    "sha256": "64b75233cadaceb75ab3f3e33b532af8d04de98821c910ea13eb76c5fd1eed34",
+    "url": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_XKB-Connection-TS-1187A-B-A-B_C318884.pdf"
+  },
+  "WAGO-2601": {
+    "fetched": "2026-11-05",
+    "file": "WAGO-2601.pdf",
+    "note": "downloaded by hand in a browser (site blocks automated fetches)",
+    "sha256": "e5e8cf18e207ca7cbe5be39d9a525ed1ad7f98477633b2a76ef1691621d0ae80",
+    "url": "https://www.wago.com/global/pcb-terminal-blocks-and-pluggable-connectors/pcb-terminal-block/p/2601-1102"
   }
 }

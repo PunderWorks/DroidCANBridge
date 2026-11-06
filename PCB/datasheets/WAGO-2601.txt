@@ -1,0 +1,274 @@
+Data Sheet | Item Number: 2601-1102
+PCB terminal block; lever; 1.5 mm²; Pin spacing 3.5 mm; 2-pole; Push-in CAGE CLAMP®;
+1,50 mm²; gray
+https://www.wago.com/2601-1102
+
+
+
+
+    Color:   gray
+
+
+
+
+                                                                                   Dimensions in mm
+                                                                                   L = (pole no. – 1) x pin spacing + 5 mm
+.
+
+
+
+
+PCB terminal block, 2601 Series, Push-in CAGE CLAMP®
+
+Connect conductors quickly and safely with this PCB terminal block (item number 2601-1102). It is a universal connector that can be used almost anywhere, for
+example, as a pluggable PCB connector, panel feedthrough header, connector for rail-mount terminal blocks, or a floating connector for different mounting
+methods. Conductors can only be connected to this PCB terminal block if their strip length is between 8 and 9 mm . This product features one conductor terminal
+and utilizes Push-in CAGE CLAMP®. Push-in CAGE CLAMP® connection technology is ideal for connecting all conductor types. It allows direct insertion of both
+solid and fine-stranded conductors with ferrules without needing to use any tools—all thanks to its pluggable design. Dimensions: (8.5 x 16.35 x 16.58) mm
+(width x height x depth). Depending on the type of conductor, this PCB terminal block is designed for conductor cross sections ranging from 0.14 mm² to 1.5
+
+
+
+Page         1/4                                                        Version 28.10.2026                                                  Continued on next page
+    Data Sheet | Item Number: 2601-1102
+    https://www.wago.com/2601-1102
+
+mm².
+
+Open the lever, insert the conductor, close the lever!
+
+The contact surface is tin-coated This PCB terminal block is operated with a lever. THT is used to solder the PCB terminal block. Insert the conductor at a 0° an­
+gle..
+
+
+
+• The right solution for every wiring task
+• Pin spacing: 3.5 mm
+• Soldering via THT
+• Number of poles: 2
+• Actuation via lever
+
+    Notes
+    General safety information                                                            NOTICE: Observe installation and safety instructions!
+
+                                                                                          To be sold only with installation instructions!
+    Variants:                                                                             Other pole numbers
+                                                                                          Direct marking
+                                                                                          Other colors
+                                                                                          Other versions (or variants) can be requested from WAGO Sales or configured at https://con­
+                                                                                          figurator.wago.com/.
+
+.
+
+
+
+
+    Electrical data
+
+    Ratings per                                        IEC/EN 60947-7-4                        Approvals per                                                   UL 1059
+    Overvoltage category                       III            III           II                 Use group                                              B           C               D
+    Pollution degree                            3             2             2                  Rated voltage                                       300 V           -            300 V
+    Nominal voltage                           200 V         500 V         500 V                Rated current                                       15 A            -            10 A
+                                                                                           .
+
+
+
+
+    Rated impulse withstand voltage           2.5 kV        2.5 kV        2.5 kV
+    Rated current                             17.5 A        17.5 A        17.5 A
+.
+
+
+
+
+    Approvals per                                            CSA
+    Use group                                   B             C             D
+    Rated voltage                             300 V           -           300 V
+    Rated current                             10 A            -           10 A
+.
+
+
+
+
+    Connection Data
+    Clamping units                        2                                                    Connection 1
+    Total number of potentials            2                                                    Connection technology                          Push-in CAGE CLAMP®
+    Number of connection types            1                                                    Actuation type                                 Lever
+    Number of levels                      1                                                    Solid conductor                                0.14 … 1.5 mm² / 26 … 14 AWG
+.
+                                                                                               Solid conductor; push-in termination           0.5 … 2.5 mm² / 22 … 14 AWG
+                                                                                               Fine-stranded conductor                        0.14 … 1.5 mm² / 26 … 14 AWG
+                                                                                               Fine-stranded conductor; with insulated fer­   0.25 … 0.75 mm²
+                                                                                               rule
+                                                                                               Fine-stranded conductor; with uninsulated      0.25 … 1.5 mm²
+                                                                                               ferrule
+                                                                                               Note (conductor cross-section)                 For conductors (26 AWG) that are not rigid
+                                                                                                                                              enough, the clamping unit must be opened
+                                                                                                                                              using a lever.
+                                                                                               Strip length                                   8 … 9 mm / 0.31 … 0.35 inches
+                                                                                               Conductor connection direction to PCB          0°
+                                                                                               Pole number                                    2
+
+                                                                                           .
+
+
+
+
+Page            2/4                                                             Version 28.10.2026                                                                 Continued on next page
+    Data Sheet | Item Number: 2601-1102
+    https://www.wago.com/2601-1102
+
+    Physical data
+    Pin spacing                                     3.5 mm / 0.138 inches
+    Width                                           8.5 mm / 0.335 inches
+    Height                                          16.35 mm / 0.644 inches
+    Height from the surface                         12.75 mm / 0.502 inches
+    Depth                                           16.58 mm / 0.653 inches
+    Solder pin length                               3.6 mm
+    Solder pin dimensions                           1 x 0.5 mm
+    Drilled hole diameter                           1.2 (+0.1) mm
+
+.
+
+
+
+
+    PCB contact
+    PCB contact                                     THT
+    Solder pin arrangement                          over the entire terminal strip (in-line)
+    Number of solder pins per potential             2
+
+.
+
+
+
+
+    Material data
+    Note (material data)                            Information on material specifications can be found here
+    Color                                           gray
+    Material group                                  I
+    Insulation material (main housing)              Polyamide (PA66)
+    Flammability class per UL94                     V0
+    Clamping spring material                        Chrome-nickel spring steel (CrNi)
+    Contact material                                Electrolytic copper (ECu)
+    Contact Plating                                 Tin
+    Fire load                                       0.027 MJ
+    Actuator color                                  orange
+    Weight                                          1.7 g
+
+.
+
+
+
+
+    Environmental requirements
+    Limit temperature range                         -60 … +105 °C
+    Processing temperature                          -35 … +60 °C
+    Continuous operating temperature                -60 … +105 °C
+
+.
+
+
+
+
+    Commercial data
+    PU (SPU)                                        220 pcs
+    Packaging type                                  Box
+    Country of origin                               PL
+    GTIN                                            4066966298130
+    Customs tariff number                           85369010000
+
+.
+
+
+
+
+    Product Classification
+    UNSPSC                                          39121409
+    ETIM 9.0                                        EC002643
+    ETIM 10.0                                       EC002643
+    ECCN                                            NO US CLASSIFICATION
+
+.
+
+
+
+
+Page            3/4                       Version 28.10.2026                                                   Continued on next page
+    Data Sheet | Item Number: 2601-1102
+    https://www.wago.com/2601-1102
+
+     Environmental Product Compliance
+     RoHS Compliance Status                                                                Compliant,No Exemption
+
+.
+
+
+
+
+    Approvals / Certificates
+
+     General approvals
+
+
+
+
+     Approval                      Standard                   Certificate Name
+     CB                            IEC 60947-7-4              NL-86025
+     DEKRA Certification B.V.
+     CSA                           C22.2                      80120532
+     CSA Group
+     KEMA/KEUR                     EN 60947-7-4               71-127124
+     DEKRA Certification B.V.
+     UL                            UL 1059                    E45172
+     Underwriters Laboratories
+     Inc.
+
+.
+
+
+
+
+    Downloads
+
+    Environmental Product Compliance
+     Compliance Search
+     Environmental Product
+     Compliance 2601-1102
+
+.
+
+
+
+
+    Documentation
+     Additional Information
+     Technical Section                                  pdf
+                                 03.04.2019             2027.26 KB
+
+.
+
+
+
+
+    CAD/CAE-Data
+     CAD data                                                                                   PCB Design
+     2D/3D Models                                                                               Symbol and Footprint via
+     2601-1102                                                                                  SamacSys 2601-1102
+
+.
+                                                                                                Symbol and Footprint via
+                                                                                                Ultra Librarian
+                                                                                                2601-1102
+
+                                                                                            .
+
+
+
+
+Subject to changes. Please also observe the further product documentation!
+
+    Current addresses can be found at:: www.wago.com
+
+Page          4/4                                                                Version 28.10.2026
+

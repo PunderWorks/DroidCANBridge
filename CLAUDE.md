@@ -36,8 +36,10 @@ KiCad schematics (there are none). Hardware work follows the `pcb-design` skill.
   plugin (never edit footprint nets by hand) and commit the PCB with the KDL. Footprints record their
   `board.kdl` line, so even reordering lines needs a resync.
 - Mounting holes and logos are KiCad `board_only` footprints; the sync leaves them alone.
-- SMD parts are assembled by JLCPCB; connectors, WAGO terminals, headers and the button are
-  through-hole and hand-soldered.
+- SMD parts (including the boot button) are assembled by JLCPCB; connectors, WAGO terminals and
+  headers are through-hole and hand-soldered.
+- CI (`.github/workflows/ci.yml`) runs the Stackup check and the PCB sync check on PCB changes. The
+  only required check on `main` should be `CI Result`; add any new job to its `needs` list.
 
 ## Firmware (once it exists)
 

@@ -1,0 +1,249 @@
+// Parts this board needs that the pinned Stackup library doesn't have. Each pad map follows the
+// manufacturer's pinout drawing (pad N is the datasheet's pin N); sources are cited per part and
+// saved under ../datasheets/.
+
+use "@stackup/passives"
+
+// STM32C092 in TSSOP-20 (STM32C092FCP6). The library's `@stackup/micro/stm32c092` covers only
+// LQFP-32/48, so this is a local copy of its pin and peripheral tables cut down to what the
+// TSSOP-20 bonds. Candidate to upstream as a `tssop20` package of the library part.
+//
+// Source: DS14720 Rev 2 (../datasheets/STM32C092.pdf), Figure 3 (TSSOP20 pinout, p. 29) and
+// Table 12 (pin definitions, pp. 33-37).
+//
+// Several die pins share one TSSOP-20 pad. `also` names the extra pins on each pad, so naming
+// two of them in one design fails the pad's `once` check. Firmware must leave the other pins
+// on a shared pad in their reset (analog) state.
+//   pad 1  PB7/PB8          pad 15 PA8/PB0/PB1/PB2
+//   pad 16 PA11 [PA9]       pad 17 PA12 [PA10]  (PA9/PA10 by SYSCFG_CFGR1 remap, footnote 2)
+//   pad 19 PA14-BOOT0/PA15  pad 20 PB3/PB4/PB5/PB6
+part stm32c092f {
+    symbol "MCU_ST_STM32C0:STM32C092FxPx"
+    reference U
+    datasheet "https://www.st.com/resource/en/datasheet/stm32c092rc.pdf"
+    description "Arm Cortex-M0+ MCU with CAN FD, 256KB flash, 30KB RAM, 48 MHz, 2.0-3.6V, TSSOP20"
+    manufacturer STMicroelectronics
+    order mpn=STM32C092FCP6 lcsc=C44847704 mouser="511-STM32C092FCP6"
+
+    pin VDD power_in
+    pin VSS power_in
+
+    // VDD/VDDA share pad 4 and VSS/VSSA pad 5 (Figure 3). Draw is this board's budget, not a
+    // datasheet figure: 4.83 mA max core at 48 MHz, 125 °C (DS14720 Table 28), plus the
+    // peripherals and pins sinking this board's 1 kΩ UART pull-ups (≤ 4.7 mA and 3.3 mA).
+    port vdd type=power {
+        require net.voltage min="2.0V" max="3.6V"
+        add net.draw "15mA"
+        line rail pin=VDD
+        line gnd pin=VSS
+    }
+
+    // PF2-NRST: reset with an internal pull-up (RST structure) unless an option byte makes it
+    // GPIO.
+    pin NRST bidirectional once {
+        role reset active=low pull=internal
+        require net.rest not=low
+        also PF2
+    }
+
+    pin PB7 bidirectional once { also PB8; }
+    pin PC14 bidirectional once
+    pin PC15 bidirectional once
+    pin PA0 bidirectional once
+    pin PA1 bidirectional once
+    pin PA2 bidirectional once
+    pin PA3 bidirectional once
+    pin PA4 bidirectional once
+    pin PA5 bidirectional once
+    pin PA6 bidirectional once
+    pin PA7 bidirectional once
+    pin PA8 bidirectional once { also PB0; also PB1; also PB2; }
+    pin PA11 bidirectional once { also PA9; }
+    pin PA12 bidirectional once { also PA10; }
+    // SWDIO; internal pull-up after reset (Table 12 footnote 3).
+    pin PA13 bidirectional once
+    // SWCLK / BOOT0; internal pull-down after reset (footnote 3). BOOT0 is read only once
+    // nBOOT_SEL is cleared; a factory-fresh part ignores the pin and uses the empty-flash check.
+    pin PA14 bidirectional once {
+        role strap sampled=reset pull=internal-down \
+            note="BOOT0 when nBOOT_SEL is cleared: high boots the system-memory bootloader"
+        require net.rest not=high
+        also PA15
+    }
+    pin PB6 bidirectional once { also PB3; also PB4; also PB5; }
+
+    package tssop20 footprint="Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" {
+        pad PB7 1
+        pad PC14 2
+        pad PC15 3
+        pad VDD 4
+        pad VSS 5
+        pad NRST 6
+        pad PA0 7
+        pad PA1 8
+        pad PA2 9
+        pad PA3 10
+        pad PA4 11
+        pad PA5 12
+        pad PA6 13
+        pad PA7 14
+        pad PA8 15
+        pad PA11 16
+        pad PA12 17
+        pad PA13 18
+        pad PA14 19
+        pad PB6 20
+    }
+
+    // Same application circuit as the library part: VDD bypass at pad 4, bulk, and the NRST
+    // glitch filter.
+    block supply {
+        default
+        place decouple Cvdd node=VDD@4 rail=vdd value="100nF"
+        place bulk Cbulk node=VDD rail=vdd value="4.7µF" note="VDD bulk capacitance"
+        place filter Cnrst node=NRST rail=vdd value="100nF" \
+            note="NRST glitch filter; the pull-up is internal"
+    }
+
+    // Peripheral rows from the library part, limited to pins this package bonds (Table 12).
+    peripheral SWD swd {
+        swdio PA13
+        swclk PA14
+        nrst NRST
+    }
+
+    peripheral GPIO gpio {
+        io PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 PA8 PA9 PA10 PA11 PA12 PA13 PA14 PA15
+        io PB0 PB1 PB2 PB3 PB4 PB5 PB6 PB7 PB8 PC14 PC15 PF2
+    }
+
+    peripheral USART1 uart {
+        tx PA0 PA9 PB6 PC14
+        rx PA1 PA8 PA10 PB2 PB7
+    }
+
+    // The system bootloader's USART on PA2/PA3 (DS14720 §3.5).
+    peripheral USART2 uart {
+        tx PA2 PA4 PA8 PA14
+        rx PA3 PA5 PA13 PA14 PA15
+    }
+
+    peripheral FDCAN1 can {
+        rx PA11 PB0 PB5 PB8
+        tx PA12 PB1 PB6 PC14
+    }
+}
+
+// JST XH 2.50 mm, 2-position, top-entry through-hole header. Pin 1 is marked on the housing.
+// Ground comes through the power wiring, so the signal connectors carry signals only.
+// Source: JST XH catalog (../datasheets/JST-XH.pdf).
+part jst-xh-2 {
+    symbol "Connector_Generic:Conn_01x02"
+    reference J
+    value "JST XH 2-pin"
+    description "JST XH 2.50 mm two-position polarized, top-entry through-hole header"
+    datasheet "https://www.jst-mfg.com/product/pdf/eng/eXH.pdf"
+    manufacturer JST
+    order mpn="B2B-XH-A(LF)(SN)" lcsc=C158012
+
+    pin 1 passive
+    pin 2 passive
+
+    package vertical footprint="Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" {
+        pad 1 1
+        pad 2 2
+    }
+}
+
+// WAGO 2601-1102: 2-pole lever-actuated Push-in CAGE CLAMP PCB terminal block, 3.5 mm pitch,
+// 10 A / 300 V (UL), 26-14 AWG, wire entry parallel to the board. Two solder pins per pole,
+// 1.2 mm drill (WAGO data sheet, ../datasheets/WAGO-2601.pdf), matching KiCad's footprint
+// (pads 1, 1 and 2, 2; pad 1 square). The project footprint is KiCad's with the WAGO 3D model
+// attached (see ../libraries/3dmodels/README.md).
+part wago-2601-1102 {
+    symbol "Connector:Screw_Terminal_01x02"
+    reference J
+    value "WAGO 2601-1102"
+    description "WAGO 2601 push-in PCB terminal block, 2-pole, 3.5 mm pitch, horizontal entry"
+    datasheet "https://www.wago.com/global/pcb-terminal-blocks-and-pluggable-connectors/pcb-terminal-block/p/2601-1102"
+    manufacturer WAGO
+    order mpn="2601-1102" lcsc=C7509568
+
+    pin 1 passive
+    pin 2 passive
+
+    package horizontal footprint="DroidCANAdapter:WAGO_2601-1102_Horizontal" {
+        pad 1 1
+        pad 2 2
+    }
+}
+
+// XKB TS-1187A-B-A-B: 5.1 x 5.1 mm SMD tactile switch. Each terminal has two pads (1, 1 and
+// 2, 2) joined inside the switch: drawing terminals A-B and C-D, pads at ±3.0 x ±1.875 mm
+// (XKB drawing TS-1187A-X-X-X, ../datasheets/TS-1187A.pdf; matches the KiCad footprint). The
+// project footprint is KiCad's with the SnapEDA 3D model attached (../libraries/3dmodels/README.md).
+part ts-1187a {
+    symbol "Switch:SW_Push"
+    reference SW
+    value "TS-1187A-B-A-B"
+    description "Tactile switch, SPST-NO, 5.1x5.1 mm SMD, 1.5 mm actuator"
+    datasheet "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_XKB-Connection-TS-1187A-B-A-B_C318884.pdf"
+    manufacturer "XKB Connection"
+    order mpn="TS-1187A-B-A-B" lcsc=C318884
+
+    pin 1 passive
+    pin 2 passive
+    port a pin=1
+    port b pin=2
+
+    package smd footprint="DroidCANAdapter:XKB_TS-1187A-B-A-B" {
+        pad 1 1
+        pad 2 2
+    }
+}
+
+// SS14: 1 A, 40 V Schottky rectifier in SMA (DO-214AC). Ports follow forward current: a is
+// the anode, b the cathode; the band marks the cathode, KiCad D_SMA pad 1. VF ≤ 0.55 V at 1 A,
+// 40 V VRRM (MDD SS12-SS1200 datasheet, ../datasheets/SS14.pdf).
+part ss14 {
+    symbol "Device:D_Schottky"
+    reference D
+    value SS14
+    description "Schottky diode, 40 V, 1 A, SMA"
+    datasheet "https://www.lcsc.com/datasheet/lcsc_datasheet_2407101109_MDD-Microdiode-Semiconductor-SS14_C2480.pdf"
+    manufacturer "MDD (Microdiode Semiconductor)"
+    order mpn=SS14 lcsc=C2480
+
+    pin K passive
+    pin A passive
+    port a pin=A
+    port b pin=K
+
+    package sma footprint="Diode_SMD:D_SMA" {
+        pad K 1
+        pad A 2
+    }
+}
+
+// BAT54S: two series Schottky diodes in SOT-23. Pin 1 is D1's anode, pin 2 D2's cathode, and
+// pin 3 the common node (D1 cathode and D2 anode). VF ≤ 0.32 V at 1 mA, ≤ 0.40 V at 10 mA
+// (MDD BAT54/A/C/S datasheet p. 1, symbol and table; ../datasheets/BAT54S.pdf).
+part bat54s {
+    symbol "Diode:BAT54S"
+    reference D
+    value BAT54S
+    description "Dual series Schottky diode, 30 V, 200 mA, SOT-23"
+    datasheet "https://www.lcsc.com/datasheet/lcsc_datasheet_2407101108_MDD-Microdiode-Semiconductor-BAT54S_C408389.pdf"
+    manufacturer "MDD (Microdiode Semiconductor)"
+    order mpn=BAT54S lcsc=C408389
+
+    pin A1 passive
+    pin K2 passive
+    pin COM passive
+
+    package sot23 footprint="Package_TO_SOT_SMD:SOT-23" {
+        pad A1 1
+        pad K2 2
+        pad COM 3
+    }
+}

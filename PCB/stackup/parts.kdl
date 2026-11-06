@@ -159,7 +159,8 @@ part jst-xh-3 {
 // WAGO 2601-1102: 2-pole lever-actuated Push-in CAGE CLAMP PCB terminal block, 3.5 mm pitch,
 // 10 A / 300 V (UL), 26-14 AWG, wire entry parallel to the board. Two solder pins per pole,
 // 1.2 mm drill (WAGO data sheet, ../datasheets/WAGO-2601.pdf), matching KiCad's footprint
-// (pads 1, 1 and 2, 2; pad 1 square).
+// (pads 1, 1 and 2, 2; pad 1 square). The project footprint is KiCad's with the WAGO 3D model
+// attached (see ../libraries/3dmodels/README.md).
 part wago-2601-1102 {
     symbol "Connector:Screw_Terminal_01x02"
     reference J
@@ -172,7 +173,7 @@ part wago-2601-1102 {
     pin 1 passive
     pin 2 passive
 
-    package horizontal footprint="TerminalBlock_WAGO:TerminalBlock_WAGO_2601-1102_1x02_P3.50mm_Horizontal" {
+    package horizontal footprint="DroidCANAdapter:WAGO_2601-1102_Horizontal" {
         pad 1 1
         pad 2 2
     }

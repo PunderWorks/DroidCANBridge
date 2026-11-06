@@ -79,3 +79,8 @@ ci/stackup/target/
 # revisions and SHA-256 are in PCB/datasheets/manifest.json.
 PCB/datasheets/RM0490.*
 PCB/datasheets/AN2606.*
+
+# Manufacturer 3D models that can't be redistributed (download steps in
+# PCB/libraries/3dmodels/README.md)
+PCB/libraries/3dmodels/WAGO_*.stp
+PCB/libraries/3dmodels/*.zip

@@ -67,11 +67,14 @@ power and signals flowing left to right:
   LDO. Size it for the passthrough current, not the board's own < 100 mA.
 - The WAGO levers overhang the side edges by about 2 mm (WAGO drawing: 16.58 mm with the lever
   against the 14.5 mm body).
-- Two M3 holes in opposite corners: H1 bottom-left, H2 top-right (above J_PWR_OUT).
+- Two M3 holes in opposite corners: H1 bottom-left, H2 top-right (above J_PWR_OUT). Each has a
+  3.5 mm-radius copper keep-out on both layers (rule areas `Keepout H1/H2`), so screw heads,
+  washers and standoffs sit on bare board, not on the GND pour.
 - GND pours fill both layers. The bottom one gives the passthrough's return a solid path under the
   3 mm +5V_IN track. Pads join them through thermal reliefs with 0.5 mm spokes, wide enough for the
-  WAGO GND pins and still easy to hand-solder. Stitching vias join top-pour pockets that tracks
-  enclose to the bottom plane.
+  WAGO GND pins and still easy to hand-solder. 26 GND stitching vias (0.8/0.4 mm) around the
+  perimeter and through open areas tie the two pours together, plus vias joining top-pour pockets
+  that tracks enclose.
 - Silkscreen: reference designators and values are hidden (they remain on the Fab layer for
   assembly drawings). The top labels each connector, jumper setting and the boot button, and the
   FTDI pins from the cable's side (GND, CTS, VCC, RXI, TXO, DTR). The back carries the board name,
@@ -123,8 +126,8 @@ Supply states: WAGO only, FTDI only, both, and adapter unpowered with the UART d
 | UART_RX_3V3, adapter unpowered | ≈ 0 V (FET off, body diode reverse-biased) | FT pin max 4.0 V with VDD = 0 (Table 21) | ✓ |
 | BOOT0 at rest / pressed | 0 V / 3.3 V (0.33 mA) | VIL 0.98 V / VIH 2.31 V | ✓ |
 | NRST on DTR fall, 3.3 V cable | 3.3 - 3.3 × 1 µF/1.1 µF = 0.3 V, below VIL for 7-16 ms (τ = 1.1 µF × RPU 25-55 kΩ) | VIL(NRST) 0.3 × VDD = 0.98 V; filter 70 ns (Table 53) | ✓ |
-| NRST on DTR fall, 5 V cable | clamped by BAT54S to ≈ -0.3 V, below VIL for 12-27 ms | BAT54S VF ≤ 0.32 V at 1 mA; MCU negative injection 5 mA (Table 22) diverted by the Schottky | ✓ |
-| NRST on DTR rise | clamped to +3V3 + ≈ 0.3 V | | ✓ |
+| NRST on DTR fall, 5 V cable | clamped by BAT54S to -0.35 to -0.52 V, below VIL for 12-27 ms (SPICE) | MCU negative injection ≤ 5 mA (Table 22): simulated ≤ 0.25 mA; without the BAT54S, 26 mA | ✓ |
+| NRST on DTR rise (port close) | ≤ 4.32 V with the BAT54S (SPICE); 7.9 V without it | VIN ≤ VDD + 4.0 V = 7.3 V (Table 21) | ✓ |
 | CAN terminator | 2-3 V differential across 120 Ω → ≤ 75 mW | 0805 125 mW | ✓ |
 
 ## Firmware requirements from the hardware
@@ -190,6 +193,9 @@ Supply states: WAGO only, FTDI only, both, and adapter unpowered with the UART d
 - **Reversed power with other grounds connected.** All connectors share GND. If the input is reversed
   while the CAN or UART ground is tied to the system ground, current flows through the board's ground
   copper; no series part can stop that.
+- **FTDI adapters with 3.3 V on VCC.** Some adapters supply 3.3 V instead of 5 V on the VCC pin.
+  VSYS is then about 3.0 V, the LDO drops out to about 2.8 V, and the TCAN334G (3.0 V minimum)
+  is out of spec. Flashing still works (the STM32 runs from 2.0 V); CAN needs the WAGO input.
 - **FTDI adapter without VCC wired.** If an adapter drives 5 V TX into PA3 without supplying VCC and
   nothing else powers the board, PA3 exceeds its 4.0 V unpowered limit. Normal FTDI cables supply
   VCC.
@@ -205,6 +211,38 @@ Supply states: WAGO only, FTDI only, both, and adapter unpowered with the UART d
   for J_VIO and J_TERM.
 - **AP2112 θJA for SOT-23-5** was not found in the datasheet text; 0.17 W worst case is small but the
   LDO temperature is on the bench checklist.
+
+## Final review (2026-11-05)
+
+Pre-fab review of the routed board at `ede7f2c`. Clean: `stackup check` (0/0/0), PCB sync check,
+DRC with zones refilled (0 violations, 0 unconnected), footprint pad numbers against every IC
+and diode datasheet pin table, silkscreen labels against the nets they name, the saved zone fill
+(identical to a refill), JLC trace/space, via, annular-ring and hole-spacing limits
+(`datasheets/JLC-PCB-capabilities.txt`), and the DTR reset simulation (`scripts/spice/`).
+
+Fixed in the review: hole keep-outs, 26 stitching vias, back silkscreen "rev A" → "V1.0" (the
+board's version, matching the front), UART label "SERIAL IN" → "SERIAL". U3 moved up and C7 (its
+100 nF) moved beside it: 3.0 mm of track to VCC (was 6.2 mm) and 2.8 mm to GND, with the supply
+reaching C7 before U3, per TI's "as close to the VCC supply pins as possible" (TCAN334 §7.4).
+
+Decoupling arrangement, traced along the copper: C4 (MCU VDD) and C7 (TCAN VCC) are in line
+between the supply and the pin; C1 (VSYS bulk) sits where both OR diodes meet; C6 is 3.0 mm from
+NRST; the BAT54S clamp sits at C8 where the DTR surge enters. The regulator's own caps hang off
+short branches: C3 (output) 6.9 mm from VOUT and C2 (input) 8.7 mm from VIN. Accepted: the
+AP2112 is stable with 1 µF ceramics and C1's 4.7 µF is in line on the input.
+
+Silkscreen: every board text is at least 1.0 mm tall (JLC's minimum, "characters height less than
+40 mil (1.0 mm) will be unidentifiable"), and the board setup's minimum text height is 1.0 mm so
+DRC enforces it. The FTDI pin names are 1.0 mm tall by 0.8 mm wide to fit the 2.54 mm pitch. The
+edge labels beside the WAGO and JST pins are one text per pin, placed at that pin.
+
+Accepted findings:
+- `bom_check.py` flags H1/H2 for no MPN or LCSC: they are drill-only, nothing to buy.
+- The WAGO "5V / G" edge labels sit between each terminal and the board edge, under the
+  overhanging levers: hidden from directly above, visible at an angle and with the levers open.
+  The back legend repeats the polarity.
+- KiCad's stock footprints draw silkscreen at 0.12 mm, under JLC's 0.15 mm line minimum. Common
+  practice; outlines may print faint. Not changed.
 
 ## Bench checklist (first board)
 

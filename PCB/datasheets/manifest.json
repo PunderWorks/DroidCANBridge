@@ -26,6 +26,12 @@
     "sha256": "49616ccb1c7db6415391f12a707d3b26f51e096be3b84a789f4289e9075eb82f",
     "url": "https://www.onsemi.com/pub/Collateral/BSS138-D.PDF"
   },
+  "JLC-PCB-capabilities": {
+    "fetched": "2026-11-05",
+    "file": "JLC-PCB-capabilities.html",
+    "sha256": "6e21b2ba44158693cd530070b574866446c02154693e2b0b35c550b766ea8bd2",
+    "url": "https://jlcpcb.com/capabilities/pcb-capabilities"
+  },
   "JST-XH": {
     "fetched": "2026-11-05",
     "file": "JST-XH.pdf",

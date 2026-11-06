@@ -587,6 +587,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -598,6 +599,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -609,6 +611,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -620,10 +623,11 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:178"
+		(property "Stackup Source" "PCB/stackup/board.kdl:180"
 			(at 0 2 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -631,6 +635,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -1385,7 +1390,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:152"
+		(property "Stackup Source" "PCB/stackup/board.kdl:154"
 			(at 0 2 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -2924,361 +2929,6 @@
 			)
 		)
 	)
-	(footprint "JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical"
-		(layer "F.Cu")
-		(uuid "549e7661-ae0d-44e8-87a8-1b46fdf2fe1f")
-		(at 103.945 113.495 -90)
-		(descr "JST XH series connector, B3B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf)")
-		(tags "connector JST XH vertical")
-		(property "Reference" "J3"
-			(at 2.5 -3.55 270)
-			(layer "F.SilkS")
-			(uuid "ee02ad28-0542-4517-b4af-b83ce23e5a07")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Value" "JST XH 3-pin"
-			(at 2.5 4.6 270)
-			(layer "F.Fab")
-			(uuid "820cd527-677d-433a-9cbd-e4b81daa4fb0")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 270)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6881b897-299f-415f-ade4-5adb70ff0731")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 270)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "bf25d5de-80c8-4645-b6ef-048277bc8476")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "KiLib_Generator" "connector/JST"
-			(at 0 0 270)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "0695d011-30f0-4a85-b480-b64d9e62ca3b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MF" "JST"
-			(at 0 2 270)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "a71bb5e8-60d2-4833-b0b7-7a46e1f74475")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Manufacturer_Part_Number" "B3B-XH-A(LF)(SN)"
-			(at 0 2 270)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "30ea7c84-03a9-4f80-bbdb-c285eaa36c61")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "LCSC" "C144394"
-			(at 0 2 270)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "b0248154-f0ae-42d6-8c48-a02d546e6207")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Stackup Path" "J_CAN1"
-			(at 0 2 270)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "40f3714c-fe54-4fea-8d7d-e15868c3690e")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:121"
-			(at 0 2 270)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "ac6bd2b2-0814-4fc4-b86f-26db3a2efb8b")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Stackup Why" "CAN: 1 GND, 2 CANL, 3 CANH"
-			(at 0 2 270)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "b8ab1ab9-0965-4c51-b62f-3dc116bead44")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(path "/58b2c568-5130-5c18-89f8-46b4dadade4a")
-		(attr through_hole)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_line
-			(start -1.8 2.75)
-			(end 2.5 2.75)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "0eb156e3-a9da-4666-aff4-e7b79509418b")
-		)
-		(fp_line
-			(start 6.8 2.75)
-			(end 2.5 2.75)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "5944c893-45ec-47f9-b3e0-1d77a564695f")
-		)
-		(fp_line
-			(start -2.55 -0.2)
-			(end -1.8 -0.2)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "7e49b7c5-76e0-4868-8c63-8d90c648ed3c")
-		)
-		(fp_line
-			(start -1.8 -0.2)
-			(end -1.8 2.75)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "2a2c01d4-f2e5-4fc0-8828-f643f00c40da")
-		)
-		(fp_line
-			(start 6.8 -0.2)
-			(end 6.8 2.75)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "7f26012d-5f25-488b-a2f5-c0b7d6a81b82")
-		)
-		(fp_line
-			(start 7.55 -0.2)
-			(end 6.8 -0.2)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "ab78178e-cd34-4f38-99c5-65494ba92d41")
-		)
-		(fp_line
-			(start -2.85 -2.75)
-			(end -2.85 -1.5)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "a7297eff-83f2-4be0-9efa-5d6e4d1466cd")
-		)
-		(fp_line
-			(start -1.6 -2.75)
-			(end -2.85 -2.75)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "6851fc52-4676-4c18-8223-734e36372198")
-		)
-		(fp_rect
-			(start -2.55 -2.45)
-			(end -0.75 -1.7)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "d9241373-f04b-4621-ba80-d8350a0a1d59")
-		)
-		(fp_rect
-			(start 0.75 -2.45)
-			(end 4.25 -1.7)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "7318bdbf-45d0-4454-b9bb-6fb64c4bf8af")
-		)
-		(fp_rect
-			(start 5.75 -2.45)
-			(end 7.55 -1.7)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "0e668279-7a54-4c56-b7da-8b9d5eacc3a6")
-		)
-		(fp_rect
-			(start -2.56 -2.46)
-			(end 7.56 3.51)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "148714b5-735b-4b7f-9016-41b0c1a11ca2")
-		)
-		(fp_rect
-			(start -2.95 -2.85)
-			(end 7.95 3.9)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "ad21a94f-47ef-4d6e-adbd-fa68b3afbe31")
-		)
-		(fp_line
-			(start 0 -1.35)
-			(end 0.625 -2.35)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "515e1b45-f8c0-4233-a60a-4332743662a9")
-		)
-		(fp_line
-			(start -0.625 -2.35)
-			(end 0 -1.35)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "e425d86f-6e0d-48d1-9d87-43ed6e9c1c47")
-		)
-		(fp_rect
-			(start -2.45 -2.35)
-			(end 7.45 3.4)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "ab3b4b7c-9d14-4ad0-9dcf-914d49cf4b04")
-		)
-		(fp_text user "${REFERENCE}"
-			(at 2.5 2.7 270)
-			(layer "F.Fab")
-			(uuid "1311dcfd-7e01-4405-8c7a-6236e5ae2712")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(pad "1" thru_hole roundrect
-			(at 0 0 270)
-			(size 1.7 1.95)
-			(drill 0.95)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(roundrect_rratio 0.147059)
-			(net "GND")
-			(uuid "ee8a0bd1-3de3-4e55-a947-127f2cd10767")
-		)
-		(pad "2" thru_hole oval
-			(at 2.5 0 270)
-			(size 1.7 1.95)
-			(drill 0.95)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(net "CANL")
-			(uuid "5add4107-f8a7-4e9d-b134-30924fc25e20")
-		)
-		(pad "3" thru_hole oval
-			(at 5 0 270)
-			(size 1.7 1.95)
-			(drill 0.95)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(net "CANH")
-			(uuid "de8bd559-8e1c-4677-abf4-88882afa6fab")
-		)
-		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical.step"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-	)
 	(footprint "SOIC-8_3.9x4.9mm_P1.27mm"
 		(layer "F.Cu")
 		(uuid "6bf9c9de-84d1-4810-8cc6-67bf68213706")
@@ -3816,7 +3466,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:127"
+		(property "Stackup Source" "PCB/stackup/board.kdl:129"
 			(at 0 2 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -4254,7 +3904,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:171"
+		(property "Stackup Source" "PCB/stackup/board.kdl:173"
 			(at 0 2 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -4693,7 +4343,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:169"
+		(property "Stackup Source" "PCB/stackup/board.kdl:171"
 			(at 0 2 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -4802,16 +4452,16 @@
 			)
 		)
 	)
-	(footprint "JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical"
+	(footprint "JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
 		(layer "F.Cu")
-		(uuid "98758c86-fbdf-425c-935b-d718daca4bc6")
-		(at 143.104999 124.095 -90)
-		(descr "JST XH series connector, B3B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf)")
+		(uuid "94e9c290-861b-4056-962c-3775b02a3672")
+		(at 103.945 113.495 -90)
+		(descr "JST XH series connector, B2B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf)")
 		(tags "connector JST XH vertical")
-		(property "Reference" "J6"
-			(at 2.5 -3.55 270)
+		(property "Reference" "J3"
+			(at 1.25 -3.55 270)
 			(layer "F.SilkS")
-			(uuid "7a261e60-492c-4310-b387-c383f22a148f")
+			(uuid "1deece39-c48e-4113-8474-20a4b5f6395b")
 			(effects
 				(font
 					(size 1 1)
@@ -4819,10 +4469,10 @@
 				)
 			)
 		)
-		(property "Value" "JST XH 3-pin"
-			(at 2.5 4.6 270)
+		(property "Value" "JST XH 2-pin"
+			(at 1.25 4.6 270)
 			(layer "F.Fab")
-			(uuid "73eaf806-49cc-4176-a236-4b2d6fba617f")
+			(uuid "0f7d5faf-58e1-4333-866b-ed079d874147")
 			(effects
 				(font
 					(size 1 1)
@@ -4834,7 +4484,7 @@
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "f673244c-aa89-4aeb-abbd-22aa672da2a0")
+			(uuid "58ea2171-b87a-40f8-aca5-7508f9ea5d1e")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4845,7 +4495,7 @@
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "e9c74b25-4468-4663-8454-8eb4344f57c1")
+			(uuid "921d9a9d-741b-4f8e-b04f-f118f5872ab5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4856,7 +4506,7 @@
 			(at 0 0 270)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "79909e7a-c74e-4097-90e9-8cf85d2a5456")
+			(uuid "5f360f37-36ee-4999-975f-93a11943704e")
 			(effects
 				(font
 					(size 1 1)
@@ -4865,10 +4515,10 @@
 			)
 		)
 		(property "MF" "JST"
-			(at 0 2 270)
+			(at 2 0 0)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "eb34e925-aafd-46ec-8ff5-557eaad64e5e")
+			(uuid "957bd47e-3454-41bb-b3aa-c3fa3e8220be")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4876,11 +4526,11 @@
 				)
 			)
 		)
-		(property "Manufacturer_Part_Number" "B3B-XH-A(LF)(SN)"
-			(at 0 2 270)
+		(property "Manufacturer_Part_Number" "B2B-XH-A(LF)(SN)"
+			(at 2 0 0)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "1d994678-b948-4956-9e2a-92daa382d89b")
+			(uuid "e101ea8e-8676-4d9c-bd18-3b9e49f5fad1")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4888,11 +4538,11 @@
 				)
 			)
 		)
-		(property "LCSC" "C144394"
-			(at 0 2 270)
+		(property "LCSC" "C158012"
+			(at 2 0 0)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "b0a2af00-4afe-49df-9ff7-f609a9ee47d6")
+			(uuid "2d9f4884-c4b0-43b0-8fa4-d1bfe4448621")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4900,11 +4550,11 @@
 				)
 			)
 		)
-		(property "Stackup Path" "J_UART"
-			(at 0 2 270)
+		(property "Stackup Path" "J_CAN1"
+			(at 2 0 0)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "4ec9394b-a6f3-4da9-9ca7-6c8247672e09")
+			(uuid "20a1e2ef-6b8c-4128-873d-d7459ebb7e75")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4912,11 +4562,11 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:134"
-			(at 0 2 270)
+		(property "Stackup Source" "PCB/stackup/board.kdl:123"
+			(at 2 0 0)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "91371737-2ea9-4ad2-ad3f-8a3179d50fb7")
+			(uuid "2abeb6a3-0443-45ba-9945-1c247ff098ea")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4924,11 +4574,11 @@
 				)
 			)
 		)
-		(property "Stackup Why" "UART: 1 GND, 2 RX (into this board), 3 TX (out)"
-			(at 0 2 270)
+		(property "Stackup Why" "CAN in: 1 CANL, 2 CANH"
+			(at 2 0 0)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "60538c81-2f82-4872-a8f0-bbcfd8c97cf8")
+			(uuid "837137f5-837f-4404-bd00-57b4e528c9c4")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4936,28 +4586,28 @@
 				)
 			)
 		)
-		(path "/cc8fdc49-3927-591b-b918-b904255b52aa")
+		(path "/58b2c568-5130-5c18-89f8-46b4dadade4a")
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -1.8 2.75)
-			(end 2.5 2.75)
+			(end 1.25 2.75)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "f7d56529-49c3-43ca-acb5-79cf894912c2")
+			(uuid "38ac5c2a-34f8-4a47-8302-6a9ca095842c")
 		)
 		(fp_line
-			(start 6.8 2.75)
-			(end 2.5 2.75)
+			(start 4.3 2.75)
+			(end 1.25 2.75)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "8fe8d81b-01fc-43a6-9010-99d53d93e5fa")
+			(uuid "b64db06d-7322-4265-a170-f21fb5645932")
 		)
 		(fp_line
 			(start -2.55 -0.2)
@@ -4967,7 +4617,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "f5ec2769-7fe0-42c6-a651-09591d53f573")
+			(uuid "8edbd01e-30d7-4f40-86db-83bcef835ac9")
 		)
 		(fp_line
 			(start -1.8 -0.2)
@@ -4977,27 +4627,27 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "c05c7160-167f-4dd6-8d5f-c586b511606f")
+			(uuid "a2ab8527-dfaa-43cb-ab4b-823271d8ad38")
 		)
 		(fp_line
-			(start 6.8 -0.2)
-			(end 6.8 2.75)
+			(start 4.3 -0.2)
+			(end 4.3 2.75)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "31fe80d8-ce1d-47a7-bbf5-65688d592afd")
+			(uuid "63747f7e-2544-42dc-b2af-3ff537f1ed97")
 		)
 		(fp_line
-			(start 7.55 -0.2)
-			(end 6.8 -0.2)
+			(start 5.05 -0.2)
+			(end 4.3 -0.2)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "660b3c86-07b7-4316-ab3f-3b5fd6bc9fe9")
+			(uuid "ce751901-1c1c-46b9-ac39-0e8511a879e3")
 		)
 		(fp_line
 			(start -2.85 -2.75)
@@ -5007,7 +4657,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "b08875b8-538e-43df-94ed-411460ae1576")
+			(uuid "40d056e0-30bf-4e12-b9d9-7e2b949955b6")
 		)
 		(fp_line
 			(start -1.6 -2.75)
@@ -5017,7 +4667,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "f2ddb4a3-1ba6-4249-8d85-e508755c20bc")
+			(uuid "6481b137-8a9e-4767-8533-558cad6ac94b")
 		)
 		(fp_rect
 			(start -2.55 -2.45)
@@ -5028,51 +4678,51 @@
 			)
 			(fill no)
 			(layer "F.SilkS")
-			(uuid "2a1020cc-3144-42e4-ada0-5d0e2711c7ff")
+			(uuid "8c22b1e7-bc26-4b94-bfaa-6edea7184e65")
 		)
 		(fp_rect
 			(start 0.75 -2.45)
-			(end 4.25 -1.7)
+			(end 1.75 -1.7)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(fill no)
 			(layer "F.SilkS")
-			(uuid "51bece1c-c87b-42d3-8c56-38684690db59")
+			(uuid "d1c6b94c-d294-40ee-b2a3-95095a64bef4")
 		)
 		(fp_rect
-			(start 5.75 -2.45)
-			(end 7.55 -1.7)
+			(start 3.25 -2.45)
+			(end 5.05 -1.7)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(fill no)
 			(layer "F.SilkS")
-			(uuid "ddfa78ed-d70a-466f-a61d-7d1f56154ffa")
+			(uuid "60f74cbf-78ac-4761-ac26-91defe809f04")
 		)
 		(fp_rect
 			(start -2.56 -2.46)
-			(end 7.56 3.51)
+			(end 5.06 3.51)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(fill no)
 			(layer "F.SilkS")
-			(uuid "8e31d370-50c6-4660-b99f-a181a6b8adab")
+			(uuid "b136c789-9e66-498e-a9d6-dd3fce35fc7b")
 		)
 		(fp_rect
 			(start -2.95 -2.85)
-			(end 7.95 3.9)
+			(end 5.45 3.9)
 			(stroke
 				(width 0.05)
 				(type solid)
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "2c4eec9a-a427-401a-9ecc-f5d20703c04a")
+			(uuid "44b78f2e-b8ab-4456-9a89-e93a5be94b32")
 		)
 		(fp_line
 			(start 0 -1.35)
@@ -5082,7 +4732,7 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "e2fc0f86-66a7-4597-aef7-e6e26f8b78a6")
+			(uuid "c6dcb271-3907-4829-b63c-c60e0bb238ca")
 		)
 		(fp_line
 			(start -0.625 -2.35)
@@ -5092,23 +4742,23 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "8e70c8b6-9241-46c9-9c2d-d3df91caf3de")
+			(uuid "5d033a66-6d30-4c16-abec-351982d71b79")
 		)
 		(fp_rect
 			(start -2.45 -2.35)
-			(end 7.45 3.4)
+			(end 4.95 3.4)
 			(stroke
 				(width 0.1)
 				(type solid)
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "97e7f26c-35a7-4aa0-86a9-b97b1d49342e")
+			(uuid "a316ea0a-a21a-43bb-a363-9e5515b6d6ae")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 2.5 2.7 270)
+			(at 1.25 2.7 270)
 			(layer "F.Fab")
-			(uuid "0dab8ca0-5094-4570-ad92-ae8207313274")
+			(uuid "cd3c72b0-e24e-4c60-a280-a4aa78bb7ae7")
 			(effects
 				(font
 					(size 1 1)
@@ -5118,34 +4768,25 @@
 		)
 		(pad "1" thru_hole roundrect
 			(at 0 0 270)
-			(size 1.7 1.95)
-			(drill 0.95)
+			(size 1.7 2)
+			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(roundrect_rratio 0.147059)
-			(net "GND")
-			(uuid "53b735b2-4648-4e57-9306-c2980857467e")
+			(net "CANL")
+			(uuid "d8497fb9-6226-4b08-b90f-6656827c5f92")
 		)
 		(pad "2" thru_hole oval
 			(at 2.5 0 270)
-			(size 1.7 1.95)
-			(drill 0.95)
+			(size 1.7 2)
+			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "UART_RX")
-			(uuid "912eb95f-1faa-47ea-bc48-e294de27330b")
-		)
-		(pad "3" thru_hole oval
-			(at 5 0 270)
-			(size 1.7 1.95)
-			(drill 0.95)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(net "UART_TX")
-			(uuid "952dd123-9865-4c05-be13-6753b9855070")
+			(net "CANH")
+			(uuid "fd1603ab-daca-4d30-ac0c-3fb1c31d5170")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical.step"
+		(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -5267,7 +4908,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:129"
+		(property "Stackup Source" "PCB/stackup/board.kdl:131"
 			(at 0 2 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -5555,7 +5196,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:137"
+		(property "Stackup Source" "PCB/stackup/board.kdl:139"
 			(at 0 2 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -5852,7 +5493,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:161"
+		(property "Stackup Source" "PCB/stackup/board.kdl:163"
 			(at 0 2 90)
 			(layer "F.SilkS")
 			(hide yes)
@@ -6055,6 +5696,352 @@
 		)
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x06_P2.54mm_Vertical.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
+		(layer "F.Cu")
+		(uuid "b1cd8cac-9639-40c9-9aac-315f2a4570fa")
+		(at 143.104999 112.995 -90)
+		(descr "JST XH series connector, B2B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf)")
+		(tags "connector JST XH vertical")
+		(property "Reference" "J4"
+			(at 1.25 -3.55 270)
+			(layer "F.SilkS")
+			(uuid "9f59c583-d0cc-4fa6-92d6-b5841ba1b90a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "JST XH 2-pin"
+			(at 1.25 4.6 270)
+			(layer "F.Fab")
+			(uuid "340f369f-2212-4b9a-8d47-1ee1271ca9bd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 270)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8b4d60a6-1878-4d2f-86f7-8042f5455937")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 270)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1b481da3-b36f-40db-a79b-a8c9e3f8e9f7")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "KiLib_Generator" "connector/JST"
+			(at 0 0 270)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "9b731e63-79e6-4f5b-96f5-fe4837dd3794")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" "JST"
+			(at 2 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "7ca5c8b4-ab84-4783-b966-bd8a8a009180")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_Part_Number" "B2B-XH-A(LF)(SN)"
+			(at 2 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "58237b78-d033-47d3-a64a-e0d9f5b6a02e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C158012"
+			(at 2 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "16b76fce-7c98-4cd8-9001-9f5fc1539d8b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Stackup Path" "J_CAN2"
+			(at 2 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "6d43dbb5-d630-4673-918f-76e048a47fe7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Stackup Source" "PCB/stackup/board.kdl:124"
+			(at 2 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "24c36395-5fc8-40ff-afd2-3f9b7024c65f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Stackup Why" "CAN out: 1 CANL, 2 CANH (daisy chain)"
+			(at 2 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "8d8f55fd-ed69-4701-895f-c04a5a8f9db7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(path "/33dcdc17-416c-5a32-a49f-4c46c1c0b3e0")
+		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_line
+			(start -1.8 2.75)
+			(end 1.25 2.75)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "46cccea4-56d9-4632-9ccd-088d54752691")
+		)
+		(fp_line
+			(start 4.3 2.75)
+			(end 1.25 2.75)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "b1ef4e9d-b0ad-4987-b7b5-e6c0e933cc7a")
+		)
+		(fp_line
+			(start -2.55 -0.2)
+			(end -1.8 -0.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "bf4f0104-d141-48ae-b84a-7dee2d3d45d7")
+		)
+		(fp_line
+			(start -1.8 -0.2)
+			(end -1.8 2.75)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "727aeee9-01cb-468c-a212-b4fa8b522722")
+		)
+		(fp_line
+			(start 4.3 -0.2)
+			(end 4.3 2.75)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "bfc729b8-9c0a-45b1-b9d7-d62f4c94c402")
+		)
+		(fp_line
+			(start 5.05 -0.2)
+			(end 4.3 -0.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "60170c82-8986-4d79-9b91-14b7d9a6ac34")
+		)
+		(fp_line
+			(start -2.85 -2.75)
+			(end -2.85 -1.5)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "951c6b1a-4022-407f-ba08-7d99538fbabd")
+		)
+		(fp_line
+			(start -1.6 -2.75)
+			(end -2.85 -2.75)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "0cfe874a-74d1-4b23-a96c-5d0a1bf970f0")
+		)
+		(fp_rect
+			(start -2.55 -2.45)
+			(end -0.75 -1.7)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.SilkS")
+			(uuid "8da63a24-133b-4551-96f5-97d1e4baecc2")
+		)
+		(fp_rect
+			(start 0.75 -2.45)
+			(end 1.75 -1.7)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.SilkS")
+			(uuid "8cf4e3d7-3149-4441-84a6-6647878aa661")
+		)
+		(fp_rect
+			(start 3.25 -2.45)
+			(end 5.05 -1.7)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.SilkS")
+			(uuid "281bfc01-d9f2-4503-b26a-c5c6ec6180dc")
+		)
+		(fp_rect
+			(start -2.56 -2.46)
+			(end 5.06 3.51)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.SilkS")
+			(uuid "03393b75-940b-4890-94bf-9e2b6694ff9c")
+		)
+		(fp_rect
+			(start -2.95 -2.85)
+			(end 5.45 3.9)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "a35de31e-d514-4a7e-b2a4-78186035cd33")
+		)
+		(fp_line
+			(start 0 -1.35)
+			(end 0.625 -2.35)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "7c58e934-e891-4806-a516-13fb710a642b")
+		)
+		(fp_line
+			(start -0.625 -2.35)
+			(end 0 -1.35)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "c325e540-0141-439d-a75a-32251350d35d")
+		)
+		(fp_rect
+			(start -2.45 -2.35)
+			(end 4.95 3.4)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "7a0e9b83-0754-4215-a3d2-bce2a6a64bba")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 2.7 270)
+			(layer "F.Fab")
+			(uuid "22892e46-2e17-4eb9-aeaf-554b08f02f32")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole roundrect
+			(at 0 0 270)
+			(size 1.7 2)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(roundrect_rratio 0.147059)
+			(net "CANL")
+			(uuid "795ec74c-e9c0-44d7-8674-a2caf0073547")
+		)
+		(pad "2" thru_hole oval
+			(at 2.5 0 270)
+			(size 1.7 2)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net "CANH")
+			(uuid "32017734-0a8c-4b29-954d-66c5d9bc36cb")
+		)
+		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6600,361 +6587,6 @@
 			)
 		)
 	)
-	(footprint "JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical"
-		(layer "F.Cu")
-		(uuid "c6a0ae7f-f714-4cc9-8dfc-ca664331cf7a")
-		(at 143.104999 112.995 -90)
-		(descr "JST XH series connector, B3B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf)")
-		(tags "connector JST XH vertical")
-		(property "Reference" "J4"
-			(at 2.5 -3.55 270)
-			(layer "F.SilkS")
-			(uuid "c401064f-df40-46ec-bcd7-a4c14ef6d668")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Value" "JST XH 3-pin"
-			(at 2.5 4.6 270)
-			(layer "F.Fab")
-			(uuid "61ae17f6-f3bc-4441-8f5b-a2aa4752d956")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 270)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "8c087df2-114c-4d3a-9756-9d66d78e2fe4")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 270)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "e26d8e45-b55c-4384-a168-037490dbebdf")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "KiLib_Generator" "connector/JST"
-			(at 0 0 270)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "e717bd54-6a07-4255-9c6f-f567e66339be")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MF" "JST"
-			(at 0 2 270)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "3864a2a8-e25e-4d00-8c82-ee96adf27e90")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Manufacturer_Part_Number" "B3B-XH-A(LF)(SN)"
-			(at 0 2 270)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "d087af0a-60d4-4647-9e53-880f45be4eb1")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "LCSC" "C144394"
-			(at 0 2 270)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "f6e6a764-e934-4efe-a2a2-578055fced6d")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Stackup Path" "J_CAN2"
-			(at 0 2 270)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "d7c9a727-5933-431d-aeee-1ccf7dc7fdb6")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:122"
-			(at 0 2 270)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "61969ed8-58f5-45fb-978a-b56e72876aa4")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Stackup Why" "CAN: 1 GND, 2 CANL, 3 CANH (daisy chain)"
-			(at 0 2 270)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "daed4e56-67ff-4bcb-b9ff-56aa7563099f")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(path "/33dcdc17-416c-5a32-a49f-4c46c1c0b3e0")
-		(attr through_hole)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_line
-			(start -1.8 2.75)
-			(end 2.5 2.75)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "743f8c16-f573-4dfc-b421-9a657cef67b8")
-		)
-		(fp_line
-			(start 6.8 2.75)
-			(end 2.5 2.75)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "13760d15-56a0-476a-a336-3f60d8705273")
-		)
-		(fp_line
-			(start -2.55 -0.2)
-			(end -1.8 -0.2)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "f25ff331-59f0-4dca-a6f9-269a3a50ea1c")
-		)
-		(fp_line
-			(start -1.8 -0.2)
-			(end -1.8 2.75)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "91e9b1cb-de56-47c5-b389-10296840b178")
-		)
-		(fp_line
-			(start 6.8 -0.2)
-			(end 6.8 2.75)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "b340d699-f992-46db-970a-2f409916d04e")
-		)
-		(fp_line
-			(start 7.55 -0.2)
-			(end 6.8 -0.2)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "14f1e80d-fd7c-480f-aa7f-949cd9ad032a")
-		)
-		(fp_line
-			(start -2.85 -2.75)
-			(end -2.85 -1.5)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "9aa7a7d9-4c81-413f-8589-24f5063a53a7")
-		)
-		(fp_line
-			(start -1.6 -2.75)
-			(end -2.85 -2.75)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "96d7e4db-d2c7-4fa2-a007-a3811ecb1da8")
-		)
-		(fp_rect
-			(start -2.55 -2.45)
-			(end -0.75 -1.7)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "4185c61d-647a-4b6f-b28d-ee9c47980a53")
-		)
-		(fp_rect
-			(start 0.75 -2.45)
-			(end 4.25 -1.7)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "c9a636e0-3720-43cb-9a95-e1e2735aa534")
-		)
-		(fp_rect
-			(start 5.75 -2.45)
-			(end 7.55 -1.7)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "eba6aed0-781e-4fef-ac5f-a3cd095048a1")
-		)
-		(fp_rect
-			(start -2.56 -2.46)
-			(end 7.56 3.51)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "a9676e14-651e-4845-86d6-3309e5b45b75")
-		)
-		(fp_rect
-			(start -2.95 -2.85)
-			(end 7.95 3.9)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "c67f23e1-d813-49e9-8d19-a20ba3b69ebd")
-		)
-		(fp_line
-			(start 0 -1.35)
-			(end 0.625 -2.35)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "435b1769-a6d5-4968-a8ba-5a963fa87f71")
-		)
-		(fp_line
-			(start -0.625 -2.35)
-			(end 0 -1.35)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "d36961cc-a7b9-4203-8d64-5c98df13d515")
-		)
-		(fp_rect
-			(start -2.45 -2.35)
-			(end 7.45 3.4)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "476a5ff1-6f92-4d9d-9a56-c67ae61cee3b")
-		)
-		(fp_text user "${REFERENCE}"
-			(at 2.5 2.7 270)
-			(layer "F.Fab")
-			(uuid "0f29b635-8447-4994-92b6-e20bdccd38e7")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(pad "1" thru_hole roundrect
-			(at 0 0 270)
-			(size 1.7 1.95)
-			(drill 0.95)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(roundrect_rratio 0.147059)
-			(net "GND")
-			(uuid "9af772d0-228b-4dc1-b2cf-2720e34831bc")
-		)
-		(pad "2" thru_hole oval
-			(at 2.5 0 270)
-			(size 1.7 1.95)
-			(drill 0.95)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(net "CANL")
-			(uuid "f65c96c2-b2a8-46d2-91be-0422dc36f4a4")
-		)
-		(pad "3" thru_hole oval
-			(at 5 0 270)
-			(size 1.7 1.95)
-			(drill 0.95)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(net "CANH")
-			(uuid "34b01310-8308-40f6-bce7-2e5973aa9968")
-		)
-		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical.step"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-	)
 	(footprint "D_SMA"
 		(layer "F.Cu")
 		(uuid "d071be93-9c50-4eb5-8f71-3eeaa5eb72a5")
@@ -7356,7 +6988,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:185"
+		(property "Stackup Source" "PCB/stackup/board.kdl:187"
 			(at 0 2 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -7523,7 +7155,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:145"
+		(property "Stackup Source" "PCB/stackup/board.kdl:147"
 			(at 0 2 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -7609,6 +7241,352 @@
 		)
 		(embedded_fonts no)
 		(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
+		(layer "F.Cu")
+		(uuid "e0a9d60e-c60e-43e1-b407-3b78d92e0cee")
+		(at 143.104999 122.495 -90)
+		(descr "JST XH series connector, B2B-XH-A (http://www.jst-mfg.com/product/pdf/eng/eXH.pdf)")
+		(tags "connector JST XH vertical")
+		(property "Reference" "J6"
+			(at 1.25 -3.55 270)
+			(layer "F.SilkS")
+			(uuid "3c144ee7-f5fc-4e75-a811-201277a31f60")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "JST XH 2-pin"
+			(at 1.25 4.6 270)
+			(layer "F.Fab")
+			(uuid "c05e126a-bb4b-43af-ac01-9a83bc047f23")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 270)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a380e2ed-80c8-4d4a-b0b0-06c694ad43e3")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 270)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e9b98488-daf7-44b6-aa61-8e8536aff890")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "KiLib_Generator" "connector/JST"
+			(at 0 0 270)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "19564d62-e22a-42ba-90b2-c3272ce80c86")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MF" "JST"
+			(at 2 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "57c134dc-72f5-42e1-a086-a7dfa37119d2")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_Part_Number" "B2B-XH-A(LF)(SN)"
+			(at 2 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "0a742bb6-d3d7-42a7-bdde-94e1a3ba6490")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C158012"
+			(at 2 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "73d91884-3ae4-4367-81be-800d073fd8c7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Stackup Path" "J_UART"
+			(at 2 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "177b8cdb-cedd-4ee6-a340-e280ee92f56b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Stackup Source" "PCB/stackup/board.kdl:136"
+			(at 2 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "78d17f8f-b0bc-4b3d-9992-68987947717d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Stackup Why" "UART: 1 RX (into this board), 2 TX (out)"
+			(at 2 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "2c2888b5-30af-4b44-8a42-afc213d26617")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(path "/cc8fdc49-3927-591b-b918-b904255b52aa")
+		(attr through_hole)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_line
+			(start -1.8 2.75)
+			(end 1.25 2.75)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "f41bbb46-b660-4ff0-bb1c-9fe983bc2d86")
+		)
+		(fp_line
+			(start 4.3 2.75)
+			(end 1.25 2.75)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "1a367b18-e526-46d1-b3a0-b051297eb9c8")
+		)
+		(fp_line
+			(start -2.55 -0.2)
+			(end -1.8 -0.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "eded6a49-f0ab-4360-b1f8-c0219f760c20")
+		)
+		(fp_line
+			(start -1.8 -0.2)
+			(end -1.8 2.75)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "2a12793e-e785-41de-b2cb-ea3985813637")
+		)
+		(fp_line
+			(start 4.3 -0.2)
+			(end 4.3 2.75)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "615312a1-31ef-47a8-bdf3-e5922dd2f7cb")
+		)
+		(fp_line
+			(start 5.05 -0.2)
+			(end 4.3 -0.2)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "1eeb15fd-8a91-4669-b92f-f9124f1a2b54")
+		)
+		(fp_line
+			(start -2.85 -2.75)
+			(end -2.85 -1.5)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "da0b1020-2dbe-4146-a2d8-5749ecadab7a")
+		)
+		(fp_line
+			(start -1.6 -2.75)
+			(end -2.85 -2.75)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "3d6520ee-d1dc-446c-ac16-61c75a94540b")
+		)
+		(fp_rect
+			(start -2.55 -2.45)
+			(end -0.75 -1.7)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.SilkS")
+			(uuid "ec0f0390-efb6-4a9e-94dd-71ad846a847c")
+		)
+		(fp_rect
+			(start 0.75 -2.45)
+			(end 1.75 -1.7)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.SilkS")
+			(uuid "3f2ba35a-4bd7-4c9f-b11b-401397c51775")
+		)
+		(fp_rect
+			(start 3.25 -2.45)
+			(end 5.05 -1.7)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.SilkS")
+			(uuid "5a794d19-90f4-43ea-940b-d8abbe74ee13")
+		)
+		(fp_rect
+			(start -2.56 -2.46)
+			(end 5.06 3.51)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.SilkS")
+			(uuid "8d9627a6-0b70-4b72-b4ec-33fa37e23ff3")
+		)
+		(fp_rect
+			(start -2.95 -2.85)
+			(end 5.45 3.9)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "b3d14b3f-075d-42ea-87af-ed1f4acb23eb")
+		)
+		(fp_line
+			(start 0 -1.35)
+			(end 0.625 -2.35)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "ce30ea96-08e5-4b3e-800e-688ab4b6d5aa")
+		)
+		(fp_line
+			(start -0.625 -2.35)
+			(end 0 -1.35)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "61565faa-ea01-4fd5-96cc-0aac584c2111")
+		)
+		(fp_rect
+			(start -2.45 -2.35)
+			(end 4.95 3.4)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "ed38f4f4-26e1-4395-a864-bdf0dc6a0c8e")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.25 2.7 270)
+			(layer "F.Fab")
+			(uuid "d866260e-f806-465f-8f0e-ab97a8fb2f13")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole roundrect
+			(at 0 0 270)
+			(size 1.7 2)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(roundrect_rratio 0.147059)
+			(net "UART_RX")
+			(uuid "fbd8680e-ee28-4f18-99ee-dd83168773ca")
+		)
+		(pad "2" thru_hole oval
+			(at 2.5 0 270)
+			(size 1.7 2)
+			(drill 1)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net "UART_TX")
+			(uuid "5b99cbb4-997e-4769-b90f-2b8179d73fdd")
+		)
+		(embedded_fonts no)
+		(model "${KICAD10_3DMODEL_DIR}/Connector_JST.3dshapes/JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -8379,7 +8357,7 @@
 				)
 			)
 		)
-		(property "Stackup Source" "PCB/stackup/board.kdl:186"
+		(property "Stackup Source" "PCB/stackup/board.kdl:188"
 			(at 0 2 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -8985,7 +8963,7 @@
 		)
 		(fill no)
 		(layer "Edge.Cuts")
-		(uuid "42ad247d-1230-4031-9479-60a439eede3e")
+		(uuid "c15cf6ef-4f45-4ff4-b2ca-8d4478ffc349")
 	)
 	(embedded_fonts no)
 )

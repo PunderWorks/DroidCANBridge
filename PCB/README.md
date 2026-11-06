@@ -26,8 +26,8 @@ Commit the synced PCB with the KDL. CI fails if syncing would change the committ
 | Size | As small as possible. M3 mounting holes. No target outline. |
 | Assembly | SMD parts assembled by JLCPCB. Connectors, terminals and headers are through-hole, hand-soldered. |
 | MCU | Inexpensive STM32 with a CAN FD controller. |
-| CAN | Two JST-XH connectors (daisy-chain in/out), pinout `GND, CANL, CANH`. Jumper-selectable 120 Ω termination. No ESD protection. |
-| UART | One JST-XH connector, pinout `GND, RX, TX` (named from this board's side). Works with 3.3 V and 5 V devices, selected by a pin jumper. |
+| CAN | Two 2-pin JST-XH connectors (daisy-chain in/out), pinout `CANL, CANH`. Jumper-selectable 120 Ω termination. No ESD protection. |
+| UART | One 2-pin JST-XH connector, pinout `RX, TX` (named from this board's side). Works with 3.3 V and 5 V devices, selected by a pin jumper. |
 | Power | 5 V in on a through-hole WAGO terminal, with reverse-polarity protection. A second WAGO terminal passes the 5 V input through to the connected device. No fuse. |
 | Programming | Standard 6-pin FTDI header (`GND, CTS, VCC, TX, RX, DTR`) on the STM32 system-bootloader UART. The board can run from the FTDI header's VCC on the bench. DTR drives reset. A small boot button selects the bootloader. |
 | Indicators | None (status is reported over serial). |
@@ -61,7 +61,8 @@ power and signals flowing left to right:
 - Both WAGOs have **+5V on the top pole and GND on the bottom**. J_PWR_OUT is turned the opposite
   way from J_PWR_IN, which reverses its pin order, so its +5V is pin 2 (see `board.kdl`). Mark + and
   − on the silkscreen beside both.
-- All three JST-XH connectors have pin 1 (GND) at the top, so CAN in and CAN out read the same.
+- All three JST-XH connectors have pin 1 at the top (CANL on both CAN connectors, RX on the UART),
+  so CAN in and CAN out read the same.
 - The +5V passthrough runs straight across the top edge between the WAGOs, above the OR diodes and
   LDO. Size it for the passthrough current, not the board's own < 100 mA.
 - The WAGO levers overhang the side edges by about 2 mm (WAGO drawing: 16.58 mm with the lever
@@ -167,7 +168,10 @@ Supply states: WAGO only, FTDI only, both, and adapter unpowered with the UART d
   BSS138, because the FT pin's limit drops to 4.0 V with the adapter unpowered and positive injection
   is not allowed (DS14720 Tables 21-22), so a series resistor can't protect it from a separately
   powered 5 V device.
-- **JST-XH** for CAN and UART (the community's preferred connector). **WAGO 2601-1102** (10 A, lever
+- **JST-XH** for CAN and UART (the community's preferred connector), **2-pin with no ground**: every
+  board shares ground through the power wiring. CAN is differential and the TCAN334G tolerates
+  ±12 V common mode (datasheet §5.5); the UART device is powered from this board's passthrough, so
+  its ground return is short. **WAGO 2601-1102** (10 A, lever
   push-in, horizontal entry) for power.
 
 ## Accepted risks and known gaps
@@ -180,6 +184,9 @@ Supply states: WAGO only, FTDI only, both, and adapter unpowered with the UART d
 - **FTDI adapter without VCC wired.** If an adapter drives 5 V TX into PA3 without supplying VCC and
   nothing else powers the board, PA3 exceeds its 4.0 V unpowered limit. Normal FTDI cables supply
   VCC.
+- **UART ground shares the power wiring.** If the UART device's ground also carries heavy load
+  current (a motor controller, say), the offset appears in the UART signal levels. Fine for a device
+  powered from J_PWR_OUT; worth checking for anything else.
 - **J_VIO with no shunt** leaves UART TX without a pull-up (the device's RX floats). Always fit a shunt.
 - **`stackup bom` reports 2 parts without an MPN:** the two mounting holes, which are drill only
   with nothing to buy.

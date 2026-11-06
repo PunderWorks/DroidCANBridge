@@ -1,7 +1,7 @@
 // DroidCANAdapter electrical design: a CAN FD <-> UART bridge for droid builders.
 //
-// STM32C092 (TSSOP-20) with a TCAN334G 3.3 V CAN FD transceiver; two JST-XH CAN connectors
-// wired in parallel for daisy-chaining, with a jumper for the 120 Ω terminator; a JST-XH UART
+// STM32C092 (TSSOP-20) with a TCAN334G 3.3 V CAN FD transceiver; two 2-pin JST-XH CAN connectors
+// wired in parallel for daisy-chaining, with a jumper for the 120 Ω terminator; a 2-pin JST-XH UART
 // with a jumper-selected 3.3 V / 5 V logic level; 5 V in on a WAGO terminal with a WAGO
 // passthrough out; a 6-pin FTDI header for the ROM serial bootloader, which can also power the
 // board on the bench. Requirements, decisions and the DC bias numbers are in ../README.md.
@@ -118,10 +118,12 @@ design droidcanadapter {
     circuit mcu.PA12 can_xcvr.TXD name="CAN_TX"
     circuit can_xcvr.RXD mcu.PA11 name="CAN_RX"
 
-    place jst-xh-3 J_CAN1 hand=#true note="CAN: 1 GND, 2 CANL, 3 CANH"
-    place jst-xh-3 J_CAN2 hand=#true note="CAN: 1 GND, 2 CANL, 3 CANH (daisy chain)"
-    circuit can_xcvr.CANH J_CAN1.3 J_CAN2.3 name="CANH"
-    circuit can_xcvr.CANL J_CAN1.2 J_CAN2.2 name="CANL"
+    // Signal connectors carry no ground: every board shares ground through the power wiring.
+    // CAN is differential and the TCAN334G tolerates ±12 V common mode (datasheet §5.5).
+    place jst-xh-2 J_CAN1 hand=#true note="CAN in: 1 CANL, 2 CANH"
+    place jst-xh-2 J_CAN2 hand=#true note="CAN out: 1 CANL, 2 CANH (daisy chain)"
+    circuit can_xcvr.CANH J_CAN1.2 J_CAN2.2 name="CANH"
+    circuit can_xcvr.CANL J_CAN1.1 J_CAN2.1 name="CANL"
 
     // Termination: fit the shunt on J_TERM when this node is at an end of the bus.
     place resistor R_TERM value="120Ω" footprint="Resistor_SMD:R_0805_2012Metric" \
@@ -131,7 +133,7 @@ design droidcanadapter {
     circuit can_xcvr.CANH R_TERM J_TERM can_xcvr.CANL
 
     // ── Device UART (USART1) ─────────────────────────────────────────────────────────────
-    place jst-xh-3 J_UART hand=#true note="UART: 1 GND, 2 RX (into this board), 3 TX (out)"
+    place jst-xh-2 J_UART hand=#true note="UART: 1 RX (into this board), 2 TX (out)"
 
     // Logic level jumper: shunt on 1-2 = 3.3 V, 2-3 = 5 V (VSYS).
     place conn-1x3 J_VIO footprint="Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" \
@@ -144,7 +146,7 @@ design droidcanadapter {
     // VDD + 4.0 V is allowed while powered (DS14720 Table 21); its internal pull must be off.
     place resistor R_TXPU value="1kΩ" intent=pull-up
     circuit J_VIO.2 R_TXPU mcu.PB6
-    circuit mcu.PB6 J_UART.3 name="UART_TX"
+    circuit mcu.PB6 J_UART.2 name="UART_TX"
 
     // RX: BSS138 shifter. Gate at 3.3 V, source on the MCU side with its own pull-up, drain to
     // the connector. Unpowered, the FET is off and its body diode blocks the device's TX from
@@ -152,7 +154,7 @@ design droidcanadapter {
     place bss138 Q_RX footprint="Package_TO_SOT_SMD:SOT-23" manufacturer=onsemi mpn=BSS138 lcsc=C52895
     place pull-up R_RXPU node=mcu.PB7 rail=ldo.out value="1kΩ"
     circuit ldo.out.rail Q_RX.GATE
-    circuit J_UART.2 Q_RX.DRAIN name="UART_RX"
+    circuit J_UART.1 Q_RX.DRAIN name="UART_RX"
     circuit Q_RX.SOURCE mcu.PB7 name="UART_RX_3V3"
 
     // ── FTDI header (USART2, the ROM bootloader's PA2/PA3) ────────────────────────────────
@@ -187,7 +189,7 @@ design droidcanadapter {
 
     // ── Ground ───────────────────────────────────────────────────────────────────────────
     // CTS (J_FTDI.2) is tied low, as on Arduino Pro Mini-style headers.
-    circuit ldo.out.gnd J_PWR_IN.2 J_PWR_OUT.1 J_CAN1.1 J_CAN2.1 J_UART.1 J_FTDI.1 J_FTDI.2 \
+    circuit ldo.out.gnd J_PWR_IN.2 J_PWR_OUT.1 J_FTDI.1 J_FTDI.2 \
         D_NRST.A1 name="GND"
 
     // ── Spares ───────────────────────────────────────────────────────────────────────────

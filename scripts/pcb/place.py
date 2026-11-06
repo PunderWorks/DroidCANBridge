@@ -13,6 +13,7 @@ not rerun.
 """
 
 import sys
+from pathlib import Path
 
 import pcbnew
 
@@ -61,13 +62,13 @@ PLACE = {
 # The courtyard's outer side sits `inset` mm inside the named edge (negative = overhang).
 EDGE = [
     # In, on the left edge: power (wire entry facing left) and CAN in. JSTs are turned so pin 1
-    # (GND) is at the top on both sides.
+    # is at the top on both sides.
     ("J1", 270, "left", 0.0, 0.0),     # J_PWR_IN
     ("J3", 270, "left", 10.5, 0.0),    # J_CAN1 (in)
     # Out, on the right edge: power passthrough (wire entry facing right), CAN out, device UART.
     ("J2", 90, "right", 0.0, 0.0),     # J_PWR_OUT
     ("J4", 270, "right", 10.0, 0.0),   # J_CAN2 (out)
-    ("J6", 270, "right", 21.1, 0.0),   # J_UART
+    ("J6", 270, "right", 19.5, 0.0),   # J_UART
     # FTDI header along the bottom edge, pin 1 (GND, black wire) on the left.
     ("J8", 90, "bottom", 9.5, 0.0),
 ]
@@ -121,6 +122,10 @@ def draw_outline(board):
 
 
 def main(path):
+    lock = Path(path).with_name(f"~{Path(path).name}.lck")
+    if lock.exists():
+        sys.exit(f"{Path(path).name} is open in KiCad ({lock.name} exists); close it first, "
+                 "or the editor will save over these changes.")
     board = pcbnew.LoadBoard(path)
     fps = {fp.GetReference(): fp for fp in board.GetFootprints()}
 

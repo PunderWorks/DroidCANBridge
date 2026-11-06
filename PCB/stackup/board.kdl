@@ -80,7 +80,7 @@ design droidcanadapter {
     // 5 V in on a WAGO terminal. The passthrough terminal is wired straight to the input: it
     // carries whatever the input carries, at the input's current, and is not protected by D_IN.
     place wago-2601-1102 J_PWR_IN hand=#true note="5 V in: pin 1 +5V, pin 2 GND"
-    place wago-2601-1102 J_PWR_OUT hand=#true note="5 V passthrough out: pin 1 +5V, pin 2 GND"
+    place wago-2601-1102 J_PWR_OUT hand=#true note="5 V passthrough out: pin 2 +5V, pin 1 GND"
     set J_PWR_IN.1 net.voltage min="4.75V" max="5.25V"   // 5 V ±5%, the stated input
 
     // Two Schottky diodes OR the WAGO input and the FTDI header's VCC onto VSYS. D_IN is also
@@ -88,7 +88,9 @@ design droidcanadapter {
     // FTDI never powers the passthrough terminal).
     place ss14 D_IN
     place ss14 D_FTDI
-    circuit J_PWR_IN.1 J_PWR_OUT.1 D_IN ldo.in.rail name="+5V_IN"
+    // J_PWR_OUT is turned the other way from J_PWR_IN (its wires leave on the right edge), which
+    // reverses its pole order; using pin 2 for +5V keeps +5V on the same (top) pole of both.
+    circuit J_PWR_IN.1 J_PWR_OUT.2 D_IN ldo.in.rail name="+5V_IN"
     circuit J_FTDI.3 D_FTDI ldo.in.rail name="FTDI_VCC"
     set J_FTDI.3 net.voltage min="4.4V" max="5.25V"   // USB VBUS at the device, via the adapter
 
@@ -185,7 +187,7 @@ design droidcanadapter {
 
     // ── Ground ───────────────────────────────────────────────────────────────────────────
     // CTS (J_FTDI.2) is tied low, as on Arduino Pro Mini-style headers.
-    circuit ldo.out.gnd J_PWR_IN.2 J_PWR_OUT.2 J_CAN1.1 J_CAN2.1 J_UART.1 J_FTDI.1 J_FTDI.2 \
+    circuit ldo.out.gnd J_PWR_IN.2 J_PWR_OUT.1 J_CAN1.1 J_CAN2.1 J_UART.1 J_FTDI.1 J_FTDI.2 \
         D_NRST.A1 name="GND"
 
     // ── Spares ───────────────────────────────────────────────────────────────────────────

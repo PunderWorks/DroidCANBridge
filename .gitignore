@@ -83,4 +83,5 @@ PCB/datasheets/AN2606.*
 # Manufacturer 3D models that can't be redistributed (download steps in
 # PCB/libraries/3dmodels/README.md)
 PCB/libraries/3dmodels/WAGO_*.stp
+PCB/libraries/3dmodels/TS-1187A*.step
 PCB/libraries/3dmodels/*.zip

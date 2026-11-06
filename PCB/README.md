@@ -47,6 +47,28 @@ Commit the synced PCB with the KDL. CI fails if syncing would change the committ
 Jumpers: **J_VIO** shunt on 1-2 = 3.3 V UART, 2-3 = 5 V UART (VSYS). **J_TERM** shunt fitted = 120 Ω
 terminator in.
 
+## Layout
+
+The board is 46 x 32 mm, two layers, laid out for how it sits in a droid harness, with
+power and signals flowing left to right:
+
+| Edge | Connectors |
+|---|---|
+| Left (in) | J_PWR_IN (WAGO, wires enter from the left), J_CAN1 |
+| Right (out) | J_PWR_OUT (WAGO, wires leave to the right), J_CAN2, J_UART |
+| Bottom | J_FTDI, lying along the edge, pin 1 (GND) on the left |
+
+- Both WAGOs have **+5V on the top pole and GND on the bottom**. J_PWR_OUT is turned the opposite
+  way from J_PWR_IN, which reverses its pin order, so its +5V is pin 2 (see `board.kdl`). Mark + and
+  − on the silkscreen beside both.
+- All three JST-XH connectors have pin 1 (GND) at the top, so CAN in and CAN out read the same.
+- The +5V passthrough runs straight across the top edge between the WAGOs, above the OR diodes and
+  LDO. Size it for the passthrough current, not the board's own < 100 mA.
+- The WAGO levers overhang the side edges by about 2 mm (WAGO drawing: 16.58 mm with the lever
+  against the 14.5 mm body).
+- `scripts/pcb/place.py` produced the starting placement. Once the board is edited in KiCad, the
+  board file is the source of truth.
+
 ## GPIO table (STM32C092FCP6, TSSOP-20)
 
 From DS14720 Rev 2, Figure 3 and Table 12. Pads marked "shared" bond several die pins together;

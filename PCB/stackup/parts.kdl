@@ -181,7 +181,8 @@ part wago-2601-1102 {
 
 // XKB TS-1187A-B-A-B: 5.1 x 5.1 mm SMD tactile switch. Each terminal has two pads (1, 1 and
 // 2, 2) joined inside the switch: drawing terminals A-B and C-D, pads at ±3.0 x ±1.875 mm
-// (XKB drawing TS-1187A-X-X-X, ../datasheets/TS-1187A.pdf; matches the KiCad footprint).
+// (XKB drawing TS-1187A-X-X-X, ../datasheets/TS-1187A.pdf; matches the KiCad footprint). The
+// project footprint is KiCad's with the SnapEDA 3D model attached (../libraries/3dmodels/README.md).
 part ts-1187a {
     symbol "Switch:SW_Push"
     reference SW
@@ -196,7 +197,7 @@ part ts-1187a {
     port a pin=1
     port b pin=2
 
-    package smd footprint="Button_Switch_SMD:SW_Push_1P1T_XKB_TS-1187A" {
+    package smd footprint="DroidCANAdapter:XKB_TS-1187A-B-A-B" {
         pad 1 1
         pad 2 2
     }

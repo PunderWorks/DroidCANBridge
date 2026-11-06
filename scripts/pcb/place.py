@@ -17,59 +17,62 @@ import sys
 import pcbnew
 
 ORIGIN = (100.0, 100.0)  # board top-left corner in KiCad page coordinates
-W, H = 46.0, 35.0         # board outline, mm
+W, H = 46.0, 32.0         # board outline, mm
 
+# Signal and power flow left to right, the way the board sits in a droid harness: power and CAN
+# come in on the left edge; the power passthrough, CAN out and the device UART leave on the right.
+#
 # ref: (x, y, rotation°) — x/y are the courtyard centre from the board's top-left corner.
 # Edge-aligned parts are given by an edge rule instead (see EDGE below).
 PLACE = {
-    # Left band: CAN transceiver under the CAN connectors, terminator beside them.
-    "J5": (3.6, 9.6, 90),       # TERM jumper
-    "R1": (9.0, 9.6, 0),        # 120 Ω terminator
-    "U3": (8.5, 15.5, 180),     # TCAN334G; TXD/RXD side faces the MCU
-    "C7": (14.0, 15.5, 90),     # TCAN VCC 100 nF
+    # Top middle, between the two WAGOs: power OR diodes, VSYS bulk, LDO. The +5V_IN passthrough
+    # runs straight across above them.
+    "D1": (19.6, 2.3, 180),     # SS14, WAGO in; anode left toward J_PWR_IN, band right
+    "D2": (19.6, 6.5, 180),     # SS14, FTDI VCC; band right
+    "C1": (24.3, 4.4, 90),      # VSYS bulk
+    "U1": (27.6, 3.5, 0),       # AP2112K
+    "C2": (26.3, 7.6, 0),       # LDO in
+    "C3": (29.0, 7.8, 90),      # LDO out
 
-    # Middle band: device-UART parts under J_UART, MCU in the centre.
-    "R2": (24.0, 9.5, 0),       # TX pull-up
-    "Q1": (28.5, 9.8, 0),       # BSS138 RX shifter
-    "R3": (32.5, 9.5, 0),       # RX pull-up
-    "U2": (24.5, 16.5, 180),    # STM32C092; CAN pins face U3, FTDI pins face J8
-    "C6": (29.6, 14.5, 90),     # NRST filter, beside pad 6
-    "C4": (29.6, 18.0, 90),     # VDD 100 nF, beside pad 4
-    "C5": (31.3, 18.0, 90),     # VDD 4.7 µF
-    "C8": (31.3, 14.5, 90),     # DTR coupling
-    "D3": (34.0, 14.5, 0),      # BAT54S NRST clamp
-    "R4": (33.0, 21.0, 90),     # BOOT0 pull-down
+    # CAN: terminator beside CAN in, transceiver between it and the MCU.
+    "J5": (8.8, 13.5, 0),       # TERM jumper
+    "R1": (8.8, 18.5, 90),      # 120 Ω terminator
+    "U3": (14.8, 16.0, 180),    # TCAN334G; CANH/CANL face J_CAN1, TXD/RXD face the MCU
+    "C7": (14.8, 20.5, 0),      # TCAN VCC 100 nF
 
-    # Middle band, bottom: power OR diodes and LDO beside the WAGOs.
-    "D1": (24.3, 22.8, 180),    # SS14, WAGO in; cathode (band) toward VSYS on the right
-    "D2": (24.3, 26.6, 180),    # SS14, FTDI VCC; cathode toward VSYS
-    "C1": (29.2, 23.5, 90),     # VSYS bulk
-    "U1": (31.6, 27.5, 0),      # AP2112K
-    "C2": (29.8, 31.0, 0),      # LDO in
-    "C3": (33.3, 31.0, 0),      # LDO out
+    # MCU and its local parts.
+    "U2": (24.5, 17.0, 180),    # STM32C092; CAN pins face U3
+    "C6": (29.6, 15.5, 90),     # NRST filter, beside pad 6
+    "C4": (29.6, 18.8, 90),     # VDD 100 nF, beside pad 4
+    "C5": (31.3, 18.8, 90),     # VDD 4.7 µF
+    "C8": (31.3, 15.5, 90),     # DTR coupling
+    "D3": (34.2, 15.5, 0),      # BAT54S NRST clamp
+    "SW1": (16.5, 24.5, 0),     # boot button
+    "R4": (22.0, 23.0, 90),     # BOOT0 pull-down
 
-    # Right band: VIO jumper, boot button, test pads.
-    "J7": (38.5, 12.0, 0),      # VIO jumper (1 = 3V3 at top)
-    "SW1": (38.5, 21.0, 0),     # boot button
-
+    # Device UART parts beside J_UART on the right edge.
+    "J7": (34.5, 22.3, 90),     # VIO jumper (pin 1 = 3V3 on the left)
+    "R2": (35.0, 25.6, 0),      # TX pull-up
+    "Q1": (36.6, 28.2, 0),      # BSS138 RX shifter
+    "R3": (36.6, 31.0, 0),      # RX pull-up
 }
 
 # Edge-aligned parts: (ref, rotation°, edge, offset along the edge from the left/top corner, inset)
 # The courtyard's outer side sits `inset` mm inside the named edge (negative = overhang).
 EDGE = [
-    # CAN in/out on the left of the top edge, UART in the middle; wires plug in from above.
-    ("J3", 0, "top", 0.5, 0.0),        # J_CAN1
-    ("J4", 0, "top", 11.5, 0.0),       # J_CAN2
-    ("J6", 0, "top", 24.5, 0.0),       # J_UART
-    # Power terminals at the bottom-left, wire entry facing down (footprint +y), side by side so
-    # the passthrough copper between them is short and wide.
-    ("J1", 0, "bottom", 0.5, 0.0),     # J_PWR_IN
-    ("J2", 0, "bottom", 10.6, 0.0),    # J_PWR_OUT
-    # FTDI header on the right edge, pin 1 (GND, black wire) at the top.
-    ("J8", 0, "right", 9.0, 0.0),
+    # In, on the left edge: power (wire entry facing left) and CAN in. JSTs are turned so pin 1
+    # (GND) is at the top on both sides.
+    ("J1", 270, "left", 0.0, 0.0),     # J_PWR_IN
+    ("J3", 270, "left", 10.5, 0.0),    # J_CAN1 (in)
+    # Out, on the right edge: power passthrough (wire entry facing right), CAN out, device UART.
+    ("J2", 90, "right", 0.0, 0.0),     # J_PWR_OUT
+    ("J4", 270, "right", 10.0, 0.0),   # J_CAN2 (out)
+    ("J6", 270, "right", 21.1, 0.0),   # J_UART
+    # FTDI header along the bottom edge, pin 1 (GND, black wire) on the left.
+    ("J8", 90, "bottom", 9.5, 0.0),
 ]
 
-HOLES = {"H1": (42.0, 4.0), "H2": (42.0, H - 4.0)}
+HOLES = {"H1": (4.0, H - 4.0), "H2": (29.5, H - 3.5)}
 
 
 def mm(v):

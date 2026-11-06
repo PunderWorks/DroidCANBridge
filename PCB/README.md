@@ -42,7 +42,7 @@ Commit the synced PCB with the KDL. CI fails if syncing would change the committ
 | CAN | can_xcvr (TCAN334GDR), J_CAN1/J_CAN2, R_TERM + J_TERM | STB/SHDN left on their internal pull-downs (normal mode). Fit the TERM shunt at the ends of the bus. |
 | Device UART | J_UART, J_VIO, R_TXPU, Q_RX (BSS138), R_RXPU | TX: open-drain with a 1 kΩ pull-up to the jumper-selected level. RX: BSS138 level shifter. |
 | FTDI | J_FTDI, C_DTR, D_NRST (BAT54S) | DTR is AC-coupled to NRST (Arduino-style auto-reset); the BAT54S clamps NRST between GND and +3V3. CTS is tied to GND. |
-| Boot / debug | SW_BOOT (TS-1187A), R_BOOT, TP_3V3/SWDIO/SWCLK/NRST/GND | Hold SW_BOOT through a reset to enter the bootloader. The SWD pads are the recovery path. |
+| Boot | SW_BOOT (TS-1187A), R_BOOT | Hold SW_BOOT through a reset to enter the bootloader. No SWD pads: the FTDI header is the only programming path. |
 
 Jumpers: **J_VIO** shunt on 1-2 = 3.3 V UART, 2-3 = 5 V UART (VSYS). **J_TERM** shunt fitted = 120 Ω
 terminator in.
@@ -59,7 +59,7 @@ firmware must leave the unused ones in their reset (analog) state.
 | 3 | PC15 | — | spare | |
 | 4 | VDD/VDDA | +3V3 | supply | |
 | 5 | VSS/VSSA | GND | supply | |
-| 6 | PF2-NRST | NRST | reset | Bidirectional reset (factory NRST_MODE = 11). DTR auto-reset, TP_NRST. |
+| 6 | PF2-NRST | NRST | reset | Bidirectional reset (factory NRST_MODE = 11). DTR auto-reset. |
 | 7, 8 | PA0, PA1 | — | spare | |
 | 9 | PA2 | FTDI_RXD | USART2_TX | Bootloader USART (AN2606 Table 19). |
 | 10 | PA3 | FTDI_TXD | USART2_RX | Bootloader USART. |
@@ -67,8 +67,8 @@ firmware must leave the unused ones in their reset (analog) state.
 | 15 | PA8 (PB0, PB1, PB2) | — | spare | |
 | 16 | PA11 (PA9) | CAN_RX | FDCAN1_RX | Bootloader remaps USART1_TX here but holds it in reset state until 0x7F arrives on pad 17. |
 | 17 | PA12 (PA10) | CAN_TX | FDCAN1_TX | Bootloader remaps USART1_RX here (input, pull-up). Only the transceiver's TXD input is on it. |
-| 18 | PA13 | SWDIO | SWD | TP_SWDIO. |
-| 19 | PA14-BOOT0 (PA15) | BOOT0_SWCLK | SWCLK / BOOT0 | 10 kΩ pull-down + SW_BOOT to +3V3. BOOT0 only once nBOOT_SEL is cleared (see Firmware). |
+| 18 | PA13 | — | spare (SWDIO) | Not brought out; no SWD on this board. |
+| 19 | PA14-BOOT0 (PA15) | BOOT0 | BOOT0 | 10 kΩ pull-down + SW_BOOT to +3V3. BOOT0 only once nBOOT_SEL is cleared (see Firmware). |
 | 20 | PB6 (PB3, PB4, PB5) | UART_TX | USART1_TX | Open-drain, internal pull off (pin sees up to 5.25 V). Bootloader I2C1_SCL. |
 
 ## DC operating points
@@ -97,10 +97,15 @@ Supply states: WAGO only, FTDI only, both, and adapter unpowered with the UART d
 
 ## Firmware requirements from the hardware
 
-- **Clear nBOOT_SEL once** (FLASH_OPTR bit 24). Factory option bytes are nBOOT_SEL = 1, nBOOT0 = 1
-  (RM0490 p. 66), so a fresh part ignores the BOOT0 pin: it reaches the bootloader only through the
-  empty-flash check (RM0490 Table 9, §3.1.4). Until firmware clears nBOOT_SEL, SW_BOOT does
-  nothing. Recovery if that goes wrong is SWD on the test pads.
+- **First flash: clear nBOOT_SEL over the UART before writing any firmware.** Factory option bytes
+  are nBOOT_SEL = 1, nBOOT0 = 1 (RM0490 p. 66), so a fresh part ignores the BOOT0 pin and reaches
+  the bootloader only through the empty-flash check (RM0490 Table 9, §3.1.4). There are no SWD pads,
+  so if firmware were written first with nBOOT_SEL still set, the chip would always boot from flash
+  and only that firmware could get back to the bootloader. On the blank chip, connect the FTDI
+  and run `STM32_Programmer_CLI -c port=<tty> -ob nBOOT_SEL=0` (STM32CubeProgrammer talks to the ROM
+  bootloader over UART and can write option bytes). From then on, holding SW_BOOT through a reset
+  always reaches the bootloader, whatever the firmware does. Firmware should also check the bit at
+  startup and clear it if a board somehow skipped the step.
 - **PB6 (UART TX):** open-drain alternate function, internal pull-up and pull-down off (required to
   sustain more than 4 V, DS14720 Table 21 note 2).
 - **PB7 (UART RX):** no internal pull needed (R_RXPU).
@@ -109,7 +114,7 @@ Supply states: WAGO only, FTDI only, both, and adapter unpowered with the UART d
 - **Shared pads:** leave PB8, PB0-PB2, PA9, PA10, PA15, PB3-PB5 untouched (analog). Use the SYSCFG
   remap only if the pad assignment changes.
 - **Flashing:** the ROM bootloader on USART2 (8 data bits, even parity, 1 stop bit; AN2606 Table 19).
-  Hold SW_BOOT, let the flasher pulse DTR (or press reset via TP_NRST), release after it connects.
+  Hold SW_BOOT, let the flasher pulse DTR, release after it connects.
 
 ## Decisions
 
@@ -154,8 +159,10 @@ Supply states: WAGO only, FTDI only, both, and adapter unpowered with the UART d
   nothing else powers the board, PA3 exceeds its 4.0 V unpowered limit. Normal FTDI cables supply
   VCC.
 - **J_VIO with no shunt** leaves UART TX without a pull-up (the device's RX floats). Always fit a shunt.
-- **`stackup bom` reports 7 parts without an MPN:** the five test points and two mounting holes, which
-  are bare copper and drill with nothing to buy.
+- **`stackup bom` reports 2 parts without an MPN:** the two mounting holes, which are drill only
+  with nothing to buy.
+- **No SWD access.** Programming and recovery go through the FTDI header and the ROM bootloader
+  only, which relies on nBOOT_SEL being cleared at the first flash (see Firmware requirements).
 - **Jumper shunts are not in the netlist.** Order two 2.54 mm shunts (e.g. BOOMELE C5305) per board
   for J_VIO and J_TERM.
 - **AP2112 θJA for SOT-23-5** was not found in the datasheet text; 0.17 W worst case is small but the
@@ -171,7 +178,8 @@ Supply states: WAGO only, FTDI only, both, and adapter unpowered with the UART d
 4. Blank chip: confirm it enters the bootloader (empty check) and `stm32flash` talks on USART2.
    Confirm DTR produces a reset (scope NRST: a ~10-20 ms low pulse, no excursion beyond -0.4 V or
    +3.7 V with a 5 V cable).
-5. Flash firmware that clears nBOOT_SEL; then confirm hold-SW_BOOT + reset enters the bootloader.
+5. Clear nBOOT_SEL with STM32CubeProgrammer over the FTDI; then confirm hold-SW_BOOT + DTR reset
+   enters the bootloader, before and after flashing firmware.
 6. CAN: CANH/CANL recessive ≈ 2.5 V, 120 Ω between them with J_TERM fitted (60 Ω with both ends
    terminated). Exchange classic frames with a known node; confirm no error frames when an FD node
    transmits FD frames.

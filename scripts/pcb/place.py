@@ -52,12 +52,6 @@ PLACE = {
     "J7": (38.5, 12.0, 0),      # VIO jumper (1 = 3V3 at top)
     "SW1": (38.5, 21.0, 0),     # boot button
 
-    # SWD probe row along the bottom edge, 2.5 mm apart: 3V3, SWDIO, SWCLK, NRST, GND.
-    "TP1": (22.0, 33.4, 0),     # 3V3
-    "TP2": (24.5, 33.4, 0),     # SWDIO
-    "TP3": (27.0, 33.4, 0),     # SWCLK
-    "TP4": (29.5, 33.4, 0),     # NRST
-    "TP5": (32.0, 33.4, 0),     # GND
 }
 
 # Edge-aligned parts: (ref, rotation°, edge, offset along the edge from the left/top corner, inset)

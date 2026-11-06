@@ -169,23 +169,15 @@ design droidcanadapter {
     place bat54s D_NRST
     circuit mcu.NRST D_NRST.COM name="NRST"
 
-    // ── Boot button and SWD pads ─────────────────────────────────────────────────────────
-    // Hold SW_BOOT through a reset to enter the bootloader, once firmware has cleared
-    // nBOOT_SEL. R_BOOT holds BOOT0 low otherwise.
+    // ── Boot button ──────────────────────────────────────────────────────────────────────
+    // Hold SW_BOOT through a reset to enter the bootloader. The pin is only read once nBOOT_SEL
+    // is cleared, which the first flash does over the FTDI UART (see ../README.md). R_BOOT
+    // holds BOOT0 low otherwise. No SWD pads: the FTDI header is the only programming path.
     place ts-1187a SW_BOOT
     place pull-down R_BOOT node=mcu.PA14 rail=ldo.out value="10kΩ"
     circuit ldo.out.rail SW_BOOT mcu.PA14 name="+3V3"
-    set mcu.PA14 net.name "BOOT0_SWCLK"
-
-    place test-point TP_3V3 footprint="TestPoint:TestPoint_Pad_D1.5mm"
-    place test-point TP_SWDIO footprint="TestPoint:TestPoint_Pad_D1.5mm"
-    place test-point TP_SWCLK footprint="TestPoint:TestPoint_Pad_D1.5mm"
-    place test-point TP_NRST footprint="TestPoint:TestPoint_Pad_D1.5mm"
-    place test-point TP_GND footprint="TestPoint:TestPoint_Pad_D1.5mm"
-    circuit ldo.out.rail TP_3V3.1 D_NRST.K2
-    circuit mcu.PA13 TP_SWDIO.1 name="SWDIO"
-    circuit mcu.PA14 TP_SWCLK.1
-    circuit mcu.NRST TP_NRST.1
+    set mcu.PA14 net.name "BOOT0"
+    circuit ldo.out.rail D_NRST.K2
 
     // M3 mounting holes, unplated.
     place mounting-hole H1 package=m3 footprint="MountingHole:MountingHole_3.2mm_M3"
@@ -194,9 +186,10 @@ design droidcanadapter {
     // ── Ground ───────────────────────────────────────────────────────────────────────────
     // CTS (J_FTDI.2) is tied low, as on Arduino Pro Mini-style headers.
     circuit ldo.out.gnd J_PWR_IN.2 J_PWR_OUT.2 J_CAN1.1 J_CAN2.1 J_UART.1 J_FTDI.1 J_FTDI.2 \
-        D_NRST.A1 TP_GND.1 name="GND"
+        D_NRST.A1 name="GND"
 
     // ── Spares ───────────────────────────────────────────────────────────────────────────
     nc mcu.PC14 mcu.PC15 mcu.PA0 mcu.PA1 mcu.PA4 mcu.PA5 mcu.PA6 mcu.PA7 mcu.PA8 \
         note="spare; firmware leaves them in the reset (analog) state"
+    nc mcu.PA13 note="SWDIO, not brought out: no SWD pads on this board"
 }

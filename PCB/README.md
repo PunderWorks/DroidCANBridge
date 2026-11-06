@@ -49,7 +49,7 @@ terminator in.
 
 ## Layout
 
-The board is 46 x 32 mm, two layers, laid out for how it sits in a droid harness, with
+The board is 50 x 40 mm, two layers, laid out for how it sits in a droid harness, with
 power and signals flowing left to right:
 
 | Edge | Connectors |
@@ -67,6 +67,15 @@ power and signals flowing left to right:
   LDO. Size it for the passthrough current, not the board's own < 100 mA.
 - The WAGO levers overhang the side edges by about 2 mm (WAGO drawing: 16.58 mm with the lever
   against the 14.5 mm body).
+- Two M3 holes in opposite corners: H1 bottom-left, H2 top-right (above J_PWR_OUT).
+- GND pours fill both layers. The bottom one gives the passthrough's return a solid path under the
+  3 mm +5V_IN track. Pads join them through thermal reliefs with 0.5 mm spokes, wide enough for the
+  WAGO GND pins and still easy to hand-solder. Stitching vias join top-pour pockets that tracks
+  enclose to the bottom plane.
+- Silkscreen: reference designators and values are hidden (they remain on the Fab layer for
+  assembly drawings). The top labels each connector, jumper setting and the boot button, and the
+  FTDI pins from the cable's side (GND, CTS, VCC, RXI, TXO, DTR). The back carries the board name,
+  revision and the full pinout legend.
 - `scripts/pcb/place.py` produced the starting placement. Once the board is edited in KiCad, the
   board file is the source of truth.
 

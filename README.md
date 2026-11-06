@@ -1,5 +1,7 @@
 # Droid CANBus Adapter
 
+![DroidCANAdapter PCB render](PCB/assets/DroidCANAdapter.png)
+
 A very small, inexpensive adapter board that bridges CANBus to a standard UART and back, so droid
 components without CAN support can join a CAN network.
 
@@ -11,5 +13,5 @@ components without CAN support can join a CAN network.
 - **Programming:** standard 6-pin FTDI header using the STM32's built-in serial bootloader, with
   DTR auto-reset and a boot button
 
-Status: design in progress. Hardware is in [`PCB/`](PCB/) (see [PCB/README.md](PCB/README.md) for
+Status: PCB designed and routed (50 x 40 mm, two layers); not yet ordered. Hardware is in [`PCB/`](PCB/) (see [PCB/README.md](PCB/README.md) for
 requirements and design decisions); firmware will live in `src/`.

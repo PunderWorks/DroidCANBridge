@@ -231,8 +231,16 @@ NRST; the BAT54S clamp sits at C8 where the DTR surge enters. The regulator's ow
 short branches: C3 (output) 6.9 mm from VOUT and C2 (input) 8.7 mm from VIN. Accepted: the
 AP2112 is stable with 1 µF ceramics and C1's 4.7 µF is in line on the input.
 
+Silkscreen: every board text is at least 1.0 mm tall (JLC's minimum, "characters height less than
+40 mil (1.0 mm) will be unidentifiable"), and the board setup's minimum text height is 1.0 mm so
+DRC enforces it. The FTDI pin names are 1.0 mm tall by 0.8 mm wide to fit the 2.54 mm pitch. The
+edge labels beside the WAGO and JST pins are one text per pin, placed at that pin.
+
 Accepted findings:
 - `bom_check.py` flags H1/H2 for no MPN or LCSC: they are drill-only, nothing to buy.
+- The WAGO "5V / G" edge labels sit between each terminal and the board edge, under the
+  overhanging levers: hidden from directly above, visible at an angle and with the levers open.
+  The back legend repeats the polarity.
 - KiCad's stock footprints draw silkscreen at 0.12 mm, under JLC's 0.15 mm line minimum. Common
   practice; outlines may print faint. Not changed.
 

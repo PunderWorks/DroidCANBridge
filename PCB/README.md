@@ -1,8 +1,8 @@
-# DroidCANAdapter hardware
+# DroidCANBridge hardware
 
 The electrical design is Stackup KDL in [`stackup/`](stackup/) (`board.kdl`, plus the local parts in
-`parts.kdl`). The KiCad board `DroidCANAdapter.kicad_pcb` is synced from it through
-`DroidCANAdapter.stackup_sch`. Manufacturer datasheets are in [`datasheets/`](datasheets/), with
+`parts.kdl`). The KiCad board `DroidCANBridge.kicad_pcb` is synced from it through
+`DroidCANBridge.stackup_sch`. Manufacturer datasheets are in [`datasheets/`](datasheets/), with
 their source URLs and hashes in `datasheets/manifest.json`.
 
 ```sh
@@ -14,7 +14,7 @@ the board closed:
 
 ```sh
 /Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/Current/bin/python3 \
-  <stackup checkout>/kicad-plugin/sync_headless.py PCB/DroidCANAdapter.kicad_pcb
+  <stackup checkout>/kicad-plugin/sync_headless.py PCB/DroidCANBridge.kicad_pcb
 ```
 
 Commit the synced PCB with the KDL. CI fails if syncing would change the committed PCB.
@@ -108,7 +108,7 @@ firmware must leave the unused ones in their reset (analog) state.
 
 ## DC operating points
 
-Supply states: WAGO only, FTDI only, both, and adapter unpowered with the UART device powered.
+Supply states: WAGO only, FTDI only, both, and the bridge unpowered with the UART device powered.
 
 | Node | Value | Limit (source) | OK |
 |---|---|---|---|
@@ -123,7 +123,7 @@ Supply states: WAGO only, FTDI only, both, and adapter unpowered with the UART d
 | Q_RX on (device TX low ≤ 0.8 V) | VGS ≥ 3.25 - 0.8 = 2.45 V | BSS138 VGS(th) max 1.5 V (onsemi, electrical characteristics) | ✓ |
 | UART_RX_3V3, device low | ≤ 0.8 V + 3.3 mA × RDS(on) (≤ 6 Ω at 4.5 V; more at 2.45 V) ≈ 0.85 V | VIL 0.3 × VDD = 0.98 V (Table 50) | ✓ (assumes device VOL ≤ 0.8 V; typical ≤ 0.4 V) |
 | UART_RX_3V3, device high | 3.25 V via R_RXPU | VIH 0.7 × VDD = 2.31 V | ✓ |
-| UART_RX_3V3, adapter unpowered | ≈ 0 V (FET off, body diode reverse-biased) | FT pin max 4.0 V with VDD = 0 (Table 21) | ✓ |
+| UART_RX_3V3, bridge unpowered | ≈ 0 V (FET off, body diode reverse-biased) | FT pin max 4.0 V with VDD = 0 (Table 21) | ✓ |
 | BOOT0 at rest / pressed | 0 V / 3.3 V (0.33 mA) | VIL 0.98 V / VIH 2.31 V | ✓ |
 | NRST on DTR fall, 3.3 V cable | 3.3 - 3.3 × 1 µF/1.1 µF = 0.3 V, below VIL for 7-16 ms (τ = 1.1 µF × RPU 25-55 kΩ) | VIL(NRST) 0.3 × VDD = 0.98 V; filter 70 ns (Table 53) | ✓ |
 | NRST on DTR fall, 5 V cable | clamped by BAT54S to -0.35 to -0.52 V, below VIL for 12-27 ms (SPICE) | MCU negative injection ≤ 5 mA (Table 22): simulated ≤ 0.25 mA; without the BAT54S, 26 mA | ✓ |
@@ -167,7 +167,7 @@ Supply states: WAGO only, FTDI only, both, and adapter unpowered with the UART d
   rate. But a strictly classic controller (e.g. MCP2515) answers FD frames with error frames. The
   STM32 FDCAN can run in classic mode and ignore FD frames (protocol exception handling), so this
   board stays safe on a mixed bus and can move to FD in firmware later. Messages addressed to the
-  adapter must be sent as classic frames while it runs in classic mode.
+  bridge must be sent as classic frames while it runs in classic mode.
 - **TCAN334G, 3.3 V transceiver.** Running everything from 3.3 V lets the power path use plain
   Schottky diodes for OR-ing and reverse protection: a 5 V-only transceiver (MCP2562FD, VDD ≥ 4.5 V)
   would not tolerate the diode drop. This replaced the P-MOSFET reverse protection discussed earlier:
@@ -177,7 +177,7 @@ Supply states: WAGO only, FTDI only, both, and adapter unpowered with the UART d
   `STM32C0xx/C092ECY_C092F(B-C)P`, so a small custom board JSON is enough. FDCAN is used through the
   bundled HAL; STM32duino has no CAN library.
 - **UART level shifting.** TX: open-drain with a pull-up to the J_VIO rail, no extra parts. RX: a
-  BSS138, because the FT pin's limit drops to 4.0 V with the adapter unpowered and positive injection
+  BSS138, because the FT pin's limit drops to 4.0 V with the bridge unpowered and positive injection
   is not allowed (DS14720 Tables 21-22), so a series resistor can't protect it from a separately
   powered 5 V device.
 - **JST-XH** for CAN and UART (the community's preferred connector), **2-pin with no ground**: every
@@ -260,5 +260,5 @@ Accepted findings:
    terminated). Exchange classic frames with a known node; confirm no error frames when an FD node
    transmits FD frames.
 7. UART: loopback at 3.3 V and 5 V settings; scope TX rise time at the target baud rate; with the
-   adapter unpowered and a powered 5 V device on J_UART, confirm PB7 stays ≈ 0 V.
+   bridge unpowered and a powered 5 V device on J_UART, confirm PB7 stays ≈ 0 V.
 8. LDO temperature with the CAN bus heavily loaded.

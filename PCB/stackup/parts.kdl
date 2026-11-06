@@ -172,7 +172,7 @@ part wago-2601-1102 {
     pin 1 passive
     pin 2 passive
 
-    package horizontal footprint="DroidCANAdapter:WAGO_2601-1102_Horizontal" {
+    package horizontal footprint="DroidCANBridge:WAGO_2601-1102_Horizontal" {
         pad 1 1
         pad 2 2
     }
@@ -196,7 +196,7 @@ part ts-1187a {
     port a pin=1
     port b pin=2
 
-    package smd footprint="DroidCANAdapter:XKB_TS-1187A-B-A-B" {
+    package smd footprint="DroidCANBridge:XKB_TS-1187A-B-A-B" {
         pad 1 1
         pad 2 2
     }

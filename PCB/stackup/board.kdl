@@ -1,4 +1,4 @@
-// DroidCANAdapter electrical design: a CAN FD <-> UART bridge for droid builders.
+// DroidCANBridge electrical design: a CAN FD <-> UART bridge for droid builders.
 //
 // STM32C092 (TSSOP-20) with a TCAN334G 3.3 V CAN FD transceiver; two 2-pin JST-XH CAN connectors
 // wired in parallel for daisy-chaining, with a jumper for the 120 Ω terminator; a 2-pin JST-XH UART
@@ -37,6 +37,9 @@ mpn "0805W8F1200T5E" manufacturer="UNI-ROYAL" kind=resistor value="120Ω" {
     catalog lcsc="C17437"
 }
 
+// The design keeps its original identifier. Stackup derives every footprint's UUID from the design
+// name and the part's path, so renaming it would make the KiCad sync delete and re-place every part
+// on the routed board. The project itself is DroidCANBridge.
 design droidcanadapter {
     stock { packages imperial="0603" }
 

@@ -1,9 +1,9 @@
-# Droid CANBus Adapter — Claude Notes
+# DroidCANBridge — Claude Notes
 
 ## Design principles
 
-This device makes CANBus much easier for droid builders: a very small, cheap adapter board that gives a
-device without CAN support its own CANBus endpoint, bridging CAN to a plain UART and back.
+This device makes CANBus much easier for droid builders: a very small, cheap CAN-to-UART bridge that gives a
+device without CAN support its own CANBus endpoint, translating CAN to a plain UART and back.
 
 Requirements and the decisions behind them are recorded in [PCB/README.md](PCB/README.md). Read it
 before changing the hardware, and add to it rather than re-deciding something already settled there.
@@ -12,7 +12,7 @@ before changing the hardware, and add to it rather than re-deciding something al
 
 - `PCB/` — hardware. `PCB/stackup/` holds the Stackup design, `PCB/datasheets/` the manufacturer
   datasheets (fetched with the `pcb-design` skill's `datasheet.py`), and the KiCad project
-  (`DroidCANAdapter.*`) lives beside them.
+  (`DroidCANBridge.*`) lives beside them.
 - `ci/` — the Cargo-locked Stackup CLI (`ci/stackup/`) and the PCB sync check (`check_pcb_sync.py`).
 - `src/`, `include/`, `test/` — firmware (PlatformIO, STM32C092). Not started yet.
 
@@ -32,7 +32,7 @@ KiCad schematics (there are none). Hardware work follows the `pcb-design` skill.
 - Check the design with `stackup check PCB/stackup/board.kdl --locked` (CLI 0.2.0; the Cargo-locked
   copy in `ci/stackup/` is the reference version). The parts library is pinned by commit in
   `manifest.kdl`.
-- After any change to the KDL, sync `PCB/DroidCANAdapter.kicad_pcb` from it with the Stackup KiCad
+- After any change to the KDL, sync `PCB/DroidCANBridge.kicad_pcb` from it with the Stackup KiCad
   plugin (never edit footprint nets by hand) and commit the PCB with the KDL. Footprints record their
   `board.kdl` line, so even reordering lines needs a resync.
 - Mounting holes and logos are KiCad `board_only` footprints; the sync leaves them alone.

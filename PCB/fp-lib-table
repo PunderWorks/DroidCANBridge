@@ -1,4 +1,4 @@
 (fp_lib_table
 	(version 7)
-	(lib (name "DroidCANAdapter") (type "KiCad") (uri "${KIPRJMOD}/libraries/DroidCANAdapter.pretty") (options "") (descr "Project footprints"))
+	(lib (name "DroidCANBridge") (type "KiCad") (uri "${KIPRJMOD}/libraries/DroidCANBridge.pretty") (options "") (descr "Project footprints"))
 )

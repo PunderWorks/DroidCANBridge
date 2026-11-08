@@ -77,8 +77,10 @@ power and signals flowing left to right:
   that tracks enclose.
 - Silkscreen: reference designators and values are hidden (they remain on the Fab layer for
   assembly drawings). The top labels each connector, jumper setting and the boot button, and the
-  FTDI pins from the cable's side (GND, CTS, VCC, RXI, TXO, DTR). The back carries the board name,
-  revision and the full pinout legend.
+  FTDI pins from the cable's side (GND, CTS, VCC, RXI, TXO, DTR). The back carries the PunderWorks
+  logo (`PunderWorks_Logo_14mm`, a board-only footprint in `libraries/DroidCANBridge.pretty`,
+  copied from DroidPowerSense with its source image in `libraries/logos/`), the board name and
+  version, the repo URL, and a 6.2 mm QR code to github.com/PunderWorks/DroidCANBridge.
 - `scripts/pcb/place.py` produced the starting placement. Once the board is edited in KiCad, the
   board file is the source of truth.
 
@@ -240,9 +242,33 @@ Accepted findings:
 - `bom_check.py` flags H1/H2 for no MPN or LCSC: they are drill-only, nothing to buy.
 - The WAGO "5V / G" edge labels sit between each terminal and the board edge, under the
   overhanging levers: hidden from directly above, visible at an angle and with the levers open.
-  The back legend repeats the polarity.
+  The back pinout legend that repeated the polarity was replaced by the logo and QR code
+  (2026-11-08), so the edge labels are now the only polarity marking.
 - KiCad's stock footprints draw silkscreen at 0.12 mm, under JLC's 0.15 mm line minimum. Common
   practice; outlines may print faint. Not changed.
+
+## Fab files
+
+[`production/`](production/) holds the Gerbers and job file (2 layers, 1.6 mm) and the PTH/NPTH
+drills with maps in `production/gerbers/`, and the purchasing BOM (`stackup bom`, with LCSC numbers
+for JLCPCB) and the placement file in `production/bom/`. The placement file lists only the 20
+JLCPCB-placed parts: the BOM's hand-soldered connectors and headers (J1-J8, marked Hand/DNP) are
+left out. Check JLCPCB's placement preview for rotation and pin 1 on U1-U3, Q1, D1-D3 and SW1.
+
+Regenerate everything after any board change. Refill and save the pours first, because the
+exporters plot the fills stored in the board file:
+
+```sh
+K=/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli; B=PCB/DroidCANBridge.kicad_pcb
+$K pcb drc --refill-zones --save-board --severity-all -o /tmp/drc.rpt $B   # refill, save, and check
+$K pcb export gerbers --board-plot-params -o PCB/production/gerbers/ $B
+$K pcb export drill --excellon-separate-th --generate-map --map-format gerberx2 -o PCB/production/gerbers/ $B
+$K pcb export pos --format csv --units mm --side both --exclude-dnp -o PCB/production/bom/DroidCANBridge-pos.csv $B
+stackup bom PCB/stackup/board.kdl --locked -o PCB/production/bom/DroidCANBridge-bom.csv
+```
+
+`stackup bom` exits 1 because H1/H2 have no MPN (see accepted findings) but still writes the CSV.
+Then drop the BOM's Hand/DNP references from the placement file.
 
 ## Bench checklist (first board)
 

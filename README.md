@@ -1,6 +1,9 @@
 # DroidCANBridge
 
-![DroidCANBridge PCB render](PCB/assets/DroidCANBridge.png)
+<p align="center">
+  <img src="PCB/assets/DroidCANBridge-v1-front.png" alt="DroidCANBridge v1.0, front: WAGO 5 V in and out terminals, the STM32 and CAN transceiver in the middle, JST-XH CAN and serial connectors along the edges, and the FTDI header along the bottom" width="49%">
+  <img src="PCB/assets/DroidCANBridge-v1-rear.png" alt="DroidCANBridge v1.0, back: the PunderWorks logo, board name and version, and a QR code linking to this repository" width="49%">
+</p>
 
 A very small, inexpensive CAN-to-UART bridge for droid builders: it translates CAN bus frames to a
 standard UART and back, so droid components without CAN support can join a CAN network.
@@ -13,5 +16,7 @@ standard UART and back, so droid components without CAN support can join a CAN n
 - **Programming:** standard 6-pin FTDI header using the STM32's built-in serial bootloader, with
   DTR auto-reset and a boot button
 
-Status: PCB designed and routed (50 x 40 mm, two layers); not yet ordered. Hardware is in [`PCB/`](PCB/) (see [PCB/README.md](PCB/README.md) for
-requirements and design decisions); firmware will live in `src/`.
+Status: PCB complete (50 x 40 mm, two layers): routed, silkscreen and graphics done (PunderWorks
+logo and a QR code to this repo on the back); not yet ordered. Gerbers, drills, BOM and placement
+are in [`PCB/production/`](PCB/production/). Hardware is in [`PCB/`](PCB/) (see
+[PCB/README.md](PCB/README.md) for requirements and design decisions); firmware will live in `src/`.

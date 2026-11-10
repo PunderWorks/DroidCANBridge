@@ -252,8 +252,10 @@ Accepted findings:
 [`production/`](production/) holds the Gerbers and job file (2 layers, 1.6 mm) and the PTH/NPTH
 drills with maps in `production/gerbers/`, and the purchasing BOM (`stackup bom`, with LCSC numbers
 for JLCPCB) and the placement file in `production/bom/`. The placement file lists only the 20
-JLCPCB-placed parts: the BOM's hand-soldered connectors and headers (J1-J8, marked Hand/DNP) are
-left out. Check JLCPCB's placement preview for rotation and pin 1 on U1-U3, Q1, D1-D3 and SW1.
+JLCPCB-placed parts: the hand-soldered connectors and headers (J1-J8) are `hand=#true` in the KDL,
+which marks them Hand/DNP in the BOM and, from Stackup 0.3.0, makes the PCB sync give their
+footprints KiCad's *Exclude from position files* and *Exclude from BOM* attributes. The mounting
+holes' stock footprint carries both attributes itself. Check JLCPCB's placement preview for rotation and pin 1 on U1-U3, Q1, D1-D3 and SW1.
 
 Regenerate everything after any board change. Refill and save the pours first, because the
 exporters plot the fills stored in the board file:
@@ -268,7 +270,8 @@ stackup bom PCB/stackup/board.kdl --locked -o PCB/production/bom/DroidCANBridge-
 ```
 
 `stackup bom` exits 1 because H1/H2 have no MPN (see accepted findings) but still writes the CSV.
-Then drop the BOM's Hand/DNP references from the placement file.
+The placement file needs no hand editing: the footprint attributes already keep J1-J8 and H1/H2
+out of it.
 
 ## Bench checklist (first board)
 

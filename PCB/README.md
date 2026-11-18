@@ -276,7 +276,7 @@ Brought in line with the PunderWorks CAN standard (see Decisions): J_CAN1/J_CAN2
 added, SH_TERM/SH_VIO in the BOM. Re-checked after the change: `stackup check` 0/0/0 (33 parts,
 20 nets), PCB sync check clean, DRC with zones refilled 0 violations and 0 unconnected, F1 pads
 against Bourns p. 7. To make room, two GND stitching vias moved off F1's pads and two off the new
-edge labels. Fab files regenerated. The renders in `assets/` still show the 2-pin connectors.
+edge labels. Fab files and the renders in `assets/` regenerated.
 
 ## Fab files
 

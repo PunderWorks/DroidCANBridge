@@ -66,13 +66,37 @@ jobs:
       # at about 0.5 MB/s, and the 3D-model download timed out every few runs. A missing 3D model
       # is reported by the sync, not counted as a change. Retries ride out a dropped connection;
       # the timeout stops a hung download from holding the job for hours.
+      #
+      # The downloaded .debs are cached, so a run only fetches the package indexes and anything
+      # newer than the cache; the Ubuntu mirrors and the PPA are both slow at times. The key
+      # changes with the runner image (roughly weekly) or this file, which picks up KiCad point
+      # releases; a new key restores the previous cache, and autoclean drops superseded .debs
+      # before the new one is saved.
+      # ImageOS/ImageVersion are runner environment variables, not in the `env` context.
+      - name: Read runner image
+        id: image
+        run: |
+          echo "os=${ImageOS}" >> "$GITHUB_OUTPUT"
+          echo "version=${ImageVersion}" >> "$GITHUB_OUTPUT"
+
+      - name: Restore KiCad package cache
+        uses: actions/cache@v6
+        with:
+          path: ~/apt-cache
+          key: kicad-debs-${{ steps.image.outputs.os }}-${{ steps.image.outputs.version }}-${{ hashFiles('.github/workflows/ci.yml') }}
+          restore-keys: kicad-debs-${{ steps.image.outputs.os }}-
+
       - name: Install KiCad 10
         timeout-minutes: 15
         run: |
-          sudo add-apt-repository --yes ppa:kicad/kicad-10.0-releases
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends -o Acquire::Retries=5 \
+          mkdir -p ~/apt-cache/partial
+          APT_CACHE="-o Dir::Cache::archives=$HOME/apt-cache"
+          sudo add-apt-repository --yes --no-update ppa:kicad/kicad-10.0-releases
+          sudo apt-get update -o Acquire::Retries=5 -o Acquire::Languages=none
+          sudo apt-get install -y --no-install-recommends -o Acquire::Retries=5 $APT_CACHE \
             kicad kicad-footprints
+          sudo apt-get autoclean $APT_CACHE
+          sudo chown -R "$USER" ~/apt-cache
 
       - name: Check PCB sync
         run: |

@@ -26,7 +26,7 @@ Commit the synced PCB with the KDL. CI fails if syncing would change the committ
 | Size | As small as possible. M3 mounting holes. No target outline. |
 | Assembly | SMD parts assembled by JLCPCB. Connectors, terminals and headers are through-hole, hand-soldered. |
 | MCU | Inexpensive STM32 with a CAN FD controller. |
-| CAN | Two 2-pin JST-XH connectors (daisy-chain in/out), pinout `CANL, CANH`. Jumper-selectable 120 Ω termination. No ESD protection. |
+| CAN | PunderWorks CAN standard (reference design DroidPowerSense v1): two 3-pin JST-XH connectors (daisy-chain in/out), pinout `1 CAN_GND, 2 CANL, 3 CANH`, printed on the silkscreen. CAN_GND to board GND through a PTC. Jumper-selectable 120 Ω termination. No power on the CAN connector. No ESD protection beyond the transceiver's own. |
 | UART | One 2-pin JST-XH connector, pinout `RX, TX` (named from this board's side). Works with 3.3 V and 5 V devices, selected by a pin jumper. |
 | Power | 5 V in on a through-hole WAGO terminal, with reverse-polarity protection. A second WAGO terminal passes the 5 V input through to the connected device. No fuse. |
 | Programming | Standard 6-pin FTDI header (`GND, CTS, VCC, TX, RX, DTR`) on the STM32 system-bootloader UART. The board can run from the FTDI header's VCC on the bench. DTR drives reset. A small boot button selects the bootloader. |
@@ -39,13 +39,14 @@ Commit the synced PCB with the KDL. CI fails if syncing would change the committ
 | Power in | J_PWR_IN, J_PWR_OUT (WAGO 2601-1102), D_IN, D_FTDI (SS14), C_VSYS | The two SS14s OR the WAGO input and the FTDI VCC onto VSYS. D_IN is the reverse-polarity protection. Each diode stops one source back-feeding the other, so the FTDI never powers the passthrough terminal. |
 | 3.3 V | ldo (AP2112K-3.3) | VSYS → +3V3 for everything on the board. |
 | MCU | mcu (STM32C092FCP6, TSSOP-20) | 100 nF + 4.7 µF on VDD; 100 nF NRST filter. |
-| CAN | can_xcvr (TCAN334GDR), J_CAN1/J_CAN2, R_TERM + J_TERM | STB/SHDN left on their internal pull-downs (normal mode). Fit the TERM shunt at the ends of the bus. |
+| CAN | can_xcvr (TCAN334GDR), J_CAN1/J_CAN2, F_CAN_GND, R_TERM + J_TERM | STB/SHDN left on their internal pull-downs (normal mode). Connectors: pin 1 CAN_GND, 2 CANL, 3 CANH. CAN_GND runs straight from J_CAN1 to J_CAN2 (the bus ground daisy-chains) and reaches board GND through F_CAN_GND (Bourns MF-MSMF014/60X-2). Fit the TERM shunt at the ends of the bus. |
 | Device UART | J_UART, J_VIO, R_TXPU, Q_RX (BSS138), R_RXPU | TX: open-drain with a 1 kΩ pull-up to the jumper-selected level. RX: BSS138 level shifter. |
 | FTDI | J_FTDI, C_DTR, D_NRST (BAT54S) | DTR is AC-coupled to NRST (Arduino-style auto-reset); the BAT54S clamps NRST between GND and +3V3. CTS is tied to GND. |
 | Boot | SW_BOOT (TS-1187A), R_BOOT | Hold SW_BOOT through a reset to enter the bootloader. No SWD pads: the FTDI header is the only programming path. |
 
 Jumpers: **J_VIO** shunt on 1-2 = 3.3 V UART, 2-3 = 5 V UART (VSYS). **J_TERM** shunt fitted = 120 Ω
-terminator in.
+terminator in. The two shunts (SH_VIO, SH_TERM: Würth 60900213421) are BOM-only parts with
+outline-only footprints, so they are on the BOM but not in the placement file.
 
 ## Layout
 
@@ -61,8 +62,14 @@ power and signals flowing left to right:
 - Both WAGOs have **+5V on the top pole and GND on the bottom**. J_PWR_OUT is turned the opposite
   way from J_PWR_IN, which reverses its pin order, so its +5V is pin 2 (see `board.kdl`). Mark + and
   − on the silkscreen beside both.
-- All three JST-XH connectors have pin 1 at the top (CANL on both CAN connectors, RX on the UART),
-  so CAN in and CAN out read the same.
+- The CAN connectors are turned opposite ways: J_CAN1 reads CANH, CANL, CAN_GND from the top
+  (pin 1 at the bottom) and J_CAN2 reads CAN_GND, CANL, CANH (pin 1 at the top). Each pin has an
+  edge label (H, L, G) beside it. J_UART has pin 1 (RX) at the top.
+- J_CAN2 sits between the 5V OUT WAGO and J_UART, with 1.1 mm and 1.4 mm between the bodies, so its
+  "CAN OUT" label runs vertically to its left (0.8 mm-wide characters, as on the FTDI pins).
+- CAN_GND: J_CAN1 pin 1 to F_CAN_GND (beside TERM) on the top, and a 0.5 mm track on the bottom
+  from J_CAN1 pin 1, under the FTDI header, up to J_CAN2 pin 1. F_CAN_GND's other pad joins the
+  top GND pour.
 - The +5V passthrough runs straight across the top edge between the WAGOs, above the OR diodes and
   LDO. Size it for the passthrough current, not the board's own < 100 mA.
 - The WAGO levers overhang the side edges by about 2 mm (WAGO drawing: 16.58 mm with the lever
@@ -131,6 +138,8 @@ Supply states: WAGO only, FTDI only, both, and the bridge unpowered with the UAR
 | NRST on DTR fall, 5 V cable | clamped by BAT54S to -0.35 to -0.52 V, below VIL for 12-27 ms (SPICE) | MCU negative injection ≤ 5 mA (Table 22): simulated ≤ 0.25 mA; without the BAT54S, 26 mA | ✓ |
 | NRST on DTR rise (port close) | ≤ 4.32 V with the BAT54S (SPICE); 7.9 V without it | VIN ≤ VDD + 4.0 V = 7.3 V (Table 21) | ✓ |
 | CAN terminator | 2-3 V differential across 120 Ω → ≤ 75 mW | 0805 125 mW | ✓ |
+| CAN_GND to GND, normal | ~0 A (no load returns through it), ≤ 6 Ω (R1max) | Ihold 0.14 A (MF-MSMF p. 1) | ✓ |
+| CAN_GND to GND, fault | WAGO GND lost with a CAN cable fitted: the downstream load's return (≤ 10 A, the WAGO rating) through the PTC until it trips; then ~0.8 W tripped at ≤ 5.25 V | Vmax 60 V, Imax 40 A, trips in ≤ 0.15 s at 1.5 A (p. 1) | ✓ |
 
 ## Firmware requirements from the hardware
 
@@ -146,8 +155,11 @@ Supply states: WAGO only, FTDI only, both, and the bridge unpowered with the UAR
 - **PB6 (UART TX):** open-drain alternate function, internal pull-up and pull-down off (required to
   sustain more than 4 V, DS14720 Table 21 note 2).
 - **PB7 (UART RX):** no internal pull needed (R_RXPU).
-- **FDCAN:** run in classic mode with protocol exception handling enabled, so FD frames on the bus
-  are ignored instead of answered with error frames.
+- **FDCAN (PunderWorks CAN standard):** classic CAN 2.0 frame format with FD mode off, not just a
+  matching data rate, and payloads of at most 8 bytes. One bit rate across the bus, set by the
+  motor controllers, with the sample point at ~87.5% (match it on every node). Enable protocol
+  exception handling too, so a stray FD frame is ignored instead of answered with error frames.
+  The hardware stays FD-capable, so a later move to FD is firmware and segmenting only.
 - **Shared pads:** leave PB8, PB0-PB2, PA9, PA10, PA15, PB3-PB5 untouched (analog). Use the SYSCFG
   remap only if the pad assignment changes.
 - **Flashing:** the ROM bootloader on USART2 (8 data bits, even parity, 1 stop bit; AN2606 Table 19).
@@ -164,6 +176,17 @@ Supply states: WAGO only, FTDI only, both, and the bridge unpowered with the UAR
   USART1 on PA9/PA10, is remapped onto pads 16/17 there). CAN on pads 16/17. Device UART on USART1
   PB6/PB7 (pads 20/1). The bootloader's I2C1 on PB6/PB7 cannot trigger: SCL (PB6) never toggles with
   the MCU in the bootloader. Its FDCAN bootloader is not available on TSSOP-20 (AN2606 Table 19 note 2).
+- **PunderWorks CAN standard (2026-11-17).** All PunderWorks CAN boards match DroidPowerSense v1:
+  3-pin JST-XH (1 CAN_GND, 2 CANL, 3 CANH), TCAN334GDR, CAN_GND daisy-chained between the two
+  connectors and tied to GND through a Bourns MF-MSMF014/60X-2, 120 Ω on a TERM jumper with a Würth
+  60900213421 shunt, and no power on the CAN connector. This board was brought into line before
+  it was ever made, so it stays V1.0. It replaces the earlier 2-pin connectors with no ground,
+  which relied on every board sharing ground through the power wiring. A bus ground wire keeps
+  nodes within the transceiver's common-mode range when they are powered separately. Without the
+  PTC, losing this board's WAGO GND with a CAN cable still fitted would send the downstream
+  device's return current through a 3 A JST contact and signal wire. The PTC, part, footprint
+  (`DroidCANBridge:Bourns_MF-MSMF_1812_Style2`, Bourns p. 7 land pattern: 1.68 × 2.95 mm pads,
+  3.1 mm gap) and shunt are DroidPowerSense's. The builder may leave out the CAN_GND wire.
 - **CAN FD hardware, classic CAN firmware first.** The bus mixes CAN FD and classic nodes. A classic
   node does not slow the others down, since every node already shares the nominal (arbitration) bit
   rate. But a strictly classic controller (e.g. MCP2515) answers FD frames with error frames. The
@@ -182,19 +205,21 @@ Supply states: WAGO only, FTDI only, both, and the bridge unpowered with the UAR
   BSS138, because the FT pin's limit drops to 4.0 V with the bridge unpowered and positive injection
   is not allowed (DS14720 Tables 21-22), so a series resistor can't protect it from a separately
   powered 5 V device.
-- **JST-XH** for CAN and UART (the community's preferred connector), **2-pin with no ground**: every
-  board shares ground through the power wiring. CAN is differential and the TCAN334G tolerates
-  ±12 V common mode (datasheet §5.5); the UART device is powered from this board's passthrough, so
-  its ground return is short. **WAGO 2601-1102** (10 A, lever
-  push-in, horizontal entry) for power.
+- **JST-XH** for CAN and UART (the community's preferred connector). CAN follows the PunderWorks
+  standard above. The UART stays **2-pin with no ground**: the UART device is powered from this
+  board's passthrough, so its ground return is short. **WAGO 2601-1102** (10 A, lever push-in,
+  horizontal entry) for power.
 
 ## Accepted risks and known gaps
 
 - **Passthrough is unprotected.** J_PWR_OUT is wired to the input terminal, so reversed input reaches
   the downstream device. D_IN protects only this board.
-- **Reversed power with other grounds connected.** All connectors share GND. If the input is reversed
-  while the CAN or UART ground is tied to the system ground, current flows through the board's ground
-  copper; no series part can stop that.
+- **Reversed power with other grounds connected.** If the input is reversed while the UART device's
+  ground is tied to the system ground, current flows through the board's ground copper; no series
+  part can stop that. Through a CAN ground wire, F_CAN_GND trips and limits it to tens of mA.
+- **F_CAN_GND is not stocked at LCSC** (MF-MSMF014/60X-2; Mouser 3,538, DigiKey 3,608 on
+  2026-11-17). JLCPCB places it from global sourcing or consigned parts, like the STM32. Without
+  one, it is an 1812 that hand-solders easily.
 - **FTDI adapters with 3.3 V on VCC.** Some adapters supply 3.3 V instead of 5 V on the VCC pin.
   VSYS is then about 3.0 V, the LDO drops out to about 2.8 V, and the TCAN334G (3.0 V minimum)
   is out of spec. Flashing still works (the STM32 runs from 2.0 V); CAN needs the WAGO input.
@@ -209,8 +234,6 @@ Supply states: WAGO only, FTDI only, both, and the bridge unpowered with the UAR
   with nothing to buy.
 - **No SWD access.** Programming and recovery go through the FTDI header and the ROM bootloader
   only, which relies on nBOOT_SEL being cleared at the first flash (see Firmware requirements).
-- **Jumper shunts are not in the netlist.** Order two 2.54 mm shunts (e.g. BOOMELE C5305) per board
-  for J_VIO and J_TERM.
 - **AP2112 θJA for SOT-23-5** was not found in the datasheet text; 0.17 W worst case is small but the
   LDO temperature is on the bench checklist.
 
@@ -247,15 +270,25 @@ Accepted findings:
 - KiCad's stock footprints draw silkscreen at 0.12 mm, under JLC's 0.15 mm line minimum. Common
   practice; outlines may print faint. Not changed.
 
+## CAN standard update (2026-11-17)
+
+Brought in line with the PunderWorks CAN standard (see Decisions): J_CAN1/J_CAN2 to 3-pin, F_CAN_GND
+added, SH_TERM/SH_VIO in the BOM. Re-checked after the change: `stackup check` 0/0/0 (33 parts,
+20 nets), PCB sync check clean, DRC with zones refilled 0 violations and 0 unconnected, F1 pads
+against Bourns p. 7. To make room, two GND stitching vias moved off F1's pads and two off the new
+edge labels. Fab files regenerated. The renders in `assets/` still show the 2-pin connectors.
+
 ## Fab files
 
 [`production/`](production/) holds the Gerbers and job file (2 layers, 1.6 mm) and the PTH/NPTH
 drills with maps in `production/gerbers/`, and the purchasing BOM (`stackup bom`, with LCSC numbers
-for JLCPCB) and the placement file in `production/bom/`. The placement file lists only the 20
-JLCPCB-placed parts: the hand-soldered connectors and headers (J1-J8) are `hand=#true` in the KDL,
+for JLCPCB) and the placement file in `production/bom/`. The placement file lists only the 21
+JLCPCB-placed parts: the hand-soldered connectors and headers (J1-J8) and the loose jumper shunts
+(SH1, SH2) are `hand=#true` in the KDL,
 which marks them Hand/DNP in the BOM and, from Stackup 0.3.0, makes the PCB sync give their
 footprints KiCad's *Exclude from position files* and *Exclude from BOM* attributes. The mounting
 holes' stock footprint carries both attributes itself. Check JLCPCB's placement preview for rotation and pin 1 on U1-U3, Q1, D1-D3 and SW1.
+F1 has no LCSC number (see Accepted risks): order it through global sourcing or consign it.
 
 Regenerate everything after any board change. Refill and save the pours first, because the
 exporters plot the fills stored in the board file:
@@ -270,8 +303,8 @@ stackup bom PCB/stackup/board.kdl --locked -o PCB/production/bom/DroidCANBridge-
 ```
 
 `stackup bom` exits 1 because H1/H2 have no MPN (see accepted findings) but still writes the CSV.
-The placement file needs no hand editing: the footprint attributes already keep J1-J8 and H1/H2
-out of it.
+The placement file needs no hand editing: the footprint attributes already keep J1-J8, SH1/SH2
+and H1/H2 out of it.
 
 ## Bench checklist (first board)
 
@@ -286,8 +319,13 @@ out of it.
 5. Clear nBOOT_SEL with STM32CubeProgrammer over the FTDI; then confirm hold-SW_BOOT + DTR reset
    enters the bootloader, before and after flashing firmware.
 6. CAN: CANH/CANL recessive ≈ 2.5 V, 120 Ω between them with J_TERM fitted (60 Ω with both ends
-   terminated). Exchange classic frames with a known node; confirm no error frames when an FD node
-   transmits FD frames.
-7. UART: loopback at 3.3 V and 5 V settings; scope TX rise time at the target baud rate; with the
+   terminated). Exchange classic frames with a known node (DroidPowerSense) at the motor
+   controllers' bit rate and an 87.5% sample point; confirm no error frames when an FD node
+   transmits FD frames. Confirm the pinout against DroidPowerSense with one cable: pin 1 GND on
+   both ends.
+7. CAN_GND: continuity J_CAN1.1 to J_CAN2.1 (direct), and to GND through F_CAN_GND (≤ 6 Ω). With
+   the WAGO GND disconnected and a load returning through a CAN cable's ground, F_CAN_GND trips and
+   the current falls to mA.
+8. UART: loopback at 3.3 V and 5 V settings; scope TX rise time at the target baud rate; with the
    bridge unpowered and a powered 5 V device on J_UART, confirm PB7 stays ≈ 0 V.
-8. LDO temperature with the CAN bus heavily loaded.
+9. LDO temperature with the CAN bus heavily loaded.

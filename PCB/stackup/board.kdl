@@ -1,7 +1,8 @@
 // DroidCANBridge electrical design: a CAN FD <-> UART bridge for droid builders.
 //
-// STM32C092 (TSSOP-20) with a TCAN334G 3.3 V CAN FD transceiver; two 2-pin JST-XH CAN connectors
-// wired in parallel for daisy-chaining, with a jumper for the 120 Ω terminator; a 2-pin JST-XH UART
+// STM32C092 (TSSOP-20) with a TCAN334G 3.3 V CAN FD transceiver; two 3-pin JST-XH CAN connectors
+// (PunderWorks CAN standard: CAN_GND, CANL, CANH) wired in parallel for daisy-chaining, with a
+// jumper for the 120 Ω terminator; a 2-pin JST-XH UART
 // with a jumper-selected 3.3 V / 5 V logic level; 5 V in on a WAGO terminal with a WAGO
 // passthrough out; a 6-pin FTDI header for the ROM serial bootloader, which can also power the
 // board on the bench. Requirements, decisions and the DC bias numbers are in ../README.md.
@@ -121,12 +122,17 @@ design droidcanadapter {
     circuit mcu.PA12 can_xcvr.TXD name="CAN_TX"
     circuit can_xcvr.RXD mcu.PA11 name="CAN_RX"
 
-    // Signal connectors carry no ground: every board shares ground through the power wiring.
-    // CAN is differential and the TCAN334G tolerates ±12 V common mode (datasheet §5.5).
-    place jst-xh-2 J_CAN1 hand=#true note="CAN in: 1 CANL, 2 CANH"
-    place jst-xh-2 J_CAN2 hand=#true note="CAN out: 1 CANL, 2 CANH (daisy chain)"
-    circuit can_xcvr.CANH J_CAN1.2 J_CAN2.2 name="CANH"
-    circuit can_xcvr.CANL J_CAN1.1 J_CAN2.1 name="CANL"
+    // PunderWorks CAN standard (reference: DroidPowerSense): pin 1 CAN_GND, 2 CANL, 3 CANH.
+    // CAN_GND passes straight from J_CAN1 to J_CAN2 so the bus ground daisy-chains, and reaches
+    // this board's GND only through F_CAN_GND. If this board's WAGO GND comes off while a CAN
+    // cable stays connected, the PTC trips instead of the 3 A JST contact and signal wire
+    // carrying the downstream device's return current. Normal current is ~0: R1max 6 Ω.
+    place jst-xh-3 J_CAN1 hand=#true note="CAN in: 1 CAN_GND, 2 CANL, 3 CANH"
+    place jst-xh-3 J_CAN2 hand=#true note="CAN out (daisy chain): 1 CAN_GND, 2 CANL, 3 CANH"
+    circuit can_xcvr.CANH J_CAN1.3 J_CAN2.3 name="CANH"
+    circuit can_xcvr.CANL J_CAN1.2 J_CAN2.2 name="CANL"
+    place ptc-mf-msmf014-60x F_CAN_GND note="CAN bus ground reference to board GND (PTC limits fault current)"
+    circuit J_CAN1.1 J_CAN2.1 F_CAN_GND.1 name="CAN_GND"
 
     // Termination: fit the shunt on J_TERM when this node is at an end of the bus.
     place resistor R_TERM value="120Ω" footprint="Resistor_SMD:R_0805_2012Metric" \
@@ -193,10 +199,14 @@ design droidcanadapter {
     // ── Ground ───────────────────────────────────────────────────────────────────────────
     // CTS (J_FTDI.2) is tied low, as on Arduino Pro Mini-style headers.
     circuit ldo.out.gnd J_PWR_IN.2 J_PWR_OUT.1 J_FTDI.1 J_FTDI.2 \
-        D_NRST.A1 name="GND"
+        D_NRST.A1 F_CAN_GND.2 name="GND"
 
     // ── Spares ───────────────────────────────────────────────────────────────────────────
     nc mcu.PC14 mcu.PC15 mcu.PA0 mcu.PA1 mcu.PA4 mcu.PA5 mcu.PA6 mcu.PA7 mcu.PA8 \
         note="spare; firmware leaves them in the reset (analog) state"
     nc mcu.PA13 note="SWDIO, not brought out: no SWD pads on this board"
+
+    // ── Jumper shunts (BOM only, placed last so references don't shift) ──────────────────
+    place jumper-shunt SH_TERM hand=#true note="For J_TERM: fit on the bus-end boards only"
+    place jumper-shunt SH_VIO hand=#true note="For J_VIO: 1-2 = 3.3 V UART, 2-3 = 5 V UART"
 }

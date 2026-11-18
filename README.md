@@ -9,8 +9,10 @@ A very small, inexpensive CAN-to-UART bridge for droid builders: it translates C
 standard UART and back, so droid components without CAN support can join a CAN network.
 
 - **MCU:** STM32C092 (TSSOP-20), with a built-in CAN FD controller
-- **CAN:** CAN FD-capable transceiver; two 2-pin JST-XH connectors (CANL, CANH) for daisy-chaining and a jumper for the
-  120 Ω termination resistor
+- **CAN:** CAN FD-capable transceiver (classic CAN 2.0 in firmware for now); two 3-pin JST-XH connectors
+  (1 GND, 2 CANL, 3 CANH, the PunderWorks CAN standard) for daisy-chaining, and a jumper for the 120 Ω
+  termination resistor. The CAN ground wire is optional; on the board it reaches GND through a
+  resettable fuse, so it can never carry a load's return current
 - **UART:** 2-pin JST-XH connector (RX, TX) with a jumper that sets the logic level to 3.3 V or 5 V
 - **Power:** 5 V in on a WAGO terminal (reverse-polarity protected), with a WAGO passthrough output
 - **Programming:** standard 6-pin FTDI header using the STM32's built-in serial bootloader, with

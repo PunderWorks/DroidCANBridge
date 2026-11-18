@@ -7,7 +7,8 @@
 # - The PPA's signing key is committed (ci/kicad-ppa.asc) and the source written here, instead of
 #   `add-apt-repository`, which asks Launchpad's API for the key on every run.
 # - With a cache from the last 7 days, the install runs from it with no network at all
-#   (`--no-download`), falling back to a fresh `apt-get update` only if something is missing.
+#   (`--no-download`). If packages are missing (a run that timed out partway), it downloads just
+#   those against the cached lists, and runs a fresh `apt-get update` only if that fails.
 #   An older cache is refreshed first (picking up KiCad point releases), and used as-is if the
 #   refresh fails.
 # - The workflow saves the cache even when this step fails or times out, so every .deb that
@@ -43,6 +44,10 @@ offline() {
     echo "Installing from the cache (no downloads)"
     sudo apt-get install -y --no-install-recommends --no-download "${APT[@]}" "${PKGS[@]}"
 }
+missing() {
+    echo "Downloading only the packages the cache is missing"
+    sudo apt-get install -y --no-install-recommends "${APT[@]}" "${PKGS[@]}"
+}
 online() {
     echo "Refreshing the package lists"
     sudo apt-get update --error-on=any "${APT[@]}" && touch "$STAMP" &&
@@ -50,7 +55,7 @@ online() {
 }
 
 if [ -n "$(find "$STAMP" -mtime -7 -print 2> /dev/null)" ]; then
-    offline || online
+    offline || missing || online
 elif [ -e "$STAMP" ]; then
     online || offline
 else

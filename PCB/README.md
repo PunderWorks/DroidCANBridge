@@ -39,7 +39,7 @@ Commit the synced PCB with the KDL. CI fails if syncing would change the committ
 | Power in | J_PWR_IN, J_PWR_OUT (WAGO 2601-1102), D_IN, D_FTDI (SS14), C_VSYS | The two SS14s OR the WAGO input and the FTDI VCC onto VSYS. D_IN is the reverse-polarity protection. Each diode stops one source back-feeding the other, so the FTDI never powers the passthrough terminal. |
 | 3.3 V | ldo (AP2112K-3.3) | VSYS → +3V3 for everything on the board. |
 | MCU | mcu (STM32C092FCP6, TSSOP-20) | 100 nF + 4.7 µF on VDD; 100 nF NRST filter. |
-| CAN | can_xcvr (TCAN334GDR), J_CAN1/J_CAN2, F_CAN_GND, R_TERM + J_TERM | STB/SHDN left on their internal pull-downs (normal mode). Connectors: pin 1 CAN_GND, 2 CANL, 3 CANH. CAN_GND runs straight from J_CAN1 to J_CAN2 (the bus ground daisy-chains) and reaches board GND through F_CAN_GND (Bourns MF-MSMF014/60X-2). Fit the TERM shunt at the ends of the bus. |
+| CAN | can_xcvr (TCAN334GDR), J_CAN1/J_CAN2, F_CAN_GND, R_TERM + J_TERM | STB/SHDN left on their internal pull-downs (normal mode). Connectors: pin 1 CAN_GND, 2 CANL, 3 CANH. CAN_GND runs straight from J_CAN1 to J_CAN2 (the bus ground daisy-chains) and reaches board GND through F_CAN_GND (Bourns MF-NSMF020X-2, 1206). Fit the TERM shunt at the ends of the bus. |
 | Device UART | J_UART, J_VIO, R_TXPU, Q_RX (BSS138), R_RXPU | TX: open-drain with a 1 kΩ pull-up to the jumper-selected level. RX: BSS138 level shifter. |
 | FTDI | J_FTDI, C_DTR, D_NRST (BAT54S) | DTR is AC-coupled to NRST (Arduino-style auto-reset); the BAT54S clamps NRST between GND and +3V3. CTS is tied to GND. |
 | Boot | SW_BOOT (TS-1187A), R_BOOT | Hold SW_BOOT through a reset to enter the bootloader. No SWD pads: the FTDI header is the only programming path. |
@@ -138,8 +138,8 @@ Supply states: WAGO only, FTDI only, both, and the bridge unpowered with the UAR
 | NRST on DTR fall, 5 V cable | clamped by BAT54S to -0.35 to -0.52 V, below VIL for 12-27 ms (SPICE) | MCU negative injection ≤ 5 mA (Table 22): simulated ≤ 0.25 mA; without the BAT54S, 26 mA | ✓ |
 | NRST on DTR rise (port close) | ≤ 4.32 V with the BAT54S (SPICE); 7.9 V without it | VIN ≤ VDD + 4.0 V = 7.3 V (Table 21) | ✓ |
 | CAN terminator | 2-3 V differential across 120 Ω → ≤ 75 mW | 0805 125 mW | ✓ |
-| CAN_GND to GND, normal | ~0 A (no load returns through it), ≤ 6 Ω (R1max) | Ihold 0.14 A (MF-MSMF p. 1) | ✓ |
-| CAN_GND to GND, fault | WAGO GND lost with a CAN cable fitted: the downstream load's return (≤ 10 A, the WAGO rating) through the PTC until it trips; then ~0.8 W tripped at ≤ 5.25 V | Vmax 60 V, Imax 40 A, trips in ≤ 0.15 s at 1.5 A (p. 1) | ✓ |
+| CAN_GND to GND, normal | ~0 A (≈ 1 mA signal reference at most), ≤ 3.3 Ω (R1max) → ≤ 3.3 mV | Ihold 0.20 A at 23 °C, 0.10 A at 85 °C (MF-NSMF pp. 1, 3) | ✓ |
+| CAN_GND to GND, fault | WAGO GND lost with a CAN cable fitted: this board's < 100 mA plus the passthrough load's return (≤ 10 A, the WAGO rating; no upstream fuse) through the PTC until it trips; then ~0.6 W tripped at ≤ 5.25 V | Vmax 30 V (5.7× the 5.25 V max), Imax 60 A, trips in ≤ 0.6 s at 1.0 A (MF-NSMF p. 1); JST-XH contact 3 A | ✓ |
 
 ## Firmware requirements from the hardware
 
@@ -178,15 +178,24 @@ Supply states: WAGO only, FTDI only, both, and the bridge unpowered with the UAR
   the MCU in the bootloader. Its FDCAN bootloader is not available on TSSOP-20 (AN2606 Table 19 note 2).
 - **PunderWorks CAN standard (2026-11-17).** All PunderWorks CAN boards match DroidPowerSense v1:
   3-pin JST-XH (1 CAN_GND, 2 CANL, 3 CANH), TCAN334GDR, CAN_GND daisy-chained between the two
-  connectors and tied to GND through a Bourns MF-MSMF014/60X-2, 120 Ω on a TERM jumper with a Würth
+  connectors and tied to GND through a PTC, 120 Ω on a TERM jumper with a Würth
   60900213421 shunt, and no power on the CAN connector. This board was brought into line before
   it was ever made, so it stays V1.0. It replaces the earlier 2-pin connectors with no ground,
   which relied on every board sharing ground through the power wiring. A bus ground wire keeps
   nodes within the transceiver's common-mode range when they are powered separately. Without the
   PTC, losing this board's WAGO GND with a CAN cable still fitted would send the downstream
-  device's return current through a 3 A JST contact and signal wire. The PTC, part, footprint
-  (`DroidCANBridge:Bourns_MF-MSMF_1812_Style2`, Bourns p. 7 land pattern: 1.68 × 2.95 mm pads,
-  3.1 mm gap) and shunt are DroidPowerSense's. The builder may leave out the CAN_GND wire.
+  device's return current through a 3 A JST contact and signal wire. The shunt is
+  DroidPowerSense's. The builder may leave out the CAN_GND wire.
+- **CAN_GND PTC: Bourns MF-NSMF020X-2, 1206 (2026-11-18).** The standard leaves the PTC to each
+  board. DroidPowerSense's MF-MSMF014/60X-2 (60 V, 1812) is sized for a 32 V battery rail and
+  isn't stocked at LCSC, so this 5 V board uses a 1206: Vmax 30 V, Imax 60 A, Ihold 0.20 A
+  (0.10 A at 85 °C), R1max 3.3 Ω (MF-NSMF p. 1, p. 3). Imax covers the worst case, the passthrough
+  load's return bounded only by the 10 A WAGO since there is no upstream fuse. Ihold is far
+  above the ≈ 1 mA reference current and the trip current (0.40 A) well under the 3 A JST
+  contact. Footprint `DroidCANBridge:Bourns_MF-NSMF_1206_Style2` from the p. 8 pad layout
+  (1.0 × 1.6 mm pads, 2.0 mm gap). Stock on 2026-11-18: Mouser 11,420, DigiKey 28,416, LCSC
+  9,850 (C210358, JLCPCB Extended). Rejected: MF-NSMF020 (non-X, Imax only 10 A), MF-NSMF025/24X
+  (13 at LCSC), the 6 V 1206/0805 parts (too little Vmax margin over 5.25 V).
 - **CAN FD hardware, classic CAN firmware first.** The bus mixes CAN FD and classic nodes. A classic
   node does not slow the others down, since every node already shares the nominal (arbitration) bit
   rate. But a strictly classic controller (e.g. MCP2515) answers FD frames with error frames. The
@@ -217,9 +226,6 @@ Supply states: WAGO only, FTDI only, both, and the bridge unpowered with the UAR
 - **Reversed power with other grounds connected.** If the input is reversed while the UART device's
   ground is tied to the system ground, current flows through the board's ground copper; no series
   part can stop that. Through a CAN ground wire, F_CAN_GND trips and limits it to tens of mA.
-- **F_CAN_GND is not stocked at LCSC** (MF-MSMF014/60X-2; Mouser 3,538, DigiKey 3,608 on
-  2026-11-17). JLCPCB places it from global sourcing or consigned parts, like the STM32. Without
-  one, it is an 1812 that hand-solders easily.
 - **FTDI adapters with 3.3 V on VCC.** Some adapters supply 3.3 V instead of 5 V on the VCC pin.
   VSYS is then about 3.0 V, the LDO drops out to about 2.8 V, and the TCAN334G (3.0 V minimum)
   is out of spec. Flashing still works (the STM32 runs from 2.0 V); CAN needs the WAGO input.

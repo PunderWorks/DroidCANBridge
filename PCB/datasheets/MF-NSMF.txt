@@ -1,0 +1,964 @@
+     *R                   AUTOMOTIVE                        Features                                                         n Agency recognition:                     and
+AE **H oHS                      G R A DE
+  C- AL C
+    Q2 OG OM                                                n Standard 1206 footprint
+      00 EN P                                                                                                                n TÜV approval to the following standards:
+        CO FR LIA
+           M EE NT
+            PL & ,                                          n Fast Time-to-Trip (TTT) to protect against                         IEC 62319-1, IEC 60738-1 and
+              IANT                                             overcurrent events                                                IEC 60730-1:2013 clause 15, clause 17
+                                                            n Excellent solderability with ENIG terminal                         and Annex J
+                                                            n Symmetrical designs and low profile
+                                                               (0.7 mm ~ 1.6 mm)                                                        Some models are currently available but
+                                                                                                                                         not recommended for new designs.
+                                                            n RoHS compliant* and halogen free**
+
+                                                            MF-NSMF Series - PTC Resettable Fuses
+
+   Electrical Characteristics
+
+                                                                                       Max. Time           Tripped Power
+                                           Ihold    Itrip     Resistance***                                                         Agency Recognition                AEC-Q200
+                       Vmax.    Imax.                                                   To Trip             Dissipation
+                                                                                                                                                                      Compliant/
+        Model
+                                            at 23 °C         Ohms at 23 °C              at 23 °C           Watts at 23 °C              cUL               TÜV          Automotive
+                                                                                                                                                                        Grade
+                       Volts Amps            Amps             Rmin.      R1max. Amps            Sec.              Typ.              E174545         R 50256634
+ MF-NSMF005/30X          30      40        0.05     0.15       2.80        20         0.5        1.5               0.6                   3                 3                 3
+ MF-NSMF005/60X          60      10        0.05     0.15       2.80        20         0.5        1.5               0.6                   3                 3                 3
+ MF-NSMF010/30X          30      40        0.10     0.25       1.35        15         0.5        1.5               0.6                   3                 3                 3
+ MF-NSMF010/60X          60      10        0.10     0.25       1.35        15         0.5        1.5               0.6                   3                 3                 3
+ MF-NSMF012              30      10        0.12     0.29       1.35        8.5        1.0        0.2               0.6                   3                 3                 3
+ MF-NSMF012/48X          48      10        0.12     0.29       1.00        6.5        1.0        0.2               0.6                   3                 3                 3
+ MF-NSMF016              30      10        0.16     0.37       0.70        6.0        1.0        0.3               0.6                   3                 3                 3
+ MF-NSMF016/48X          48      10        0.16     0.37       0.70        5.0        1.0        0.3               0.6                   3                 3                 3
+ MF-NSMF020              24      10        0.20     0.46       0.60        2.6        1.0        0.6               0.6                   3                 3                 3
+ MF-NSMF020X             30      60        0.20     0.40       0.60        3.3        1.0        0.6               0.6                   3                 3                 3
+ MF-NSMF025X             16      20        0.25     0.50       0.45        2.3        8.0       0.08               0.6                   3                 3                 3
+ MF-NSMF025/24X          24      80        0.25     0.50       0.45        2.3        8.0       0.05               0.6                   3                 3                 3
+ MF-NSMF025/30X          30      60        0.25     0.50       0.45        2.3        8.0       0.05               0.6                   3                 3                 3
+ MF-NSMF035               6      100       0.35     0.75       0.30        1.2        8.0       0.10               0.6                   3                 3                 3
+ MF-NSMF035X             16      20        0.35     0.75       0.30        1.4        3.5       0.14               0.6                   3                 3                 3
+ MF-NSMF035/24X          24      80        0.35     0.75       0.30        1.4        8.0       0.10               0.6                   3                 3                 3
+ MF-NSMF035/30X          30      60        0.35     0.75       0.30        1.4        8.0       0.10               0.6                   3                 3                 3
+ MF-NSMF050/8X            8      100       0.50     1.00       0.15       0.75        8.0       0.10               0.6                   3                 3                 3
+ MF-NSMF050             13.2     100       0.50     1.00       0.15       0.70        8.0       0.10               0.6                   3                 3                 3
+ MF-NSMF050/16X          16      100       0.50     1.00       0.15       0.75        8.0       0.10               0.6                   3                 3                 3
+ MF-NSMF050/24X          24      80        0.50     1.00       0.15       0.75        8.0       0.10               0.6                   3                 3                 3
+ MF-NSMF075               6      100       0.75     1.50       0.10       0.40        8.0       0.20               0.6                   3                 3                 3
+ MF-NSMF075/8X            8      100       0.75     1.50       0.09       0.35        8.0       0.10               0.6                   3                 3                 3
+ MF-NSMF075/13X         13.2     100       0.75     1.50       0.09       0.35        8.0       0.10               0.6                   3                 3                 3
+ MF-NSMF075/16X          16      100       0.75     1.50       0.09       0.35        8.0       0.10               0.6                   3                 3                 3
+***R1max: measured 1 hour post reflow.                                                                                                                                    continued
+
+   Additional Information
+Click these links for more information:
+
+
+
+
+ PRODUCT TECHNICAL INVENTORY SAMPLES      CONTACT                     CALIFORNIA WARNING: Can expose you to lead,
+ SELECTOR LIBRARY                                                       a carcinogen and reproductive toxicant.
+                                                                          See www.P65Warnings.ca.gov
+
+                                                            * RoHS Directive 2015/863, Mar 31, 2015 and Annex.
+                                                            ** Bourns considers a product to be “halogen free” if (a) the Bromine (Br) content is 900 ppm or less; (b) the Chlorine
+                                                                 (Cl) content is 900 ppm or less; and (c) the total Bromine (Br) and Chlorine (Cl) content is 1500 ppm or less.
+                                                            Specifications are subject to change without notice. Users should verify actual device performance in their specific
+                                                            applications. The products described herein and this document are subject to specific legal disclaimers as set forth on the
+                                                            last page of this document, and at www.bourns.com/docs/legal/disclaimer.pdf.
+Applications
+n USB & HDMI port protection
+n Battery packs
+n Tablet and laptop PCs
+n Hard disk drives
+n LCD / LED HDTVs
+n Server and data center interfaces
+
+
+
+         MF-NSMF Series - PTC Resettable Fuses
+
+  Electrical Characteristics (continued)
+
+                                                                                           Max. Time          Tripped Power
+                                                Ihold     Itrip     Resistance****                                                      Agency Recognition              AEC-Q200
+                            Vmax.     Imax.                                                 To Trip            Dissipation
+                                                                                                                                                                        Compliant/
+         Model
+                                                  at 23 °C          Ohms at 23 °C               at 23 °C       Watts at 23 °C             cUL               TÜV         Automotive
+                                                                                                                                                                          Grade
+                            Volts Amps             Amps              Rmin.    R1max. Amps            Sec.             Typ.             E174545         R 50256634
+MF-NSMF110                    6        100      1.10     2.20        0.06       0.20       8.0       0.10              0.6                  3                 3                3
+MF-NSMF110/6X                 6        100      1.10     2.20        0.06       0.24       8.0       0.10              0.8                  3                 3                3
+MF-NSMF110/16X                16       100      1.10     2.20        0.06       0.23       8.0       0.10              0.8                  3                 3                3
+MF-NSMF125                    6        100      1.25     2.50        0.05       0.14       8.0       0.20              0.6                  3                 3                3
+MF-NSMF125/8X                 8        100      1.25     2.50        0.04       0.15       8.0       0.20              0.8                  3                 3                3
+MF-NSMF150                    6        100      1.50     3.00        0.03       0.13       8.0       0.30              0.6                  3                 3                3
+MF-NSMF150/6X                 6        100      1.50     3.00        0.03       0.12       8.0       0.30              0.8                  3                 3                3
+MF-NSMF175                    6        100      1.75     3.50        0.02      0.085       8.0        1.0              0.7                  3                 3                3
+MF-NSMF200                    6        100      2.00     4.00        0.02      0.085       8.0        1.0              0.7                  3                 3                3
+****R1max: measured 1 hour post reflow.
+
+
+
+  Environmental Characteristics
+
+                            Item                                                       Condition                                                      Criteria
+ Operating Temperature                                            -40 °C to +85 °C
+ Recommended Storage                                              +40 °C max. / 70 % R.H. max.
+ Passive Aging                                                    +85 °C, 1000 hours                                         ±5 % typical resistance change
+ Humidity Aging                                                   +85 °C, 85 % R.H. 1000 hours                               ±5 % typical resistance change
+ Thermal Shock                                                    -40 °C to +85 °C, 20 times                                 ±10 % typical resistance change
+ Solvent Resistance                                               MIL-STD-202, Method 215                                    No change (marking still legible)
+ Vibration                                                        MIL-STD-883C, Method 2007.1 Condition A                    No change (Rmin < R < R1max)
+ Moisture Sensitivity Level (MSL)                                 See Note
+ ESD Classiﬁcation                                                Class 6 (per AEC-Q200-2, HBM)
+
+
+  Test Procedures and Requirements
+
+                            Item                                                   Test Conditions                                         Accept/Reject Criteria
+ Visual/Mechanical                                                Verify dimensions and materials                            Per MF physical description
+ Resistance                                                       In still air @ 23 °C                                       Rmin ≤ R ≤ Rmax
+ Time to Trip                                                     At specified current, Vmax, 23 °C, still air               T ≤ max. time to trip (seconds)
+ Hold Current                                                     30 min. at Ihold, still air                                No trip
+ Trip Cycle Life                                                  Vmax, Imax, 100 cycles                                     No arcing or burning
+ Trip Endurance                                                   Vmax, 48 hours                                             No arcing or burning
+ Solderability                                                    245 °C ± 5 °C, 5 seconds                                   95 % min. coverage
+
+Specifications are subject to change without notice.
+Users should verify actual device performance in their specific applications.
+The products described herein and this document are subject to specific legal disclaimers as set forth on the last page of this document, and at www.bourns.com/docs/legal/disclaimer.pdf.
+         MF-NSMF Series - PTC Resettable Fuses
+
+   Thermal Derating Table - Ihold (Amps)
+
+                                                                                     Ambient Operating Temperature
+          Model
+                                  -40 °C           -20 °C             0 °C            23 °C     40 °C       50 °C                          60 °C            70 °C            85 °C
+ MF-NSMF005/30X                    0.076            0.068            0.060             0.050            0.043            0.039             0.034            0.030            0.023
+ MF-NSMF005/60X                    0.076            0.068            0.060             0.050            0.043            0.039             0.034            0.030            0.023
+ MF-NSMF010/30X                    0.15              0.14             0.12             0.10              0.08             0.07              0.06             0.05             0.04
+ MF-NSMF010/60X                    0.15              0.14             0.12             0.10              0.08             0.07              0.06             0.05             0.04
+ MF-NSMF012                        0.19              0.17             0.15             0.12              0.11             0.10              0.09             0.08             0.07
+ MF-NSMF012/48X                    0.18              0.16             0.14             0.12              0.10             0.09              0.08             0.07             0.05
+ MF-NSMF016                        0.21              0.20             0.18             0.16              0.14             0.13              0.12             0.11             0.09
+ MF-NSMF016/48X                    0.22              0.20             0.18             0.16              0.14             0.12              0.10             0.09             0.08
+ MF-NSMF020                        0.30              0.27             0.24             0.20              0.18             0.16              0.14             0.12             0.11
+ MF-NSMF020X                       0.30              0.27             0.24             0.20              0.18             0.16              0.14             0.12             0.10
+ MF-NSMF025X                       0.39              0.35             0.31             0.25              0.23             0.21              0.18             0.16             0.13
+ MF-NSMF025/24X                    0.39              0.35             0.31             0.25              0.23             0.21              0.18             0.16             0.13
+ MF-NSMF025/30X                    0.39              0.35             0.31             0.25              0.23             0.21              0.18             0.16             0.13
+ MF-NSMF035                        0.51              0.46             0.40             0.35              0.30             0.27              0.24             0.22             0.18
+ MF-NSMF035X                       0.51              0.46             0.40             0.35              0.30             0.27              0.24             0.22             0.18
+ MF-NSMF035/24X                    0.51              0.46             0.40             0.35              0.30             0.27              0.24             0.22             0.18
+ MF-NSMF035/30X                    0.51              0.46             0.40             0.35              0.30             0.27              0.24             0.22             0.18
+ MF-NSMF050/8X                     0.76              0.68             0.59             0.50              0.44             0.40              0.35             0.32             0.26
+ MF-NSMF050                        0.76              0.68             0.59             0.50              0.44             0.40              0.35             0.32             0.26
+ MF-NSMF050/16X                    0.76              0.68             0.59             0.50              0.44             0.40              0.35             0.32             0.26
+ MF-NSMF050/24X                    0.76              0.68             0.59             0.50              0.44             0.40              0.35             0.32             0.26
+ MF-NSMF075                        1.11              1.00             0.85             0.75              0.67             0.61              0.52             0.50             0.42
+ MF-NSMF075/8X                     1.11              1.00             0.85             0.75              0.67             0.61              0.52             0.50             0.42
+ MF-NSMF075/13X                    1.11              1.00             0.85             0.75              0.67             0.61              0.52             0.50             0.42
+ MF-NSMF075/16X                    1.11              1.00             0.85             0.75              0.67             0.61              0.52             0.50             0.42
+ MF-NSMF110                        1.64              1.46             1.30             1.10              0.92             0.83              0.80             0.65             0.52
+ MF-NSMF110/6X                     1.64              1.46             1.30             1.10              0.92             0.83              0.80             0.65             0.52
+ MF-NSMF110/16X                    1.64              1.46             1.30             1.10              0.92             0.83              0.80             0.65             0.52
+ MF-NSMF125                        1.84              1.66             1.47             1.25              1.11             1.02              0.91             0.82             0.69
+ MF-NSMF125/8X                     1.84              1.66             1.47             1.25              1.11             1.02              0.91             0.82             0.69
+ MF-NSMF150                        2.20              1.99             1.77             1.50              1.34             1.23              1.10             1.01             0.84
+ MF-NSMF150/6X                     2.20              1.99             1.77             1.50              1.34             1.23              1.10             1.01             0.84
+ MF-NSMF175                        2.52              2.28             1.99             1.75              1.57             1.45              1.32             1.21             1.04
+ MF-NSMF200                        2.88              2.61             2.28             2.00              1.80             1.66              1.51             1.39             1.19
+
+
+
+
+Specifications are subject to change without notice.
+Users should verify actual device performance in their specific applications.
+The products described herein and this document are subject to specific legal disclaimers as set forth on the last page of this document, and at www.bourns.com/docs/legal/disclaimer.pdf.
+                         MF-NSMF Series - PTC Resettable Fuses
+
+               Typical Time to Trip at 23 ˚C
+
+                            100
+
+                                                                                                                                                      A   MF-NSMF012
+                                                                                                                                                      B   MF-NSMF016
+                                               B
+                                                                                                                                                      C   MF-NSMF020
+                                                                     D
+                             10                                            E                                                                          D   MF-NSMF035
+                                                                                                       J
+                                                                                                                                                      E   MF-NSMF050
+                                                                                   F         G                                                        F   MF-NSMF075
+                                                                                                   H                                                  G   MF-NSMF110
+                                                      C
+                                                                                                                K                                     H   MF-NSMF125
+
+
+
+
+Time to Trip (Seconds)
+                                                                                                       I                                              I   MF-NSMF150
+                               1               A
+                                                                                                                                                      J   MF-NSMF175
+                                                                                                                                                      K   MF-NSMF200
+
+
+
+                             0.1
+
+
+
+
+                            0.01
+
+
+
+
+                           0.001
+                                0.1                                        1                                                  10                                                  100
+
+                                                                                       Fault Current (Amps)
+
+The Time to Trip curves represent typical performance of a device in a simulated application environment. Actual performance in specific
+customer applications may differ from these values due to the influence of other variables.
+
+
+
+
+Specifications are subject to change without notice.
+Users should verify actual device performance in their specific applications.
+The products described herein and this document are subject to specific legal disclaimers as set forth on the last page of this document, and at www.bourns.com/docs/legal/disclaimer.pdf.
+                         MF-NSMF Series - PTC Resettable Fuses
+
+               Typical Time to Trip at 23 ˚C (continued)
+
+                            100
+
+                                                                                                                            A    MF-NSMF005/30X, MF-NSMF005/60X
+                                                                                                                            B    MF-NSMF010/30X, MF-NSMF010/60X
+                                                                                                                            C    MF-NSMF012/48X
+                             10
+                                                                                                                            D    MF-NSMF016/48X
+                                     A         C
+
+
+                                           B            D
+                              1
+
+
+
+
+Time to Trip (Seconds)
+                             0.1
+
+
+
+
+                            0.01
+
+
+
+
+                           0.001
+
+
+
+
+                          0.0001
+                               0.1                                         1                                                    10                                                100
+
+                                                                                      Fault Current (Amps)
+
+The Time to Trip curves represent typical performance of a device in a simulated application environment. Actual performance in specific
+customer applications may differ from these values due to the influence of other variables.
+
+
+
+
+Specifications are subject to change without notice.
+Users should verify actual device performance in their specific applications.
+The products described herein and this document are subject to specific legal disclaimers as set forth on the last page of this document, and at www.bourns.com/docs/legal/disclaimer.pdf.
+                         MF-NSMF Series - PTC Resettable Fuses
+
+               Typical Time to Trip at 23 ˚C
+
+                            100
+                                                                                                                                                     A MF-NSMF020X
+                                                                                                                                                     B MF-NSMF025X,
+                                                                                                  K
+                                                           B                            H                                                              MF-NSMF025/24X,
+                                                                      C
+                             10                                                                                                                        MF-NSMF025/30X
+                                                                              F
+                                                   A                                                                                                 C MF-NSMF035X,
+                                                                          E       G         I          L
+                                                                  D                                                                                    MF-NSMF035/24X
+                                                                                                 J                                                   D MF-NSMF035/30X
+                              1                                                                                                                      E MF-NSMF050/8X,
+                                                                                                                                                       MF-NSMF050/16X
+
+
+
+
+Time to Trip (Seconds)
+                                                                                                                                                     F MF-NSMF050/24X
+                                                                                                                                                     G MF-NSMF075/8X
+                                                                                                                                                     H MF-NSMF075/13X,
+                             0.1
+                                                                                                                                                       MF-NSMF075/16X
+                                                                                                                                                     I MF-NSMF110/6X
+                                                                                                                                                     J MF-NSMF110/16X
+                                                                                                                                                     K MF-NSMF125/8X
+                            0.01
+                                                                                                                                                     L MF-NSMF150/6X
+
+
+
+
+                           0.001
+
+
+
+
+                          0.0001
+                                   0                                          1                                               10                                                  100
+
+                                                                                      Fault Current (Amps)
+
+The Time to Trip curves represent typical performance of a device in a simulated application environment. Actual performance in specific
+customer applications may differ from these values due to the influence of other variables.
+
+
+
+
+Specifications are subject to change without notice.
+Users should verify actual device performance in their specific applications.
+The products described herein and this document are subject to specific legal disclaimers as set forth on the last page of this document, and at www.bourns.com/docs/legal/disclaimer.pdf.
+         MF-NSMF Series - PTC Resettable Fuses
+
+  How to Order
+                                                                                                                                            MF - NSMF 025 / 30 X - 2
+Multifuse® Product Designator
+Series
+    NSMF = 1206 Surface Mount Component
+Hold Current Ihold Indicator
+   005 ~ 200 (0.05 ~ 2.0 Amps)
+Voltage Options
+    6 = 6 Voltage Rated            8 = 8 Voltage Rated
+    13 = 13.2 Voltage Rated        16 = 16 Voltage Rated
+    24 = 24 Voltage Rated          30 = 30 Voltage Rated
+    48 = 48 Voltage Rated          60 = 60 Voltage Rated
+MultiFuse® Design Specific Code
+   X = MultiFuse® freeXpansion™ Design
+Packaging
+   -2 = Tape and Reel Packaged per EIA 481
+
+
+  Packaging Quantity
+
+                                                                      Model                                                                                Packaging Quantity
+
+ MF-NSMF005/30X                       MF-NSMF016/48X                       MF-NSMF050                           MF-NSMF125
+ MF-NSMF005/60X                       MF-NSMF020                           MF-NSMF050/24X                       MF-NSMF125/8X
+ MF-NSMF010/30X                       MF-NSMF020X                          MF-NSMF075                           MF-NSMF150
+ MF-NSMF010/60X                       MF-NSMF025X                          MF-NSMF075/13X                       MF-NSMF150/6X                         3,000 pcs. per reel
+ MF-NSMF012                           MF-NSMF035                           MF-NSMF075X/16X                      MF-NSMF175
+ MF-NSMF012/48X                       MF-NSMF035X                          MF-NSMF110                           MF-NSMF200
+ MF-NSMF016                           MF-NSMF035/30X                       MF-NSMF110/16X
+
+ MF-NSMF025/24X                       MF-NSMF035/24X                       MF-NSMF050/16X                       MF-NSMF110/6X
+                                                                                                                                                      4,000 pcs. per reel
+ MF-NSMF025/30                        MF-NSMF050/8X                        MF-NSMF075/8X
+
+
+
+  Typical Part Marking
+Represents total content. Layout may vary.
+
+                              Style 1 part identification:                                                                     Style 2 part identification:
+
+           5                  MF-NSMF012 = 0
+                              MF-NSMF016 = 1                                                               C
+                                                                                                                               MF-NSMF005/30X, MF-NSMF005/60X = K
+                                                                                                                               MF-NSMF010/30X, MF-NSMF010/60X = 0
+                              MF-NSMF020 = 2                                                                                   MF-NSMF012/48X = X
+                              MF-NSMF035 = 3                                                                                   MF-NSMF016/48X = 1
+                              MF-NSMF050 = 4                                                                                   MF-NSMF020X = 2
+                              MF-NSMF075 = 5                                                                                   MF-NSMF025X, MF-NSMF025/24X,
+                              MF-NSMF110 = 6                                                                                   MF-NSMF025/30X = C
+                              MF-NSMF125 = 7                                                                                   MF-NSMF035X, MF-NSMF035/24X = 3
+                              MF-NSMF150 = 8                                                                                   MF-NSMF035/30X = P
+                              MF-NSMF175 = 9                                                                                   MF-NSMF050/8X, MF-NSMF050/16X = 4
+                              MF-NSMF200 = A                                                                                   MF-NSMF050/24X = T
+                                                                                                                               MF-NSMF075/8X = 5
+                                                                                                                               MF-NSMF075/13X, MF-NSMF075X/16X = U
+                                                                                                                               MF-NSMF110/6X = 6
+                                                                                                                               MF-NSMF110/16X = V
+                                                                                                                               MF-NSMF125/8X = 7
+                                                                                                                               MF-NSMF150/6X = 8
+A bi-weekly date code will appear on the package label: weeks 05-06 = C
+
+
+
+
+Specifications are subject to change without notice.
+Users should verify actual device performance in their specific applications.
+The products described herein and this document are subject to specific legal disclaimers as set forth on the last page of this document, and at www.bourns.com/docs/legal/disclaimer.pdf.
+          MF-NSMF Series - PTC Resettable Fuses
+
+  Product Dimensions
+
+Style 1       Top and Bottom View               Side View         Terminal material:                                             Recommended Pad Layout
+
+                           A                    C                 Electroless Ni under immersion Gold (ENIG)
+                                                                                                                                       1.0 ± 0.05                         1.0 ± 0.05
+                                                                                                                                     (.039 ± .002)                      (.039 ± .002)
+
+                                                                                                                                                                           1.6 ± 0.1
+                                        B
+                                                                                                     MM                                                                 (0.063 ± .004)
+                                                                                 DIMENSIONS:
+                                                                                                  (INCHES)
+                                                                                                                                             2.0 ± 0.1
+                       D                                                                                                                  (.079 ± .004)
+
+ Style 2             Top View                       Bottom View                Side View                                         Recommended Pad Layout
+                                                          A                                C
+                                                                                                                                       1.0 ± 0.05                         1.0 ± 0.05
+                                                                                                                                     (.039 ± .002)                      (.039 ± .002)
+
+
+                           2                                            B                                                                                                  1.6 ± 0.1
+                                                                                                                                                                        (0.063 ± .004)
+
+
+                                            D                           E                                                                    2.0 ± 0.1
+                                                                                                                                          (.079 ± .004)
+
+
+
+                                            A                           B                             C                          D                               E
+ Model                                                                                                                                                                             Style
+                                 Min.            Max.          Min.          Max.              Min.          Max.      Min.            Max.               Min.        Max.
+                                 3.00             3.40          1.40          1.80         0.60             1.10        0.25           1.0             0.05            0.35
+ MF-NSMF005/30X                                                                                                                                                                         2
+                                (0.118)         (0.134)       (0.055)       (0.071)      (0.024)          (0.043)     (0.010)        (0.039)         (0.002)         (0.014)
+                                 3.00             3.40          1.40          1.80         0.60             1.10        0.25           1.0             0.05            0.35
+ MF-NSMF005/60X                                                                                                                                                                         2
+                                (0.118)         (0.134)       (0.055)       (0.071)      (0.024)          (0.043)     (0.010)        (0.039)         (0.002)         (0.014)
+                                 3.00             3.40          1.40          1.80         0.60             1.10        0.25           1.0             0.05            0.35
+ MF-NSMF010/30X                                                                                                                                                                         2
+                                (0.118)         (0.134)       (0.055)       (0.071)      (0.024)          (0.043)     (0.010)        (0.039)         (0.002)         (0.014)
+                                 3.00             3.40          1.40          1.80         0.60             1.10        0.25           1.0             0.05            0.35
+ MF-NSMF010/60X                                                                                                                                                                         2
+                                (0.118)         (0.134)       (0.055)       (0.071)      (0.024)          (0.043)     (0.010)        (0.039)         (0.002)         (0.014)
+                                 3.00             3.40          1.40          1.80         0.70             1.10        0.25
+ MF-NSMF012                                                                                                                                                                             1
+                                (0.118)         (0.134)       (0.055)       (0.071)      (0.028)          (0.043)     (0.010)
+                                 3.00             3.40          1.40          1.80         0.60             1.10        0.25           1.0             0.05            0.35
+ MF-NSMF012/48X                                                                                                                                                                         2
+                                (0.118)         (0.134)       (0.055)       (0.071)      (0.024)          (0.043)     (0.010)        (0.039)         (0.002)         (0.014)
+                                 3.00             3.40          1.40          1.80         0.48             0.85        0.25
+ MF-NSMF016                                                                                                                                                                             1
+                                (0.118)         (0.134)       (0.055)       (0.071)      (0.019)          (0.033)     (0.010)
+                                 3.00             3.40          1.40          1.80         0.60             1.10        0.25           1.0             0.05            0.35
+ MF-NSMF016/48X                                                                                                                                                                         2
+                                (0.118)         (0.134)       (0.055)       (0.071)      (0.024)          (0.043)     (0.010)        (0.039)         (0.002)         (0.014)
+                                 3.00             3.40          1.40          1.80         0.48             0.85        0.25
+ MF-NSMF020                                                                                                                                                                             1
+                                (0.118)         (0.134)       (0.055)       (0.071)      (0.019)          (0.033)     (0.010)
+                                 3.00             3.40          1.40          1.80         0.40             0.85        0.25           1.0             0.05            0.35
+ MF-NSMF020X                                                                                                                                                                            2
+                                (0.118)         (0.134)       (0.055)       (0.071)      (0.016)          (0.033)     (0.010)        (0.039)         (0.002)         (0.014)
+                                 3.00             3.40          1.40          1.80         0.40             0.85        0.25           1.0             0.05            0.35
+ MF-NSMF025X                                                                                                                                                                            2
+                                (0.118)         (0.134)       (0.055)       (0.071)      (0.016)          (0.033)     (0.010)        (0.039)         (0.002)         (0.014)
+                                 3.00             3.40          1.40          1.80         0.40             0.85        0.25           1.0             0.05            0.35
+ MF-NSMF025/24X                                                                                                                                                                         2
+                                (0.118)         (0.134)       (0.055)       (0.071)      (0.016)          (0.033)     (0.010)        (0.039)         (0.002)         (0.014)
+                                 3.00             3.40          1.40          1.80         0.40             0.85        0.25           1.0             0.05            0.35
+ MF-NSMF025/30X                                                                                                                                                                         2
+                                (0.118)         (0.134)       (0.055)       (0.071)      (0.016)          (0.033)     (0.010)        (0.039)         (0.002)         (0.014)
+                                 3.00             3.40          1.40          1.80         0.48             0.85        0.25
+ MF-NSMF035                                                                                                                                                                             1
+                                (0.118)         (0.134)       (0.055)       (0.071)      (0.019)          (0.033)     (0.010)
+
+
+
+Specifications are subject to change without notice.
+Users should verify actual device performance in their specific applications.
+The products described herein and this document are subject to specific legal disclaimers as set forth on the last page of this document, and at www.bourns.com/docs/legal/disclaimer.pdf.
+         MF-NSMF Series - PTC Resettable Fuses
+
+  Product Dimensions (continued)
+
+                                          A                            B                            C                            D                           E
+ Model                                                                                                                                                                          Style
+                                 Min.          Max.           Min.          Max.           Min.          Max.          Min.           Max.          Min.          Max.
+                                3.00            3.40          1.40           1.80          0.40           0.85          0.25           1.0           0.05          0.35
+ MF-NSMF035X                                                                                                                                                                      2
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.016)        (0.033)       (0.010)        (0.039)       (0.002)       (0.014)
+                                3.00            3.40          1.40           1.80          0.40           0.85          0.25           1.0           0.05          0.35
+ MF-NSMF035/24X                                                                                                                                                                   2
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.016)        (0.033)       (0.010)        (0.039)       (0.002)       (0.014)
+                                3.00            3.40          1.40           1.80          0.75           1.25          0.25           1.0           0.05          0.35
+ MF-NSMF035/30X                                                                                                                                                                   2
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.030)        (0.049)       (0.010)        (0.039)       (0.002)       (0.014)
+                                3.00            3.40          1.40           1.80          0.40           0.85          0.25           1.0           0.05          0.35
+ MF-NSMF050/8X                                                                                                                                                                    2
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.016)        (0.033)       (0.010)        (0.039)       (0.002)       (0.014)
+                                3.00            3.40          1.40           1.80          0.48           0.85          0.25
+ MF-NSMF050                                                                                                                                                                       1
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.019)        (0.033)       (0.010)
+                                3.00            3.40          1.40           1.80          0.40           0.85          0.25           1.0           0.05          0.35
+ MF-NSMF050/16X                                                                                                                                                                   2
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.016)        (0.033)       (0.010)        (0.039)       (0.002)       (0.014)
+                                3.00            3.40          1.40           1.80          0.75           1.25          0.25           1.0           0.05          0.35
+ MF-NSMF050/24X                                                                                                                                                                   2
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.030)        (0.049)       (0.010)        (0.039)       (0.002)       (0.014)
+                                3.00            3.40          1.40           1.80          0.40           0.70          0.25
+ MF-NSMF075                                                                                                                                                                       1
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.016)        (0.028)       (0.010)
+                                3.00            3.40          1.40           1.80          0.35           0.80          0.25           1.0           0.05          0.35
+ MF-NSMF075/8X                                                                                                                                                                    2
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.014)        (0.031)       (0.010)        (0.039)       (0.002)       (0.014)
+                                3.00            3.40          1.40           1.80          0.70           1.20          0.25           1.0           0.05          0.35
+ MF-NSMF075/13X                                                                                                                                                                   2
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.028)        (0.047)       (0.010)        (0.039)       (0.002)       (0.014)
+                                3.00            3.40          1.40           1.80          0.70           1.20          0.25           1.0           0.05          0.35
+ MF-NSMF075/16X                                                                                                                                                                   2
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.028)        (0.047)       (0.010)        (0.039)       (0.002)       (0.014)
+                                3.00            3.40          1.40           1.80          0.40           0.70          0.25
+ MF-NSMF110                                                                                                                                                                       1
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.016)        (0.028)       (0.010)
+                                3.00            3.40          1.40           1.80          0.35           0.80          0.25           1.0           0.05          0.35
+ MF-NSMF110/6X                                                                                                                                                                    2
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.014)        (0.031)       (0.010)        (0.039)       (0.002)       (0.014)
+                                3.00            3.40          1.40           1.80          0.60           1.10          0.25           1.0           0.05          0.35
+ MF-NSMF110/16X                                                                                                                                                                   2
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.024)        (0.043)       (0.010)        (0.039)       (0.002)       (0.014)
+                                3.00            3.40          1.40           1.80          0.40           0.70          0.25
+ MF-NSMF125                                                                                                                                                                       1
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.016)        (0.028)       (0.010)
+                                3.00            3.40          1.40           1.80          0.60           1.10          0.25           1.0           0.05          0.35
+ MF-NSMF125/8X                                                                                                                                                                    2
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.024)        (0.043)       (0.010)        (0.039)       (0.002)       (0.014)
+                                3.00            3.40          1.40           1.80          0.40           0.70          0.25
+ MF-NSMF150                                                                                                                                                                       1
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.016)        (0.028)       (0.010)
+                                3.00            3.40          1.40           1.80          0.60           1.10          0.25           1.0           0.05          0.35
+ MF-NSMF150/6X                                                                                                                                                                    2
+                               (0.118)        (0.134)       (0.055)        (0.071)       (0.024)        (0.043)       (0.010)        (0.039)       (0.002)       (0.014)
+                                3.00            3.50          1.40           1.80          0.70           1.60          0.25
+ MF-NSMF175                                                                                                                                                                       1
+                               (0.118)        (0.138)       (0.055)        (0.071)       (0.028)        (0.063)       (0.010)
+                                3.00            3.50          1.40           1.80          0.70           1.60          0.25
+ MF-NSMF200                                                                                                                                                                       1
+                               (0.118)        (0.138)       (0.055)        (0.071)       (0.028)        (0.063)       (0.010)
+
+                                                                                                                                                                                   MM
+                                                                                                                                                                 DIMENSIONS:
+                                                                                                                                                                                (INCHES)
+
+
+
+
+Specifications are subject to change without notice.
+Users should verify actual device performance in their specific applications.
+The products described herein and this document are subject to specific legal disclaimers as set forth on the last page of this document, and at www.bourns.com/docs/legal/disclaimer.pdf.
+                 MF-NSMF Series - PTC Resettable Fuses
+
+        Solder Reflow Recommendations
+
+                                                                tp                                           Notes:
+                  TP
+                                                                                    CRITICAL ZONE
+                                                                                                             •   MF-NSMF models are intended for reflow soldering (including, but not
+                                                      RAMP-UP                       T L TO TP                    limited to heating plate, hot air, IR, nitrogen, and vapor phase).
+                  TL                                                                                         •   Wave soldering is permissible only if the device is on the top of the
+                                                                        tL
+                                                                                                                 PCB, opposite the heat source.
+               Ts max                                                                                        •   Hand soldering is not recommended for these devices.
+
+
+
+ Temperature
+                                                                                      RAMP-DOWN              •   All temperatures refer to the topside of the device, measured on the
+                                                                                                                 device body surface.
+               Ts min
+                                     ts
+                                                                                                             •   If reﬂow temperatures exceed the recommended proﬁle, devices may
+                                  PREHEAT                                                                        not meet the published speciﬁcations.
+                                                                                                             •   Compatible with Pb and Pb-free solder reﬂow proﬁles.
+                  25                                                                                         •   Excess solder may cause a short circuit.
+                                    t 25 °C TO PEAK                                                          •   Please refer to the Multifuse® Polymer PTC Resettable Fuse Soldering
+                                                                                                                 Recommendations for more details.
+                                                       Time
+
+                                      Profile Feature                                                                                Pb-Free Assembly
+    Average Ramp-Up Rate (Ts max to Tp)                                                             3 °C / second max.
+    PREHEAT:
+       Temperature Min. (Tsmin)                                                                  150 °C
+       Temperature Max. (Tsmax)                                                                  200 °C
+          Process                                                                             Time       Inspect solder joint to determine if solder joint is
+       Time  (Tsmin to Tsmax) (ts) Materials                         Temperature                 60~180 seconds
+                                                                                                         acceptable (i.e. exhibits wetting of joint’s surface).
+               Description                                                                   Interval
+                                                                                                                 Use the following criteria (ref. acceptability of printed
+   TIMEsolder paste
+1. Apply   MAINTAINED to       ABOVE:
+                                 • Sn 96.5 / Ag 3.0 / Cu 0.5    Room temperature                                 board assemblies, IPC-A-610):
+   test Temperature
+        board (8 - 10 mil (T
+                          thick)   Alloy water soluble or no
+                             L)                                                                     217 °C A) Acceptable (see Figure 1)
+                                   clean solder paste
+      Time (tL)                     (see note 1)                                                    60~150 seconds
+                                                                                                               (1) The solder connection wetting angle (solder to
+                                 • single sided epoxy glass                                                              component and solder to PCB termination)
+   Peak Temperature (Tp) (G10) (UL approved)                                                        260 °C
+                                                                                                                         does not exceed 90 °.
+                                 • PC board approx. 4x4x.06 in.
+    Time within 5 °C of Actual Peak Temperature (tp)                                                20~40 seconds
+                                                                                                               (2) Solder balls that do not violate minimum
+2. Place test units onto board    6 units/board                                                                          electrical clearances and are attached
+3. Ramp-Down
+   Ramp up   Rate                 Convection oven                (see note 2)                    6 °C
+                                                                                        2.5 °C ± 0.5    / second max.
+                                                                                                     °/sec.       (soldered) to a metal surface.
+4. Time
+   Preheat25  °C to Peak Temperature
+           (TS)                                                  150 °C to 190 °C       90 ± 30 se8c.minutes B) Unacceptable (see Figure 2)
+                                                                                                             max.
+5. Time above liquidus (TL)                                      220 °C                 60-90 sec.              (1) Solder connection wetting angle exceeding
+                                                                                                                    90 °.
+6. Peak temperature (TP)                                                                250 °C +0 °/-5 °
+                                                                                        10-20 sec. within       (2) Incomplete reflow of solder paste.
+                                                                                        5 °C of peak            (3) Dewetting.
+7. Ramp down                                                     Room temperature       3 °C ± 0.5 °C/sec.       If unacceptable, determine cause and correct prior to
+                                                                 (see note 2)                                    next run.
+8. Cleaning water clean profile   High pressure deionized        72 °F to 160 °F        As required              NOTES:
+                                  water 65 PSI max.              (22 °C to 71 °C)
+                                                                                                                 1. Water soluble solder paste only above 100K.
+                                                                                                                 2. Refer to ref. temperature profile. Temperature at
+                                                                                                                    lead/pad junction with “K” type thermocouple.
+ Temperature of Lead/Pad Junction                                                          3. Units that are board mounted for environmental
+(Derived using 6-zone Convection Oven)                                                        testing must see a peak temperature in the reflow
+                                                                                              zone, as specified. This is to ensure that all test
+                                              Asia-Pacific: Tel: +886-2 2562-4117 • Email: asiacus@bourns.com
+                                                                                              units will see “worst case conditions”.
+                                              Europe: Tel: +36 88 885 877 • Email: eurocus@bourns.com
+                                                                                          4. Ramp down rate to be measured from 245 °C to
+                                                                                             150 °C.
+                                              Mexico: Tel: +52 614 478 0400 • Email: mexicus@bourns.com
+                                                                                          5. Process Description 8 does not apply to open
+                                              The Americas: Tel: +1-951 781-5500 • Email: frame trimmers.
+                                                                                          americus@bourns.com
+                                              www.bourns.com
+
+
+
+
+ Specifications are subject to change without notice.
+ Users should verify actual device performance in their specific applications.
+ The products described herein and this document are subject to specific legal disclaimers as set forth on the last page of this document, and at www.bourns.com/docs/legal/disclaimer.pdf.
+         MF-NSMF Series - PTC Resettable Fuses
+
+  Tape and Reel Specifications
+
+                                                                    P0
+            T                          D0                      P2                                          E1                                                           14.4
+                                                                                                                                                                       (.57)
+                                                                                                                                                                       MAX.
+                                                                                                                                                                       (MEASURED
+             COVER                                                                                                                                                     AT HUB)
+              TAPE
+
+                                                                                                       F                                                               50 DIA. MIN.
+                                                                                                                                                                      (2.0)
+                                                                                                           E2 W
+ B1                                                                                                                     185
+                                                                                                                       (7.3)
+                                                                                                                       MAX.
+                                                                                                  B0
+                                                                                                                                                                          8.4 +1.5/-0
+ K0                                                       P1                                                                                                           (.331 +.059/-0)
+                                                 A0                                                                                                                     (MEASURED
+            T1
+                                                                                                                                                                           AT HUB)
+
+
+
+                                                                                MF-NSMF016
+                                         MF-NSMF012                                                                                                          MF-NSMF110
+   Tape Dimensions                                                              MF-NSMF020
+                                         MF-NSMF175                                                                    MF-NSMF075                            MF-NSMF125
+     per EIA-481                                                                MF-NSMF035
+                                         MF-NSMF200                                                                                                          MF-NSMF150
+                                                                                MF-NSMF050
+                                                                                                     8.00 ± 0.30
+                W
+                                                                                                    (.315 ± .012)
+                                                                                                     4.00 ± 0.10
+                P0
+                                                                                                    (.157 ± .004)
+                                                                                                     40.0 ± 0.20
+           10 P0
+                                                                                                   (1.575 ± .008)
+                                                                                                     4.00 ± 0.10
+                P1
+                                                                                                    (.157 ± .004)
+                                                                                                     2.00 ± 0.05
+                P2
+                                                                                                    (.079 ± .002)
+                                             1.95 ± 0.10                         1.90 ± 0.10                            1.90 ± 0.10                            1.90 ± 0.10
+                A0
+                                            (.077 ± .004)                       (.075 ± .004)                          (.075 ± .004)                          (.075 ± .004)
+                                             3.55 ± 0.10                         3.45 ± 0.10                            3.50 ± 0.10                            3.45 ± 0.10
+                B0
+                                            (.140 ± .004)                       (.136 ± .004)                          (.138 ± .004)                          (.136 ± .004)
+                                                                                                            4.35
+           B1 max
+                                                                                                           (.171)
+                                                                                                   1.50 +0.10/-0
+                D0
+                                                                                                  (.059 +.004/-0)
+                                                                                                     3.50 ± 0.05
+                F
+                                                                                                    (.138 ± .002)
+                                                                                                     1.75 ± 0.10
+                E1
+                                                                                                    (.069 ± .004)
+                                                                                                            6.25
+           E2 typ
+                                                                                                           (.246)
+                                                                                                            0.60
+           T max
+                                                                                                           (.024)
+                                                                                                            0.10
+          T1 max
+                                                                                                           (.004)
+                                             1.35 ± 0.10                         1.04 ± 0.10                            0.85 ± 0.10                            0.85 ± 0.10
+                K0
+                                            (.053 ± .004)                       (.041 ± .004)                          (.033 ± .004)                          (.033 ± .004)
+                                                                                                            390
+       Leader min.
+                                                                                                           (15.4)
+                                                                                                            160
+        Trailer min.
+                                                                                                           (6.3)
+
+                                                                                                                                                                                    MM
+                                                                                                                                                                 DIMENSIONS:
+                                                                                                                                                                                 (INCHES)
+Specifications are subject to change without notice.
+Users should verify actual device performance in their specific applications.
+The products described herein and this document are subject to specific legal disclaimers as set forth on the last page of this document, and at www.bourns.com/docs/legal/disclaimer.pdf.
+         MF-NSMF Series - PTC Resettable Fuses
+
+  Tape and Reel Specifications (continued)
+
+                                                                             MF-NSMF020X
+                                      MF-NSMF005/30X
+                                                                             MF-NSMF025X
+                                      MF-NSMF005/60X
+                                                                            MF-NSMF025/24X
+                                      MF-NSMF010/30X
+                                                                            MF-NSMF025/30X
+                                      MF-NSMF010/60X
+   Tape Dimensions                                                           MF-NSMF035X                           MF-NSMF035/30X                        MF-NSMF075/13X
+                                      MF-NSMF012/48X
+     per EIA-481                                                            MF-NSMF035/24X                         MF-NSMF050/24X                        MF-NSMF075X/16X
+                                      MF-NSMF016/48X
+                                                                            MF-NSMF050/8X
+                                      MF-NSMF110/16X
+                                                                            MF-NSMF050/16X
+                                      MF-NSMF125/8X
+                                                                            MF-NSMF075/8X
+                                      MF-NSMF150/6X
+                                                                            MF-NSMF110/6X
+                                                                                                     8.00 ± 0.30
+              W
+                                                                                                    (.315 ± .012)
+                                                                                                     4.00 ± 0.10
+             P0
+                                                                                                    (.157 ± .004)
+                                                                                                     40.0 ± 0.20
+           10 P0
+                                                                                                   (1.575 ± .008)
+                                                                                                     4.00 ± 0.10
+             P1
+                                                                                                    (.157 ± .004)
+                                                                                                     2.00 ± 0.05
+             P2
+                                                                                                    (.079 ± .002)
+                                           1.90 ± 0.10                           1.95 ± 0.10                            1.95 ± 0.10                            1.95 ± 0.10
+             A0
+                                          (.075 ± .004)                         (.077 ± .004)                          (.077 ± .004)                          (.077 ± .004)
+                                           3.50 ± 0.10                           3.55 ± 0.10                            3.55 ± 0.10                            3.50 ± 0.10
+             B0
+                                          (.138 ± .004)                         (.140 ± .004)                          (.140 ± .004)                          (.138 ± .004)
+                                                                                                         4.35
+           B1 max
+                                                                                                        (.171)
+                                                                                                   1.50 +0.10/-0
+             D0
+                                                                                                  (.059 +.004/-0)
+                                                                                                     3.50 ± 0.05
+              F
+                                                                                                    (.138 ± .002)
+                                                                                                     1.75 ± 0.10
+             E1
+                                                                                                    (.069 ± .004)
+                                                                                                         6.25
+           E2 typ
+                                                                                                        (.246)
+                                                                                                         0.60
+           T max
+                                                                                                        (.024)
+                                                                                                         0.10
+          T1 max
+                                                                                                        (.004)
+                                           1.04 ± 0.10                           0.80 ± 0.10                            1.35 ± 0.10                            1.22 ± 0.10
+             K0
+                                          (.041 ± .004)                         (.031 ± .004)                          (.053 ± .004)                          (.048 ± .004)
+                                                                                                         390
+       Leader min.
+                                                                                                        (15.4)
+                                                                                                          160
+        Trailer min.
+                                                                                                         (6.3)
+
+                                                                                                                                                                                   MM
+                                                                                                                                                                 DIMENSIONS:
+                                                                                                                                                                                (INCHES)
+
+MF-NSMF SERIES, REV. AF, 09/26
+Specifications are subject to change without notice.
+Users should verify actual device performance in their specific applications.
+The products described herein and this document are subject to specific legal disclaimers as set forth on the last page of this document, and at www.bourns.com/docs/legal/disclaimer.pdf.
+       Bourns
+       3312     Multifuse
+            - ®2 mm  SMD® PPTC Resettable
+                          Trimming        Fuses
+                                   Potentiometer
+  Application Notice
+
+• Users are responsible for independent and adequate evaluation of Bourns® Multifuse® Polymer PTC devices in the user’s
+  application, including the PPTC device characteristics stated in the applicable data sheet.
+
+• Polymer PTC devices must not be allowed to operate beyond their stated maximum ratings. Operation in excess of such
+  maximum ratings could result in damage to the PTC device and possibly lead to electrical arcing and/or fire. Circuits with
+  inductance may generate a voltage above the rated voltage of the polymer PTC device and should be thoroughly evaluated
+  within the user’s application during the PTC selection and qualification process.
+
+• Polymer PTC devices are intended to protect against adverse effects of temporary overcurrent or overtemperature
+  conditions up to rated limits and are not intended to serve as protective devices where overcurrent or overvoltage conditions
+  are expected to be repetitive or prolonged.
+
+• In normal operation, polymer PTC devices experience thermal expansion under fault conditions. Thus, a polymer PTC
+  device must be protected against mechanical stress, and must be given adequate clearance within the user’s application to
+  accommodate such thermal expansion. Rigid potting materials or fixed housings or coverings that do not provide adequate
+  clearance should be thoroughly examined and tested by the user, as they may result in the malfunction of polymer PTC
+  devices if the thermal expansion is inhibited.
+
+• Exposure to lubricants, silicon-based oils, solvents, gels, electrolytes, acids, and other related or similar materials may
+  adversely affect the performance of polymer PTC devices.
+
+• Aggressive solvents may adversely affect the performance of polymer PTC devices. Conformal coating, encapsulating,
+  potting, molding, and sealing materials may contain aggressive solvents including but not limited to xylene and toluene,
+  which are known to cause adverse effects on the performance of polymer PTCs. Such aggressive solvents must be
+  thoroughly cured or baked to ensure their complete removal from polymer PTCs to minimize the possible adverse effect
+  on the device.
+
+• Recommended storage conditions should be followed at all times. Such conditions can be found on the applicable data
+  sheet and on the Multifuse® Polymer PTC Moisture/Reflow Sensitivity Classification (MSL) note:
+  https://www.bourns.com/docs/RoHS-MSL/msl_mf.pdf
+
+
+
+
+MFAN 12/18
+Specifications are subject to change without notice
+Users should verify actual device performance in their specific applications.
+The products described herein and this document are subject to specific legal disclaimers as set forth on the last page of this document, and at www.bourns.com/docs/legal/disclaimer.pdf.
+        Legal Disclaimer Notice
+
+This legal disclaimer applies to purchasers and users of Bourns® products manufactured by or on behalf of Bourns, Inc. and its affiliates (collectively,
+“Bourns”).
+
+Unless otherwise expressly indicated in writing, Bourns® products and data sheets relating thereto are subject to change without notice. Users should check
+for and obtain the latest relevant information and verify that such information is current and complete before placing orders for Bourns® products.
+
+The characteristics and parameters of a Bourns® product set forth in its data sheet are based on laboratory conditions, and statements regarding the
+suitability of products for certain “typical” applications are based on Bourns’ knowledge of typical requirements in generic applications. Bourns assumes
+that “typical” applications include failsafe/backup features to address critical risks to users and are designed to allow rework of Bourns® product to
+avoid scrap of a device solely due to malfunctioning Bourns® product. The characteristics and parameters of a Bourns® product in a user application
+may vary from the data sheet characteristics and parameters due to (i) the combination of the Bourns® product with other components in the user’s
+application, or (ii) the environment of the user application itself. The characteristics and parameters of a Bourns® product also can and do vary in
+different applications and actual performance may vary over time. Thus, users should always verify the actual performance of the Bourns® product in
+their specific devices and applications and make their own independent judgments regarding the suitability of Bourns® product and the amount of
+additional test margin to design into their device or application to compensate for differences between laboratory and real-world conditions.
+
+Unless Bourns has explicitly designated an individual Bourns® product as meeting the requirements of a particular industry standard (e.g., IATF
+16949) or a particular qualification (e.g., UL listed or recognized), Bourns is not responsible for any failure of an individual Bourns® product to meet
+the requirements of such industry standard or particular qualification even if such industry standard or qualification is a “state of art”. Users of Bourns®
+products are responsible for ensuring compliance with safety-related requirements and standards applicable to their devices or applications.
+
+Bourns® products are not recommended, authorized or intended for use in applications where failure or malfunction may result in personal injury,
+death, or severe property or environmental damage, such as without limitation nuclear, life-critical medical and certain automotive and aviation
+applications. Except as set forth in the bullet points below or unless expressly and specifically approved in writing on a case-by-case basis by an
+authorized Bourns’ representative, use of any Bourns® products in such unauthorized high-risk applications is at the user’s sole risk.
+
+     • Bourns considers implantable/invasive devices and devices/procedures designed as life-supporting or life-sustaining by the U.S. Food and Drug
+       Administration or equivalent organizations outside of the United States as “life-critical” medical applications. Bourns expressly identifies those
+       Bourns® standard products that are suitable for use in typical medical applications that are not life-critical in its publication entitled “Bourns
+       Medical Grade Component Guide.”
+
+     • Bourns expressly identifies those Bourns® standard products that are suitable for use in typical automotive applications associated with any
+       Automotive Safety Integrity Level (ASIL) in its publication entitled “Bourns Automotive Grade Component Guide.” Bourns’ designation of Bourns®
+       product as compliant with the AEC-Q standard does not by itself mean that Bourns has approved such product for use in an automotive
+       application.
+
+     • Bourns expressly identifies Bourns® standard products that are suitable for use in the typical aviation applications/systems requiring System
+       Design Assurance Level (RTCA DO-254 DAL) of C, D or E in its publication entitled “Bourns Civilian Aerospace/Aviation Grade Component Guide.”
+       Bourns does not test its products for compliance with United States Federal Aviation Administration standards or any other generally equivalent
+       governmental organization standard applicable to products designed or manufactured for use in aviation applications. Use of Bourns® standard
+       components in aviation applications associated with RTCA DO-254 DAL A or B without proper approval noted above shall be at the user’s sole
+       risk.
+
+     • Bourns will review and authorize on a case-by-case basis the use of Bourns® standard products which are at least AEC-Q compliant in space-
+       related civil applications (rockets, satellites) with a negotiated cross-waiver and indemnity agreement.
+
+The use and level of testing applicable to Bourns® custom products shall be negotiated on a case-by-case basis by Bourns and the user for which such
+Bourns® custom products are specially designed. Absent a written agreement between Bourns and the user regarding the use and level of such testing,
+the above provisions applicable to Bourns® standard products shall also apply to such Bourns® custom products.
+
+Use of Bourns® products or Bourns’ technology in military/defense applications must be reviewed with Bourns for compliance with applicable export
+control laws and embargoes. Users shall not sell, transfer, export or re-export (which includes transfers within a country) any Bourns® products or
+technology or technical data for use in activities which involve the design, development, production, use or stockpiling of nuclear, chemical or
+biological weapons or missiles, nor shall they use Bourns® products or technology or technical data in any facility which engages in activities relating
+to such devices. Further, Bourns® products and Bourns’ technology and technical data may not under any circumstance be exported or re-exported to
+countries subject to international sanctions or embargoes. Bourns® products and technology may not, without prior authorization from Bourns and/or
+the Government of a country where such product/technology is designed and/or manufactured, be resold, transferred, or re-exported (including within
+the same country) to any party not eligible to receive commodities, software, and technical data originating in such country.
+
+To the maximum extent permitted by applicable law, Bourns disclaims (i) any and all liability for special, punitive, consequential, incidental or indirect
+damages or lost revenues or lost profits, and (ii) any and all implied warranties (those not based on parameters specified in Bourns’ data sheets and/or
+specifications), including implied warranties of fitness for a particular purpose, non-infringement and merchantability.
+
+For your convenience, copies of this Legal Disclaimer Notice with German, Spanish, Japanese, Traditional Chinese and Simplified Chinese bilingual versions are
+available at:
+                                         Web Page: https://www.bourns.com/legal/disclaimers-terms-and-policies
+                                                PDF: https://www.bourns.com/docs/Legal/disclaimer.pdf
+
+
+
+
+                                                                                                                                                    K2540 08/26R
+

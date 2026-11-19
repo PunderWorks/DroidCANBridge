@@ -45,6 +45,12 @@
     "sha256": "50d80228581842471d563e28ba0f1b67ab095ee95dfac4079f4a49f7f7bbf3c8",
     "url": "https://www.bourns.com/docs/Product-Datasheets/mf-msmf.pdf"
   },
+  "MF-NSMF": {
+    "fetched": "2026-11-18",
+    "file": "MF-NSMF.pdf",
+    "sha256": "1e98bb9b863b43db0264681e6fd7683c0ecd033b63683fd8e3d7cab3e9c69bcb",
+    "url": "https://www.bourns.com/docs/Product-Datasheets/mf-nsmf.pdf"
+  },
   "RM0490": {
     "fetched": "2026-11-05",
     "file": "RM0490.pdf",

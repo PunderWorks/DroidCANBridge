@@ -126,12 +126,12 @@ design droidcanadapter {
     // CAN_GND passes straight from J_CAN1 to J_CAN2 so the bus ground daisy-chains, and reaches
     // this board's GND only through F_CAN_GND. If this board's WAGO GND comes off while a CAN
     // cable stays connected, the PTC trips instead of the 3 A JST contact and signal wire
-    // carrying the downstream device's return current. Normal current is ~0: R1max 6 Ω.
+    // carrying the downstream device's return current. Normal current is ~0: R1max 3.3 Ω.
     place jst-xh-3 J_CAN1 hand=#true note="CAN in: 1 CAN_GND, 2 CANL, 3 CANH"
     place jst-xh-3 J_CAN2 hand=#true note="CAN out (daisy chain): 1 CAN_GND, 2 CANL, 3 CANH"
     circuit can_xcvr.CANH J_CAN1.3 J_CAN2.3 name="CANH"
     circuit can_xcvr.CANL J_CAN1.2 J_CAN2.2 name="CANL"
-    place ptc-mf-msmf014-60x F_CAN_GND note="CAN bus ground reference to board GND (PTC limits fault current)"
+    place ptc-mf-nsmf020x F_CAN_GND note="CAN bus ground reference to board GND (PTC limits fault current)"
     circuit J_CAN1.1 J_CAN2.1 F_CAN_GND.1 name="CAN_GND"
 
     // Termination: fit the shunt on J_TERM when this node is at an end of the bus.

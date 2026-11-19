@@ -177,27 +177,28 @@ part jst-xh-3 {
     }
 }
 
-// Bourns MF-MSMF014/60X-2: PTC resettable fuse, 1812, Style 2 (freeXpansion). The PunderWorks
-// CAN standard's CAN_GND-to-GND link; same definition as DroidPowerSense.
-// Source: ../datasheets/MF-MSMF.pdf: Vmax 60 V, Imax 40 A, Ihold 0.14 A, Itrip 0.34 A,
-// Rmin 0.40 ohm, R1max 6.0 ohm, max time to trip 0.15 s at 1.5 A, tripped dissipation 0.8 W (p. 1);
-// Style 2 body 4.37-4.83 x 3.07-3.41 mm (p. 4); recommended pads 1.68 x 2.95 mm, 3.1 mm gap (p. 7).
-// Not stocked at LCSC: JLCPCB global sourcing or consigned parts. Non-polarized.
-part ptc-mf-msmf014-60x {
+// Bourns MF-NSMF020X-2: PTC resettable fuse, 1206, Style 2 (freeXpansion). The PunderWorks CAN
+// standard's CAN_GND-to-GND link, sized for this 5 V board (the standard's 1812 reference part is
+// for battery-rail boards).
+// Source: ../datasheets/MF-NSMF.pdf: Vmax 30 V, Imax 60 A, Ihold 0.20 A, Itrip 0.40 A,
+// Rmin 0.60 ohm, R1max 3.3 ohm, max time to trip 0.6 s at 1.0 A, tripped dissipation 0.6 W (p. 1);
+// Ihold 0.10 A at 85 °C (p. 3); Style 2 body 3.00-3.40 x 1.40-1.80 mm, recommended pads
+// 1.0 x 1.6 mm, 2.0 mm gap (p. 8). LCSC C210358 (JLCPCB Extended). Non-polarized.
+part ptc-mf-nsmf020x {
     symbol "Device:Polyfuse"
     reference F
-    value "MF-MSMF014/60X-2"
-    description "PTC resettable fuse, 60 V, 40 A max fault, 0.14 A hold, 1812"
-    datasheet "https://www.bourns.com/docs/Product-Datasheets/mf-msmf.pdf"
+    value "MF-NSMF020X-2"
+    description "PTC resettable fuse, 30 V, 60 A max fault, 0.20 A hold, 1206"
+    datasheet "https://www.bourns.com/docs/Product-Datasheets/mf-nsmf.pdf"
     manufacturer "Bourns"
-    order mpn="MF-MSMF014/60X-2" mouser="652-MF-MSMF014/60X-2" digikey="118-MF-MSMF014/60X-2CT-ND"
+    order mpn="MF-NSMF020X-2" lcsc=C210358 mouser="652-MF-NSMF020X-2" digikey="MF-NSMF020X-2CT-ND"
 
     pin 1 passive
     pin 2 passive
     port a pin=1
     port b pin=2
 
-    package smd-1812 footprint="DroidCANBridge:Bourns_MF-MSMF_1812_Style2" {
+    package smd-1206 footprint="DroidCANBridge:Bourns_MF-NSMF_1206_Style2" {
         pad 1 1
         pad 2 2
     }
